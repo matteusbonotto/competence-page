@@ -1,0 +1,748 @@
+{
+  "categories": [
+    {
+      "id": "qa",
+      "name": "Quality Assurance",
+      "color": "#3498db",
+      "rootSkillId": "qa-root"
+    },
+    {
+      "id": "dev",
+      "name": "Development",
+      "color": "#e74c3c",
+      "rootSkillId": "dev-root"
+    },
+    {
+      "id": "ux",
+      "name": "User Experience",
+      "color": "#9b59b6",
+      "rootSkillId": "ux-root"
+    },
+    {
+      "id": "data",
+      "name": "Data Science",
+      "color": "#f39c12",
+      "rootSkillId": "data-root"
+    }
+  ],
+  "skills": [
+    {
+      "id": "qa-root",
+      "title": "QUALITY ASSURANCE",
+      "description": "Garantia de qualidade de software através de processos, metodologias e técnicas de teste para assegurar que produtos atendam aos requisitos e expectativas dos usuários.",
+      "category": "qa",
+      "icon": "bi-shield-check",
+      "domain": 5,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 5,
+        "technical": 4,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
+        "trends": 3
+      },
+      "children": ["qa-testing", "qa-automation", "qa-performance"],
+      "relatedAchievements": ["istqb-cert", "agile-cert"]
+    },
+    {
+      "id": "qa-testing",
+      "title": "MANUAL TESTING",
+      "description": "Técnicas e práticas de teste manual, incluindo planejamento, execução e documentação de casos de teste.",
+      "category": "qa",
+      "icon": "bi-bug-fill",
+      "domain": 4,
+      "unlock_threshold": 3,
+      "parent": "qa-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
+      "children": ["qa-functional", "qa-exploratory", "qa-usability"],
+      "relatedAchievements": ["agile-cert"]
+    },
+    {
+      "id": "qa-automation",
+      "title": "TEST AUTOMATION",
+      "description": "Automação de testes utilizando frameworks e ferramentas para execução automatizada de casos de teste.",
+      "category": "qa",
+      "icon": "bi-robot",
+      "domain": 3,
+      "unlock_threshold": 4,
+      "parent": "qa-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 3,
+        "knowledge_transfer": 2,
+        "trends": 4
+      },
+      "children": ["qa-selenium", "qa-api-testing"],
+      "relatedAchievements": ["selenium-cert"]
+    },
+    {
+      "id": "qa-performance",
+      "title": "PERFORMANCE TESTING",
+      "description": "Testes de performance, carga e estresse para avaliar comportamento do sistema sob diferentes condições.",
+      "category": "qa",
+      "icon": "bi-speedometer2",
+      "domain": 2,
+      "unlock_threshold": 4,
+      "parent": "qa-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 2,
+        "problem_solving": 3,
+        "knowledge_transfer": 1,
+        "trends": 3
+      },
+      "children": ["qa-load-testing", "qa-stress-testing"],
+      "relatedAchievements": ["performance-cert"]
+    },
+    {
+      "id": "qa-functional",
+      "title": "FUNCTIONAL TESTING",
+      "description": "Testes funcionais para verificar se o software atende aos requisitos funcionais especificados.",
+      "category": "qa",
+      "icon": "bi-check2-square",
+      "domain": 4,
+      "unlock_threshold": 3,
+      "parent": "qa-testing",
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 2
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "qa-exploratory",
+      "title": "EXPLORATORY TESTING",
+      "description": "Testes exploratórios para descoberta de bugs e comportamentos inesperados através de investigação livre.",
+      "category": "qa",
+      "icon": "bi-search",
+      "domain": 3,
+      "unlock_threshold": 3,
+      "parent": "qa-testing",
+      "scores": {
+        "theoretical": 3,
+        "technical": 2,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 2
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "qa-usability",
+      "title": "USABILITY TESTING",
+      "description": "Testes de usabilidade para avaliar a experiência do usuário e facilidade de uso do software.",
+      "category": "qa",
+      "icon": "bi-person-check",
+      "domain": 2,
+      "unlock_threshold": 3,
+      "parent": "qa-testing",
+      "scores": {
+        "theoretical": 3,
+        "technical": 2,
+        "problem_solving": 3,
+        "knowledge_transfer": 2,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "qa-selenium",
+      "title": "SELENIUM WEBDRIVER",
+      "description": "Automação de testes web utilizando Selenium WebDriver para interação com navegadores.",
+      "category": "qa",
+      "icon": "bi-browser-chrome",
+      "domain": 3,
+      "unlock_threshold": 2,
+      "parent": "qa-automation",
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 3,
+        "knowledge_transfer": 2,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": ["selenium-cert"]
+    },
+    {
+      "id": "qa-api-testing",
+      "title": "API TESTING",
+      "description": "Testes de APIs REST e SOAP, validação de contratos e integração entre sistemas.",
+      "category": "qa",
+      "icon": "bi-cloud-arrow-up-fill",
+      "domain": 2,
+      "unlock_threshold": 2,
+      "parent": "qa-automation",
+      "scores": {
+        "theoretical": 3,
+        "technical": 2,
+        "problem_solving": 3,
+        "knowledge_transfer": 1,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "qa-load-testing",
+      "title": "LOAD TESTING",
+      "description": "Testes de carga para avaliar comportamento do sistema sob condições normais de uso.",
+      "category": "qa",
+      "icon": "bi-bar-chart-fill",
+      "domain": 1,
+      "unlock_threshold": 1,
+      "parent": "qa-performance",
+      "scores": {
+        "theoretical": 2,
+        "technical": 1,
+        "problem_solving": 2,
+        "knowledge_transfer": 1,
+        "trends": 2
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "qa-stress-testing",
+      "title": "STRESS TESTING",
+      "description": "Testes de estresse para determinar os limites do sistema e pontos de falha.",
+      "category": "qa",
+      "icon": "bi-exclamation-triangle-fill",
+      "domain": 1,
+      "unlock_threshold": 1,
+      "parent": "qa-performance",
+      "scores": {
+        "theoretical": 2,
+        "technical": 1,
+        "problem_solving": 2,
+        "knowledge_transfer": 1,
+        "trends": 2
+      },
+      "children": [],
+      "relatedAchievements": ["performance-cert"]
+    },
+    {
+      "id": "dev-root",
+      "title": "DEVELOPMENT",
+      "description": "Desenvolvimento de software utilizando linguagens de programação, frameworks e ferramentas modernas.",
+      "category": "dev",
+      "icon": "bi-code-slash",
+      "domain": 4,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": ["dev-frontend", "dev-backend", "dev-mobile"],
+      "relatedAchievements": ["fullstack-cert"]
+    },
+    {
+      "id": "dev-frontend",
+      "title": "FRONTEND",
+      "description": "Desenvolvimento de interfaces de usuário utilizando HTML, CSS, JavaScript e frameworks modernos.",
+      "category": "dev",
+      "icon": "bi-window-desktop",
+      "domain": 4,
+      "unlock_threshold": 3,
+      "parent": "dev-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 5
+      },
+      "children": ["dev-react", "dev-vue"],
+      "relatedAchievements": ["react-cert"]
+    },
+    {
+      "id": "dev-backend",
+      "title": "BACKEND",
+      "description": "Desenvolvimento de APIs, serviços e sistemas server-side com foco em performance e escalabilidade.",
+      "category": "dev",
+      "icon": "bi-server",
+      "domain": 3,
+      "unlock_threshold": 3,
+      "parent": "dev-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 3,
+        "problem_solving": 4,
+        "knowledge_transfer": 2,
+        "trends": 3
+      },
+      "children": ["dev-nodejs", "dev-python"],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-mobile",
+      "title": "MOBILE DEVELOPMENT",
+      "description": "Desenvolvimento de aplicações móveis para Android e iOS utilizando tecnologias nativas e híbridas.",
+      "category": "dev",
+      "icon": "bi-phone",
+      "domain": 2,
+      "unlock_threshold": 3,
+      "parent": "dev-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 2,
+        "problem_solving": 3,
+        "knowledge_transfer": 2,
+        "trends": 4
+      },
+      "children": ["dev-react-native", "dev-flutter"],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-react",
+      "title": "REACT",
+      "description": "Desenvolvimento de aplicações web utilizando React e seu ecossistema.",
+      "category": "dev",
+      "icon": "bi-bootstrap",
+      "domain": 4,
+      "unlock_threshold": 3,
+      "parent": "dev-frontend",
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 5
+      },
+      "children": [],
+      "relatedAchievements": ["react-cert"]
+    },
+    {
+      "id": "dev-vue",
+      "title": "VUE.JS",
+      "description": "Desenvolvimento de aplicações web utilizando Vue.js e Nuxt.js.",
+      "category": "dev",
+      "icon": "bi-triangle",
+      "domain": 2,
+      "unlock_threshold": 3,
+      "parent": "dev-frontend",
+      "scores": {
+        "theoretical": 3,
+        "technical": 2,
+        "problem_solving": 2,
+        "knowledge_transfer": 2,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-nodejs",
+      "title": "NODE.JS",
+      "description": "Desenvolvimento backend utilizando Node.js, Express e outras tecnologias do ecossistema.",
+      "category": "dev",
+      "icon": "bi-gear-fill",
+      "domain": 3,
+      "unlock_threshold": 2,
+      "parent": "dev-backend",
+      "scores": {
+        "theoretical": 4,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 2,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-python",
+      "title": "PYTHON",
+      "description": "Desenvolvimento backend utilizando Python, Django, Flask e outras ferramentas.",
+      "category": "dev",
+      "icon": "bi-cpu",
+      "domain": 2,
+      "unlock_threshold": 2,
+      "parent": "dev-backend",
+      "scores": {
+        "theoretical": 3,
+        "technical": 2,
+        "problem_solving": 3,
+        "knowledge_transfer": 2,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-react-native",
+      "title": "REACT NATIVE",
+      "description": "Desenvolvimento de aplicações móveis multiplataforma utilizando React Native.",
+      "category": "dev",
+      "icon": "bi-phone-fill",
+      "domain": 1,
+      "unlock_threshold": 1,
+      "parent": "dev-mobile",
+      "scores": {
+        "theoretical": 2,
+        "technical": 1,
+        "problem_solving": 2,
+        "knowledge_transfer": 1,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-flutter",
+      "title": "FLUTTER",
+      "description": "Desenvolvimento de aplicações móveis utilizando Flutter e linguagem Dart.",
+      "category": "dev",
+      "icon": "bi-phone-landscape",
+      "domain": 1,
+      "unlock_threshold": 1,
+      "parent": "dev-mobile",
+      "scores": {
+        "theoretical": 2,
+        "technical": 1,
+        "problem_solving": 2,
+        "knowledge_transfer": 1,
+        "trends": 5
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "ux-root",
+      "title": "USER EXPERIENCE",
+      "description": "Design de experiência do usuário focado em usabilidade, acessibilidade e satisfação do usuário.",
+      "category": "ux",
+      "icon": "bi-palette",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": ["ux-research", "ux-design", "ux-prototyping"],
+      "relatedAchievements": ["ux-cert"]
+    },
+    {
+      "id": "ux-research",
+      "title": "UX RESEARCH",
+      "description": "Pesquisa de usuário, análise de comportamento e métodos de descoberta de necessidades.",
+      "category": "ux",
+      "icon": "bi-search-heart",
+      "domain": 3,
+      "unlock_threshold": 2,
+      "parent": "ux-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 2,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": ["ux-cert"]
+    },
+    {
+      "id": "ux-design",
+      "title": "UI/UX DESIGN",
+      "description": "Design de interfaces, sistemas de design e prototipação de alta fidelidade.",
+      "category": "ux",
+      "icon": "bi-brush",
+      "domain": 3,
+      "unlock_threshold": 2,
+      "parent": "ux-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "ux-prototyping",
+      "title": "PROTOTYPING",
+      "description": "Criação de protótipos interativos e testes de usabilidade.",
+      "category": "ux",
+      "icon": "bi-layers",
+      "domain": 2,
+      "unlock_threshold": 2,
+      "parent": "ux-root",
+      "scores": {
+        "theoretical": 2,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 2,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "data-root",
+      "title": "DATA SCIENCE",
+      "description": "Ciência de dados engloba análise, visualização e processamento de dados para extrair insights valiosos e apoiar tomadas de decisão baseadas em evidências.",
+      "category": "data",
+      "icon": "bi-graph-up",
+      "domain": 4,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 5,
+        "knowledge_transfer": 3,
+        "trends": 5
+      },
+      "children": ["data-excel", "data-powerbi", "data-sql"],
+      "relatedAchievements": ["data-analyst-cert"]
+    },
+    {
+      "id": "data-excel",
+      "title": "PLANILHAS AVANÇADAS",
+      "description": "Domínio de Excel/Google Sheets para análise de dados, incluindo fórmulas avançadas, tabelas dinâmicas, gráficos e automação com macros.",
+      "category": "data",
+      "icon": "bi-table",
+      "domain": 5,
+      "unlock_threshold": 1,
+      "parent": "data-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 5,
+        "problem_solving": 4,
+        "knowledge_transfer": 5,
+        "trends": 3
+      },
+      "children": ["data-excel-formulas", "data-excel-pivot", "data-excel-macros"],
+      "relatedAchievements": ["excel-expert"]
+    },
+    {
+      "id": "data-powerbi",
+      "title": "POWER BI",
+      "description": "Criação de dashboards interativos e relatórios dinâmicos usando Microsoft Power BI para visualização e análise de dados empresariais.",
+      "category": "data",
+      "icon": "bi-bar-chart",
+      "domain": 3,
+      "unlock_threshold": 2,
+      "parent": "data-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 3,
+        "knowledge_transfer": 4,
+        "trends": 5
+      },
+      "children": ["data-powerbi-dax", "data-powerbi-modeling", "data-powerbi-visual"],
+      "relatedAchievements": ["powerbi-cert"]
+    },
+    {
+      "id": "data-sql",
+      "title": "SQL & DATABASES",
+      "description": "Structured Query Language para consulta, manipulação e análise de dados em bancos relacionais e não-relacionais.",
+      "category": "data",
+      "icon": "bi-database",
+      "domain": 4,
+      "unlock_threshold": 2,
+      "parent": "data-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 5,
+        "problem_solving": 5,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": ["data-sql-basic", "data-sql-advanced", "data-sql-optimization"],
+      "relatedAchievements": ["sql-expert"]
+    },
+    {
+      "id": "data-excel-formulas",
+      "title": "FÓRMULAS AVANÇADAS",
+      "description": "Domínio de fórmulas complexas incluindo PROCV, ÍNDICE, CORRESP, fórmulas matriciais e funções estatísticas.",
+      "category": "data",
+      "icon": "bi-calculator",
+      "domain": 4,
+      "unlock_threshold": 3,
+      "parent": "data-excel",
+      "scores": {
+        "theoretical": 4,
+        "technical": 5,
+        "problem_solving": 4,
+        "knowledge_transfer": 4,
+        "trends": 2
+      },
+      "children": [],
+      "relatedAchievements": ["excel-formulas-master"]
+    },
+    {
+      "id": "data-excel-pivot",
+      "title": "TABELAS DINÂMICAS",
+      "description": "Criação e manipulação de tabelas dinâmicas para sumarização e análise rápida de grandes volumes de dados.",
+      "category": "data",
+      "icon": "bi-grid-3x3",
+      "domain": 5,
+      "unlock_threshold": 3,
+      "parent": "data-excel",
+      "scores": {
+        "theoretical": 3,
+        "technical": 5,
+        "problem_solving": 4,
+        "knowledge_transfer": 5,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": ["pivot-expert"]
+    },
+    {
+      "id": "data-excel-macros",
+      "title": "MACROS & VBA",
+      "description": "Automação de tarefas repetitivas através de macros e programação em Visual Basic for Applications (VBA).",
+      "category": "data",
+      "icon": "bi-gear",
+      "domain": 2,
+      "unlock_threshold": 4,
+      "parent": "data-excel",
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 5,
+        "knowledge_transfer": 2,
+        "trends": 2
+      },
+      "children": [],
+      "relatedAchievements": ["vba-programmer"]
+    },
+    {
+      "id": "data-powerbi-dax",
+      "title": "DAX FORMULAS",
+      "description": "Data Analysis Expressions para cálculos avançados, medidas customizadas e análises temporais em Power BI.",
+      "category": "data",
+      "icon": "bi-code-square",
+      "domain": 2,
+      "unlock_threshold": 3,
+      "parent": "data-powerbi",
+      "scores": {
+        "theoretical": 4,
+        "technical": 3,
+        "problem_solving": 4,
+        "knowledge_transfer": 2,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": ["dax-expert"]
+    },
+    {
+      "id": "data-powerbi-modeling",
+      "title": "DATA MODELING",
+      "description": "Modelagem de dados, relacionamentos entre tabelas e otimização de performance em Power BI.",
+      "category": "data",
+      "icon": "bi-diagram-3",
+      "domain": 3,
+      "unlock_threshold": 3,
+      "parent": "data-powerbi",
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": ["data-modeler"]
+    },
+    {
+      "id": "data-powerbi-visual",
+      "title": "VISUALIZATIONS",
+      "description": "Criação de visualizações impactantes, dashboards interativos e storytelling com dados.",
+      "category": "data",
+      "icon": "bi-pie-chart",
+      "domain": 4,
+      "unlock_threshold": 2,
+      "parent": "data-powerbi",
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 3,
+        "knowledge_transfer": 5,
+        "trends": 5
+      },
+      "children": [],
+      "relatedAchievements": ["viz-expert"]
+    },
+    {
+      "id": "data-sql-basic",
+      "title": "SQL BÁSICO",
+      "description": "Comandos fundamentais: SELECT, INSERT, UPDATE, DELETE, WHERE, ORDER BY, GROUP BY.",
+      "category": "data",
+      "icon": "bi-file-code",
+      "domain": 5,
+      "unlock_threshold": 2,
+      "parent": "data-sql",
+      "scores": {
+        "theoretical": 4,
+        "technical": 5,
+        "problem_solving": 4,
+        "knowledge_transfer": 4,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": ["sql-basic-cert"]
+    },
+    {
+      "id": "data-sql-advanced",
+      "title": "SQL AVANÇADO",
+      "description": "JOINs complexos, subqueries, CTEs, window functions, stored procedures e triggers.",
+      "category": "data",
+      "icon": "bi-layers-fill",
+      "domain": 3,
+      "unlock_threshold": 4,
+      "parent": "data-sql",
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 5,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": ["sql-advanced-cert"]
+    },
+    {
+      "id": "data-sql-optimization",
+      "title": "PERFORMANCE TUNING",
+      "description": "Otimização de queries, índices, planos de execução e troubleshooting de performance em bancos de dados.",
+      "category": "data",
+      "icon": "bi-speedometer2",
+      "domain": 2,
+      "unlock_threshold": 5,
+      "parent": "data-sql",
+      "scores": {
+        "theoretical": 5,
+        "technical": 3,
+        "problem_solving": 5,
+        "knowledge_transfer": 2,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": ["sql-performance-expert"]
+    }
+  ]
+}

@@ -1,0 +1,377 @@
+[
+  {
+    "id": "istqb-cert",
+    "title": "ISTQB Foundation",
+    "description": "Certificação internacional em fundamentos de teste de software reconhecida mundialmente",
+    "image": "assets/istqb.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/istqb-foundation.pdf",
+    "relatedSkills": ["qa-root", "qa-testing"],
+    "subcategories": {
+      "Fundamentos": "Conceitos básicos de teste de software",
+      "Técnicas": "Técnicas de design de casos de teste",
+      "Gestão": "Gestão de atividades de teste",
+      "Ferramentas": "Ferramentas de suporte ao teste"
+    }
+  },
+  {
+    "id": "selenium-cert",
+    "title": "Selenium WebDriver Expert",
+    "description": "Certificação avançada em automação de testes web utilizando Selenium WebDriver",
+    "image": "assets/selenium.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/selenium-expert.pdf",
+    "relatedSkills": ["qa-automation", "qa-selenium"],
+    "subcategories": {
+      "WebDriver API": "Domínio completo da API do WebDriver",
+      "Page Object": "Implementação de padrões Page Object Model",
+      "Framework": "Criação de frameworks de automação robustos",
+      "CI/CD Integration": "Integração com pipelines de CI/CD"
+    }
+  },
+  {
+    "id": "agile-cert",
+    "title": "Agile Testing Certified",
+    "description": "Certificação em práticas de teste em metodologias ágeis e DevOps",
+    "image": "assets/agile.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/agile-testing.pdf",
+    "relatedSkills": ["qa-root", "qa-testing"],
+    "subcategories": {
+      "Scrum Testing": "Teste em sprints e incrementos",
+      "BDD/TDD": "Behavior e Test Driven Development",
+      "Continuous Testing": "Testes contínuos em DevOps",
+      "Team Collaboration": "Colaboração efetiva em equipes ágeis"
+    }
+  },
+  {
+    "id": "performance-cert",
+    "title": "Performance Testing Master",
+    "description": "Certificação em testes de performance, carga e estresse de aplicações",
+    "image": "assets/performance.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["qa-performance", "qa-load-testing", "qa-stress-testing"],
+    "subcategories": {
+      "Load Testing": "Testes de carga em condições normais",
+      "Stress Testing": "Testes além dos limites do sistema",
+      "JMeter": "Domínio avançado do Apache JMeter",
+      "Performance Analysis": "Análise e otimização de performance"
+    }
+  },
+  {
+    "id": "react-cert",
+    "title": "React Developer Professional",
+    "description": "Certificação profissional em desenvolvimento React e ecossistema",
+    "image": "assets/react.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/react-professional.pdf",
+    "relatedSkills": ["dev-frontend", "dev-react"],
+    "subcategories": {
+      "React Core": "Hooks, Context API e componentes avançados",
+      "State Management": "Redux, Zustand e gerenciamento de estado",
+      "Testing": "Jest, React Testing Library e testes unitários",
+      "Performance": "Otimização e melhores práticas"
+    }
+  },
+  {
+    "id": "fullstack-cert",
+    "title": "Full Stack Developer",
+    "description": "Certificação completa em desenvolvimento full stack com múltiplas tecnologias",
+    "image": "assets/fullstack.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["dev-root", "dev-frontend", "dev-backend"],
+    "subcategories": {
+      "Frontend": "React, Vue.js e tecnologias modernas",
+      "Backend": "Node.js, Python e APIs RESTful",
+      "Database": "SQL, NoSQL e modelagem de dados",
+      "DevOps": "Docker, CI/CD e deploy automatizado"
+    }
+  },
+  {
+    "id": "ux-cert",
+    "title": "UX Design Specialist",
+    "description": "Certificação em design de experiência do usuário e pesquisa",
+    "image": "assets/ux.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/ux-specialist.pdf",
+    "relatedSkills": ["ux-root", "ux-research", "ux-design"],
+    "subcategories": {
+      "User Research": "Métodos de pesquisa qualitativa e quantitativa",
+      "Design Thinking": "Processo criativo centrado no usuário",
+      "Prototyping": "Figma, Sketch e ferramentas de prototipação",
+      "Usability Testing": "Testes de usabilidade e análise de dados"
+    }
+  },
+  {
+    "id": "api-testing-cert",
+    "title": "API Testing Expert",
+    "description": "Especialização em testes de APIs REST, GraphQL e microserviços",
+    "image": "assets/api.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["qa-automation", "qa-api-testing"],
+    "subcategories": {
+      "REST APIs": "Testes de APIs RESTful e validação de contratos",
+      "GraphQL": "Testes de queries, mutations e subscriptions",
+      "Postman": "Automação avançada com Postman e Newman",
+      "Contract Testing": "Testes de contrato com Pact e similares"
+    }
+  },
+  {
+    "id": "security-testing-cert",
+    "title": "Security Testing Professional",
+    "description": "Certificação em testes de segurança e análise de vulnerabilidades",
+    "image": "assets/security.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["qa-root"],
+    "subcategories": {
+      "OWASP": "Top 10 vulnerabilidades e práticas de segurança",
+      "Penetration Testing": "Testes de penetração básicos",
+      "SAST/DAST": "Análise estática e dinâmica de código",
+      "Security Compliance": "Conformidade com padrões de segurança"
+    }
+  },
+  {
+    "id": "mobile-testing-cert",
+    "title": "Mobile Testing Champion",
+    "description": "Especialização em testes de aplicações móveis Android e iOS",
+    "image": "assets/mobile.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["dev-mobile", "qa-automation"],
+    "subcategories": {
+      "Native Testing": "Testes em aplicações nativas Android/iOS",
+      "Cross-Platform": "Testes em React Native e Flutter",
+      "Device Testing": "Testes em dispositivos reais e emuladores",
+      "Appium": "Automação de testes móveis com Appium"
+    }
+  },
+  {
+    "id": "cloud-cert",
+    "title": "Cloud Testing Architect",
+    "description": "Certificação em testes e deployment em ambientes cloud",
+    "image": "assets/cloud.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["dev-backend", "qa-performance"],
+    "subcategories": {
+      "AWS Testing": "Testes em ambiente Amazon Web Services",
+      "Azure DevOps": "Integração com Azure e DevOps practices",
+      "Containerization": "Docker, Kubernetes e testes de containers",
+      "Scalability": "Testes de escalabilidade em cloud"
+    }
+  },
+  {
+    "id": "ai-testing-cert",
+    "title": "AI/ML Testing Pioneer",
+    "description": "Certificação em testes de sistemas de inteligência artificial e machine learning",
+    "image": "assets/ai.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["qa-root", "dev-python"],
+    "subcategories": {
+      "Model Testing": "Validação de modelos de machine learning",
+      "Data Quality": "Testes de qualidade e bias em dados",
+      "AI Ethics": "Considerações éticas em sistemas de IA",
+      "Automated Testing": "Automação de testes para sistemas AI/ML"
+    }
+  },
+  {
+    "id": "data-analyst-cert",
+    "title": "Certified Data Analyst",
+    "description": "Certificação profissional em análise de dados e business intelligence",
+    "image": "assets/data-analyst.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/data-analyst.pdf",
+    "relatedSkills": ["data-root", "data-powerbi", "data-sql"],
+    "subcategories": {
+      "Data Analysis": "Técnicas avançadas de análise estatística",
+      "Visualization": "Criação de visualizações impactantes",
+      "Business Intelligence": "Transformação de dados em insights",
+      "Storytelling": "Narrativa efetiva com dados"
+    }
+  },
+  {
+    "id": "excel-expert",
+    "title": "Excel Power User",
+    "description": "Especialista em Microsoft Excel com domínio de funcionalidades avançadas",
+    "image": "assets/excel.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/excel-expert.pdf",
+    "relatedSkills": ["data-excel", "data-excel-formulas", "data-excel-pivot"],
+    "subcategories": {
+      "Advanced Formulas": "Fórmulas complexas e funções avançadas",
+      "Pivot Tables": "Tabelas dinâmicas e análise de dados",
+      "Macros & VBA": "Automação com Visual Basic",
+      "Data Modeling": "Modelagem e estruturação de dados"
+    }
+  },
+  {
+    "id": "powerbi-cert",
+    "title": "Power BI Data Analyst Associate",
+    "description": "Certificação Microsoft em Power BI para análise e visualização de dados",
+    "image": "assets/powerbi.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/powerbi-analyst.pdf",
+    "relatedSkills": ["data-powerbi", "data-powerbi-dax", "data-powerbi-visual"],
+    "subcategories": {
+      "Data Preparation": "Preparação e limpeza de dados",
+      "Data Modeling": "Relacionamentos e modelagem",
+      "DAX Formulas": "Linguagem de expressões de análise",
+      "Visualization Design": "Design de visualizações efetivas"
+    }
+  },
+  {
+    "id": "sql-expert",
+    "title": "SQL Database Expert",
+    "description": "Especialista em SQL e administração de bancos de dados relacionais",
+    "image": "assets/sql.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/sql-expert.pdf",
+    "relatedSkills": ["data-sql", "data-sql-basic", "data-sql-advanced"],
+    "subcategories": {
+      "Query Optimization": "Otimização de consultas e performance",
+      "Database Design": "Design e normalização de bancos",
+      "Stored Procedures": "Procedimentos armazenados e triggers",
+      "Data Analysis": "Análise estatística com SQL"
+    }
+  },
+  {
+    "id": "excel-formulas-master",
+    "title": "Formula Master",
+    "description": "Dominação completa de fórmulas avançadas do Excel",
+    "image": "assets/excel-formulas.png",
+    "status": "unlocked",
+    "evidence": null,
+    "relatedSkills": ["data-excel-formulas"],
+    "subcategories": {
+      "Lookup Functions": "VLOOKUP, INDEX, MATCH e variações",
+      "Array Formulas": "Fórmulas matriciais complexas",
+      "Statistical Functions": "Funções estatísticas avançadas",
+      "Conditional Logic": "Lógica condicional com IF, AND, OR"
+    }
+  },
+  {
+    "id": "pivot-expert",
+    "title": "Pivot Table Pro",
+    "description": "Especialista em tabelas dinâmicas e análise de dados",
+    "image": "assets/pivot.png",
+    "status": "unlocked",
+    "evidence": null,
+    "relatedSkills": ["data-excel-pivot"],
+    "subcategories": {
+      "Data Summarization": "Sumarização eficiente de dados",
+      "Advanced Filtering": "Filtros e segmentações avançadas",
+      "Calculated Fields": "Campos calculados customizados",
+      "Dashboard Creation": "Criação de dashboards interativos"
+    }
+  },
+  {
+    "id": "vba-programmer",
+    "title": "VBA Programmer",
+    "description": "Programador em Visual Basic for Applications",
+    "image": "assets/vba.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["data-excel-macros"],
+    "subcategories": {
+      "Macro Recording": "Gravação e edição de macros",
+      "VBA Syntax": "Sintaxe e estruturas de programação",
+      "User Forms": "Criação de interfaces customizadas",
+      "Error Handling": "Tratamento de erros e debugging"
+    }
+  },
+  {
+    "id": "dax-expert",
+    "title": "DAX Formula Expert",
+    "description": "Especialista em fórmulas DAX para Power BI e Analysis Services",
+    "image": "assets/dax.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["data-powerbi-dax"],
+    "subcategories": {
+      "Calculated Columns": "Colunas calculadas e medidas",
+      "Time Intelligence": "Funções de inteligência temporal",
+      "Filter Context": "Contexto de filtro e relacionamentos",
+      "Advanced Functions": "Funções avançadas e otimização"
+    }
+  },
+  {
+    "id": "data-modeler",
+    "title": "Data Modeling Specialist",
+    "description": "Especialista em modelagem de dados para business intelligence",
+    "image": "assets/data-model.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["data-powerbi-modeling"],
+    "subcategories": {
+      "Star Schema": "Modelagem em esquema estrela",
+      "Relationships": "Relacionamentos e cardinalidade",
+      "Performance": "Otimização de modelos de dados",
+      "Best Practices": "Melhores práticas de modelagem"
+    }
+  },
+  {
+    "id": "viz-expert",
+    "title": "Data Visualization Expert",
+    "description": "Especialista em visualização de dados e storytelling",
+    "image": "assets/dataviz.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/portfolio/dataviz",
+    "relatedSkills": ["data-powerbi-visual"],
+    "subcategories": {
+      "Chart Design": "Design efetivo de gráficos e charts",
+      "Color Theory": "Teoria das cores em visualizações",
+      "Interactive Dashboards": "Dashboards interativos e dinâmicos",
+      "Data Storytelling": "Narrativa visual com dados"
+    }
+  },
+  {
+    "id": "sql-basic-cert",
+    "title": "SQL Fundamentals",
+    "description": "Certificação em fundamentos de SQL e consultas básicas",
+    "image": "assets/sql-basic.png",
+    "status": "unlocked",
+    "evidence": "https://example.com/certificates/sql-fundamentals.pdf",
+    "relatedSkills": ["data-sql-basic"],
+    "subcategories": {
+      "Basic Queries": "SELECT, WHERE, ORDER BY",
+      "Data Manipulation": "INSERT, UPDATE, DELETE",
+      "Filtering": "Filtros e condições",
+      "Grouping": "GROUP BY e agregações"
+    }
+  },
+  {
+    "id": "sql-advanced-cert",
+    "title": "Advanced SQL Developer",
+    "description": "Certificação avançada em desenvolvimento SQL",
+    "image": "assets/sql-advanced.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["data-sql-advanced"],
+    "subcategories": {
+      "Complex Joins": "JOINs complexos e subqueries",
+      "Window Functions": "Funções de janela avançadas",
+      "CTEs": "Common Table Expressions",
+      "Stored Procedures": "Procedimentos armazenados"
+    }
+  },
+  {
+    "id": "sql-performance-expert",
+    "title": "SQL Performance Tuning Expert",
+    "description": "Especialista em otimização e tuning de performance SQL",
+    "image": "assets/sql-performance.png",
+    "status": "locked",
+    "evidence": null,
+    "relatedSkills": ["data-sql-optimization"],
+    "subcategories": {
+      "Query Optimization": "Otimização de consultas",
+      "Index Management": "Gerenciamento de índices",
+      "Execution Plans": "Análise de planos de execução",
+      "Performance Monitoring": "Monitoramento de performance"
+    }
+  }
+]
