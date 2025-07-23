@@ -11,7 +11,8 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
       rel="stylesheet"
-    />    <style>
+    />
+    <style>
       body {
         background: #f0f2f5;
         color: #222;
@@ -194,14 +195,14 @@
           id="menu-skills"
           onclick="showCrudSection('skills')"
         >
-          1 - Habilidades
+          Habilidades
         </button>
         <button
           class="admin-menu-btn"
           id="menu-achievements"
           onclick="showCrudSection('achievements')"
         >
-          2 - Conquistas
+          Conquistas
         </button>
       </nav>
       <section class="crud-section active" id="skills-section">
@@ -253,6 +254,103 @@
                 type="text"
                 id="skill-icon"
                 placeholder="ex: bi-code-slash"
+              />
+            </div>
+          </div>
+          <div class="crud-form-row">
+            <div>
+              <label>Unlock Threshold</label>
+              <input
+                type="number"
+                id="skill-unlock-threshold"
+                min="0"
+                value="0"
+              />
+            </div>
+            <div>
+              <label>Parent (opcional)</label>
+              <input
+                type="text"
+                id="skill-parent"
+                placeholder="id da skill pai"
+              />
+            </div>
+            <div>
+              <label
+                >Children<br /><span
+                  style="font-weight: normal; font-size: 0.9em"
+                  >(ids separados por vírgula)</span
+                ></label
+              >
+              <input
+                type="text"
+                id="skill-children"
+                placeholder="ex: qa-testing,qa-automation"
+              />
+            </div>
+            <div>
+              <label
+                >Related Achievements<br /><span
+                  style="font-weight: normal; font-size: 0.9em"
+                  >(ids separados por vírgula)</span
+                ></label
+              >
+              <input
+                type="text"
+                id="skill-relatedAchievements"
+                placeholder="ex: istqb-cert,agile-cert"
+              />
+            </div>
+          </div>
+          <div class="crud-form-row">
+            <div>
+              <label>Teórico</label>
+              <input
+                type="number"
+                id="score-theoretical"
+                min="1"
+                max="5"
+                value="3"
+              />
+            </div>
+            <div>
+              <label>Técnico</label>
+              <input
+                type="number"
+                id="score-technical"
+                min="1"
+                max="5"
+                value="3"
+              />
+            </div>
+            <div>
+              <label>Resolução de Problemas</label>
+              <input
+                type="number"
+                id="score-problem-solving"
+                min="1"
+                max="5"
+                value="3"
+              />
+            </div>
+            <div>
+              <label>Transferência de Conhecimento</label>
+              <input
+                type="number"
+                id="score-knowledge-transfer"
+                min="1"
+                max="5"
+                value="3"
+              />
+            </div>
+            <div>
+              <label>Tendências</label>
+              <input
+                type="number"
+                id="score-trends"
+                min="1"
+                max="5"
+                value="3"
               />
             </div>
           </div>
@@ -313,9 +411,75 @@
               </select>
             </div>
             <div>
+              <label>Dificuldade</label>
+              <input
+                type="number"
+                id="achievement-difficulty"
+                min="1"
+                max="5"
+                value="3"
+              />
+            </div>
+          </div>
+          <div class="crud-form-row">
+            <div>
+              <label>Categoria</label>
+              <select id="achievement-category">
+                <option value="QA">QA</option>
+                <option value="DEV">DEV</option>
+                <option value="DESIGN">DESIGN</option>
+                <option value="DADOS">DADOS</option>
+                <option value="DEVOPS">DEVOPS</option>
+                <option value="INFRA">INFRA</option>
+                <option value="META">META</option>
+                <option value="INGLÊS">INGLÊS</option>
+              </select>
+            </div>
+            <div>
+              <label
+                >Skills Relacionadas<br /><span
+                  style="font-weight: normal; font-size: 0.9em"
+                  >(ids separados por vírgula)</span
+                ></label
+              >
+              <input
+                type="text"
+                id="achievement-relatedSkills"
+                placeholder="ex: qa-root,qa-testing"
+              />
+            </div>
+            <div>
+              <label>Data de Desbloqueio</label>
+              <input type="date" id="achievement-unlockedDate" />
+            </div>
+            <div>
+              <label>Evidência (URL)</label>
+              <input
+                type="text"
+                id="achievement-evidence"
+                placeholder="https://..."
+              />
+            </div>
+            <div>
               <label>Imagem</label>
               <input type="file" id="achievement-img" accept="image/*" />
-              <img id="achievement-img-preview" src="" alt="" style="display:none;max-width:60px;margin-top:0.5rem;border-radius:6px;" />
+              <img
+                id="achievement-img-preview"
+                src=""
+                alt=""
+                style="
+                  display: none;
+                  max-width: 60px;
+                  margin-top: 0.5rem;
+                  border-radius: 6px;
+                "
+              />
+              <input
+                type="text"
+                id="achievement-img-url"
+                placeholder="ou cole a URL da imagem"
+                style="margin-top: 0.3rem"
+              />
             </div>
           </div>
           <input type="hidden" id="achievement-id" />

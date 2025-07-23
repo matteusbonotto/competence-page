@@ -8,7 +8,10 @@
     "difficulty": 2,
     "category": "QA",
     "evidence": "https://example.com/certificates/istqb-foundation.pdf",
-    "relatedSkills": ["qa-root", "qa-testing"]
+    "relatedSkills": [
+      "qa-root",
+      "qa-testing"
+    ]
   },
   {
     "id": "selenium-cert",
@@ -19,18 +22,24 @@
     "difficulty": 4,
     "category": "QA",
     "evidence": "https://example.com/certificates/selenium-expert.pdf",
-    "relatedSkills": ["qa-automation", "qa-selenium"]
+    "relatedSkills": [
+      "qa-automation",
+      "qa-selenium"
+    ]
   },
   {
     "id": "agile-cert",
     "title": "Agile Testing Certified",
     "description": "Certificação em práticas de teste em metodologias ágeis e DevOps",
-    "image": "assets/agile.png",
     "status": "unlocked",
     "difficulty": 3,
     "category": "QA",
     "evidence": "https://example.com/certificates/agile-testing.pdf",
-    "relatedSkills": ["qa-root", "qa-testing"],
+    "relatedSkills": [
+      "qa-root",
+      "qa-testing"
+    ],
+    "image": "https://thumbs.dreamstime.com/b/agile-icon-methodology-vector-development-scrum-flexible-software-logo-concept-206202942.jpg",
     "unlockedDate": "2024-12-15"
   },
   {
@@ -42,7 +51,10 @@
     "difficulty": 4,
     "category": "DEV",
     "evidence": "https://example.com/certificates/react-professional.pdf",
-    "relatedSkills": ["dev-frontend", "dev-react"],
+    "relatedSkills": [
+      "dev-frontend",
+      "dev-react"
+    ],
     "unlockedDate": "2024-11-28"
   },
   {
@@ -54,7 +66,11 @@
     "difficulty": 3,
     "category": "DESIGN",
     "evidence": "https://example.com/certificates/ux-specialist.pdf",
-    "relatedSkills": ["ux-root", "ux-research", "ux-design"],
+    "relatedSkills": [
+      "ux-root",
+      "ux-research",
+      "ux-design"
+    ],
     "unlockedDate": "2024-11-10"
   },
   {
@@ -66,7 +82,11 @@
     "difficulty": 3,
     "category": "DADOS",
     "evidence": "https://example.com/certificates/data-analyst.pdf",
-    "relatedSkills": ["data-root", "data-powerbi", "data-sql"],
+    "relatedSkills": [
+      "data-root",
+      "data-powerbi",
+      "data-sql"
+    ],
     "unlockedDate": "2024-10-22"
   },
   {
@@ -78,7 +98,11 @@
     "difficulty": 2,
     "category": "DADOS",
     "evidence": "https://example.com/certificates/excel-expert.pdf",
-    "relatedSkills": ["data-excel", "data-excel-formulas", "data-excel-pivot"],
+    "relatedSkills": [
+      "data-excel",
+      "data-excel-formulas",
+      "data-excel-pivot"
+    ],
     "unlockedDate": "2024-09-15"
   },
   {
@@ -90,7 +114,11 @@
     "difficulty": 3,
     "category": "DADOS",
     "evidence": "https://example.com/certificates/powerbi-analyst.pdf",
-    "relatedSkills": ["data-powerbi", "data-powerbi-dax", "data-powerbi-visual"],
+    "relatedSkills": [
+      "data-powerbi",
+      "data-powerbi-dax",
+      "data-powerbi-visual"
+    ],
     "unlockedDate": "2024-08-20"
   },
   {
@@ -102,7 +130,11 @@
     "difficulty": 4,
     "category": "DADOS",
     "evidence": "https://example.com/certificates/sql-expert.pdf",
-    "relatedSkills": ["data-sql", "data-sql-basic", "data-sql-advanced"],
+    "relatedSkills": [
+      "data-sql",
+      "data-sql-basic",
+      "data-sql-advanced"
+    ],
     "unlockedDate": "2024-07-30"
   },
   {
@@ -114,7 +146,9 @@
     "difficulty": 3,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-excel-formulas"]
+    "relatedSkills": [
+      "data-excel-formulas"
+    ]
   },
   {
     "id": "pivot-expert",
@@ -125,7 +159,9 @@
     "difficulty": 2,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-excel-pivot"]
+    "relatedSkills": [
+      "data-excel-pivot"
+    ]
   },
   {
     "id": "viz-expert",
@@ -136,7 +172,9 @@
     "difficulty": 3,
     "category": "DADOS",
     "evidence": "https://example.com/portfolio/dataviz",
-    "relatedSkills": ["data-powerbi-visual"]
+    "relatedSkills": [
+      "data-powerbi-visual"
+    ]
   },
   {
     "id": "sql-basic-cert",
@@ -147,7 +185,9 @@
     "difficulty": 1,
     "category": "DADOS",
     "evidence": "https://example.com/certificates/sql-fundamentals.pdf",
-    "relatedSkills": ["data-sql-basic"]
+    "relatedSkills": [
+      "data-sql-basic"
+    ]
   },
   {
     "id": "crash-bug-coot",
@@ -158,7 +198,10 @@
     "difficulty": 4,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root", "qa-testing"]
+    "relatedSkills": [
+      "qa-root",
+      "qa-testing"
+    ]
   },
   {
     "id": "qaladica",
@@ -169,7 +212,10 @@
     "difficulty": 5,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root", "qa-testing"]
+    "relatedSkills": [
+      "qa-root",
+      "qa-testing"
+    ]
   },
   {
     "id": "repelente",
@@ -180,7 +226,10 @@
     "difficulty": 2,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root", "qa-testing"]
+    "relatedSkills": [
+      "qa-root",
+      "qa-testing"
+    ]
   },
   {
     "id": "detetizador",
@@ -191,7 +240,10 @@
     "difficulty": 4,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root", "qa-testing"]
+    "relatedSkills": [
+      "qa-root",
+      "qa-testing"
+    ]
   },
   {
     "id": "na-mosca",
@@ -202,7 +254,10 @@
     "difficulty": 5,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root", "qa-testing"]
+    "relatedSkills": [
+      "qa-root",
+      "qa-testing"
+    ]
   },
   {
     "id": "fora-da-caixinha",
@@ -213,7 +268,10 @@
     "difficulty": 4,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root", "qa-testing"]
+    "relatedSkills": [
+      "qa-root",
+      "qa-testing"
+    ]
   },
   {
     "id": "manda-node",
@@ -224,7 +282,10 @@
     "difficulty": 3,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-backend", "dev-nodejs"]
+    "relatedSkills": [
+      "dev-backend",
+      "dev-nodejs"
+    ]
   },
   {
     "id": "bibliotecario",
@@ -235,7 +296,9 @@
     "difficulty": 2,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-root"]
+    "relatedSkills": [
+      "dev-root"
+    ]
   },
   {
     "id": "frontman",
@@ -246,7 +309,10 @@
     "difficulty": 4,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-frontend", "dev-react"]
+    "relatedSkills": [
+      "dev-frontend",
+      "dev-react"
+    ]
   },
   {
     "id": "my-back",
@@ -257,7 +323,10 @@
     "difficulty": 3,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-backend", "dev-frontend"]
+    "relatedSkills": [
+      "dev-backend",
+      "dev-frontend"
+    ]
   },
   {
     "id": "acesso-negado",
@@ -268,7 +337,9 @@
     "difficulty": 2,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql"]
+    "relatedSkills": [
+      "data-sql"
+    ]
   },
   {
     "id": "crud-credo",
@@ -279,7 +350,9 @@
     "difficulty": 1,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql"]
+    "relatedSkills": [
+      "data-sql"
+    ]
   },
   {
     "id": "banco-de-dados",
@@ -290,7 +363,9 @@
     "difficulty": 5,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql"]
+    "relatedSkills": [
+      "data-sql"
+    ]
   },
   {
     "id": "power-ranger-bi",
@@ -301,7 +376,9 @@
     "difficulty": 2,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-powerbi"]
+    "relatedSkills": [
+      "data-powerbi"
+    ]
   },
   {
     "id": "ui-ui",
@@ -312,7 +389,10 @@
     "difficulty": 3,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["ux-root", "ux-design"]
+    "relatedSkills": [
+      "ux-root",
+      "ux-design"
+    ]
   },
   {
     "id": "minimalista",
@@ -323,7 +403,9 @@
     "difficulty": 4,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["ux-design"]
+    "relatedSkills": [
+      "ux-design"
+    ]
   },
   {
     "id": "n8n-vai-da",
@@ -334,7 +416,9 @@
     "difficulty": 3,
     "category": "DEVOPS",
     "evidence": null,
-    "relatedSkills": ["devops-automation"]
+    "relatedSkills": [
+      "devops-automation"
+    ]
   },
   {
     "id": "jmeter-o-louco",
@@ -345,7 +429,10 @@
     "difficulty": 4,
     "category": "DEVOPS",
     "evidence": null,
-    "relatedSkills": ["qa-performance", "qa-load-testing"]
+    "relatedSkills": [
+      "qa-performance",
+      "qa-load-testing"
+    ]
   },
   {
     "id": "menino-do-ti",
@@ -367,7 +454,9 @@
     "difficulty": 3,
     "category": "META",
     "evidence": null,
-    "relatedSkills": ["dev-git"]
+    "relatedSkills": [
+      "dev-git"
+    ]
   },
   {
     "id": "pau-pra-toda-obra",
@@ -389,7 +478,11 @@
     "difficulty": 5,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-performance", "qa-load-testing", "qa-stress-testing"]
+    "relatedSkills": [
+      "qa-performance",
+      "qa-load-testing",
+      "qa-stress-testing"
+    ]
   },
   {
     "id": "fullstack-cert",
@@ -400,7 +493,11 @@
     "difficulty": 5,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-root", "dev-frontend", "dev-backend"]
+    "relatedSkills": [
+      "dev-root",
+      "dev-frontend",
+      "dev-backend"
+    ]
   },
   {
     "id": "api-testing-cert",
@@ -411,7 +508,10 @@
     "difficulty": 4,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-automation", "qa-api-testing"]
+    "relatedSkills": [
+      "qa-automation",
+      "qa-api-testing"
+    ]
   },
   {
     "id": "security-testing-cert",
@@ -422,7 +522,9 @@
     "difficulty": 5,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root"]
+    "relatedSkills": [
+      "qa-root"
+    ]
   },
   {
     "id": "mobile-testing-cert",
@@ -433,7 +535,10 @@
     "difficulty": 4,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["dev-mobile", "qa-automation"]
+    "relatedSkills": [
+      "dev-mobile",
+      "qa-automation"
+    ]
   },
   {
     "id": "cloud-cert",
@@ -444,7 +549,10 @@
     "difficulty": 5,
     "category": "INFRA",
     "evidence": null,
-    "relatedSkills": ["dev-backend", "qa-performance"]
+    "relatedSkills": [
+      "dev-backend",
+      "qa-performance"
+    ]
   },
   {
     "id": "ai-testing-cert",
@@ -455,7 +563,10 @@
     "difficulty": 5,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root", "dev-python"]
+    "relatedSkills": [
+      "qa-root",
+      "dev-python"
+    ]
   },
   {
     "id": "vba-programmer",
@@ -466,7 +577,9 @@
     "difficulty": 3,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-excel-macros"]
+    "relatedSkills": [
+      "data-excel-macros"
+    ]
   },
   {
     "id": "dax-expert",
@@ -477,7 +590,9 @@
     "difficulty": 4,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-powerbi-dax"]
+    "relatedSkills": [
+      "data-powerbi-dax"
+    ]
   },
   {
     "id": "data-modeler",
@@ -488,7 +603,9 @@
     "difficulty": 4,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-powerbi-modeling"]
+    "relatedSkills": [
+      "data-powerbi-modeling"
+    ]
   },
   {
     "id": "sql-advanced-cert",
@@ -499,7 +616,9 @@
     "difficulty": 4,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql-advanced"]
+    "relatedSkills": [
+      "data-sql-advanced"
+    ]
   },
   {
     "id": "sql-performance-expert",
@@ -510,7 +629,9 @@
     "difficulty": 5,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql-optimization"]
+    "relatedSkills": [
+      "data-sql-optimization"
+    ]
   },
   {
     "id": "segue-seu-caminho",
@@ -521,7 +642,9 @@
     "difficulty": 2,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root"]
+    "relatedSkills": [
+      "qa-root"
+    ]
   },
   {
     "id": "qabracadabra",
@@ -532,7 +655,9 @@
     "difficulty": 1,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root"]
+    "relatedSkills": [
+      "qa-root"
+    ]
   },
   {
     "id": "bug-do-milenio",
@@ -543,7 +668,9 @@
     "difficulty": 5,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root"]
+    "relatedSkills": [
+      "qa-root"
+    ]
   },
   {
     "id": "qaranha",
@@ -554,7 +681,9 @@
     "difficulty": 4,
     "category": "QA",
     "evidence": null,
-    "relatedSkills": ["qa-root"]
+    "relatedSkills": [
+      "qa-root"
+    ]
   },
   {
     "id": "fatal-framework",
@@ -565,7 +694,9 @@
     "difficulty": 5,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-root"]
+    "relatedSkills": [
+      "dev-root"
+    ]
   },
   {
     "id": "ctrl-alt-mestre",
@@ -576,7 +707,9 @@
     "difficulty": 2,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-git"]
+    "relatedSkills": [
+      "dev-git"
+    ]
   },
   {
     "id": "jsonaldito",
@@ -587,7 +720,9 @@
     "difficulty": 3,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-root"]
+    "relatedSkills": [
+      "dev-root"
+    ]
   },
   {
     "id": "promessa-cumprida",
@@ -598,7 +733,9 @@
     "difficulty": 3,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-javascript"]
+    "relatedSkills": [
+      "dev-javascript"
+    ]
   },
   {
     "id": "async-fora-da-lei",
@@ -609,7 +746,9 @@
     "difficulty": 4,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-javascript"]
+    "relatedSkills": [
+      "dev-javascript"
+    ]
   },
   {
     "id": "firebasquete",
@@ -620,7 +759,9 @@
     "difficulty": 4,
     "category": "DEV",
     "evidence": null,
-    "relatedSkills": ["dev-backend"]
+    "relatedSkills": [
+      "dev-backend"
+    ]
   },
   {
     "id": "wheres-waldo",
@@ -631,7 +772,9 @@
     "difficulty": 4,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql"]
+    "relatedSkills": [
+      "data-sql"
+    ]
   },
   {
     "id": "excelentor",
@@ -642,7 +785,9 @@
     "difficulty": 5,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-excel"]
+    "relatedSkills": [
+      "data-excel"
+    ]
   },
   {
     "id": "pivotcraft",
@@ -653,7 +798,9 @@
     "difficulty": 3,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-excel-pivot"]
+    "relatedSkills": [
+      "data-excel-pivot"
+    ]
   },
   {
     "id": "supabasebol",
@@ -664,7 +811,9 @@
     "difficulty": 4,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql"]
+    "relatedSkills": [
+      "data-sql"
+    ]
   },
   {
     "id": "nosql-nocry",
@@ -675,7 +824,9 @@
     "difficulty": 5,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql"]
+    "relatedSkills": [
+      "data-sql"
+    ]
   },
   {
     "id": "dado-de-presente",
@@ -686,7 +837,9 @@
     "difficulty": 2,
     "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-root"]
+    "relatedSkills": [
+      "data-root"
+    ]
   },
   {
     "id": "saca-so-o-visual",
@@ -697,7 +850,9 @@
     "difficulty": 4,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["ux-design"]
+    "relatedSkills": [
+      "ux-design"
+    ]
   },
   {
     "id": "como-usa-isso",
@@ -708,7 +863,9 @@
     "difficulty": 5,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["ux-design"]
+    "relatedSkills": [
+      "ux-design"
+    ]
   },
   {
     "id": "pixelpirata",
@@ -719,7 +876,9 @@
     "difficulty": 3,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["ux-design"]
+    "relatedSkills": [
+      "ux-design"
+    ]
   },
   {
     "id": "cssmagico",
@@ -730,7 +889,10 @@
     "difficulty": 4,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["dev-frontend", "dev-css"]
+    "relatedSkills": [
+      "dev-frontend",
+      "dev-css"
+    ]
   },
   {
     "id": "ilustrador",
@@ -741,7 +903,9 @@
     "difficulty": 3,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["ux-design"]
+    "relatedSkills": [
+      "ux-design"
+    ]
   },
   {
     "id": "mockup-ou-morra",
@@ -752,7 +916,9 @@
     "difficulty": 3,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["ux-design"]
+    "relatedSkills": [
+      "ux-design"
+    ]
   },
   {
     "id": "adobe-rable",
@@ -763,7 +929,9 @@
     "difficulty": 5,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["ux-design"]
+    "relatedSkills": [
+      "ux-design"
+    ]
   },
   {
     "id": "coringa-do-css",
@@ -774,7 +942,10 @@
     "difficulty": 4,
     "category": "DESIGN",
     "evidence": null,
-    "relatedSkills": ["dev-frontend", "dev-css"]
+    "relatedSkills": [
+      "dev-frontend",
+      "dev-css"
+    ]
   },
   {
     "id": "transformers",
@@ -785,7 +956,9 @@
     "difficulty": 5,
     "category": "DEVOPS",
     "evidence": null,
-    "relatedSkills": ["dev-backend"]
+    "relatedSkills": [
+      "dev-backend"
+    ]
   },
   {
     "id": "pacotao",
@@ -796,7 +969,9 @@
     "difficulty": 4,
     "category": "INFRA",
     "evidence": null,
-    "relatedSkills": ["devops-docker"]
+    "relatedSkills": [
+      "devops-docker"
+    ]
   },
   {
     "id": "yamlouco",
@@ -807,7 +982,9 @@
     "difficulty": 3,
     "category": "DEVOPS",
     "evidence": null,
-    "relatedSkills": ["devops-cicd"]
+    "relatedSkills": [
+      "devops-cicd"
+    ]
   },
   {
     "id": "kubernerd",
@@ -818,7 +995,9 @@
     "difficulty": 5,
     "category": "INFRA",
     "evidence": null,
-    "relatedSkills": ["devops-kubernetes"]
+    "relatedSkills": [
+      "devops-kubernetes"
+    ]
   },
   {
     "id": "terrafirma",
@@ -829,7 +1008,9 @@
     "difficulty": 5,
     "category": "INFRA",
     "evidence": null,
-    "relatedSkills": ["devops-terraform"]
+    "relatedSkills": [
+      "devops-terraform"
+    ]
   },
   {
     "id": "ssh-ou-nao",
@@ -840,7 +1021,9 @@
     "difficulty": 2,
     "category": "INFRA",
     "evidence": null,
-    "relatedSkills": ["devops-ssh"]
+    "relatedSkills": [
+      "devops-ssh"
+    ]
   },
   {
     "id": "dockerloki",
@@ -851,7 +1034,9 @@
     "difficulty": 2,
     "category": "INFRA",
     "evidence": null,
-    "relatedSkills": ["devops-docker"]
+    "relatedSkills": [
+      "devops-docker"
+    ]
   },
   {
     "id": "infrahero",
@@ -862,7 +1047,9 @@
     "difficulty": 5,
     "category": "INFRA",
     "evidence": null,
-    "relatedSkills": ["devops-monitoring"]
+    "relatedSkills": [
+      "devops-monitoring"
+    ]
   },
   {
     "id": "lost-in-translation",
@@ -873,7 +1060,9 @@
     "difficulty": 2,
     "category": "INGLÊS",
     "evidence": null,
-    "relatedSkills": ["english-reading"]
+    "relatedSkills": [
+      "english-reading"
+    ]
   },
   {
     "id": "404-dictionary",
@@ -884,7 +1073,9 @@
     "difficulty": 1,
     "category": "INGLÊS",
     "evidence": null,
-    "relatedSkills": ["english-reading"]
+    "relatedSkills": [
+      "english-reading"
+    ]
   },
   {
     "id": "ctrl-c-internacional",
@@ -895,7 +1086,9 @@
     "difficulty": 1,
     "category": "INGLÊS",
     "evidence": null,
-    "relatedSkills": ["english-reading"]
+    "relatedSkills": [
+      "english-reading"
+    ]
   },
   {
     "id": "sorry-my-bad",
@@ -906,7 +1099,9 @@
     "difficulty": 3,
     "category": "INGLÊS",
     "evidence": null,
-    "relatedSkills": ["english-writing"]
+    "relatedSkills": [
+      "english-writing"
+    ]
   },
   {
     "id": "br-huehue",
@@ -917,7 +1112,9 @@
     "difficulty": 4,
     "category": "INGLÊS",
     "evidence": null,
-    "relatedSkills": ["english-speaking"]
+    "relatedSkills": [
+      "english-speaking"
+    ]
   },
   {
     "id": "sendo-notado",
@@ -939,6 +1136,8 @@
     "difficulty": 5,
     "category": "META",
     "evidence": null,
-    "relatedSkills": ["devops-deploy"]
+    "relatedSkills": [
+      "devops-deploy"
+    ]
   }
 ]
