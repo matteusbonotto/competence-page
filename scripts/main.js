@@ -376,12 +376,14 @@ class SkillMappingApp {
         }
 
         // Estatísticas de conquistas
+
         const achievementStats = window.dataService.getAchievementStats();
         const unlockedCountElement = document.getElementById('unlocked-count');
         const lockedCountElement = document.getElementById('locked-count');
+        const total = achievementStats.unlocked + achievementStats.locked;
 
         if (unlockedCountElement) {
-            unlockedCountElement.textContent = achievementStats.unlocked.toString().padStart(2, '0');
+            unlockedCountElement.textContent = `${achievementStats.unlocked} / ${total}`;
         }
         if (lockedCountElement) {
             lockedCountElement.textContent = achievementStats.locked.toString().padStart(2, '0');
