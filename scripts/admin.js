@@ -241,14 +241,27 @@ document.getElementById('achievement-form').onsubmit = async function (e) {
   const imgInput = document.getElementById('achievement-img');
   const imgUrl = document.getElementById('achievement-img-url').value.trim();
   let image = imgUrl;
-  // Se o usuário fez upload, converte para base64
+
+  // Se o usuário fez upload, faz upload real para o backend
   if (imgInput.files && imgInput.files[0]) {
-    image = await new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = e => resolve(e.target.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(imgInput.files[0]);
-    });
+    const formData = new FormData();
+    formData.append('image', imgInput.files[0]);
+    try {
+      const res = await fetch(`${API_BASE}/upload-achievement-image`, {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data.path) {
+        image = data.path;
+      } else {
+        alert('Erro ao fazer upload da imagem.');
+        return;
+      }
+    } catch (err) {
+      alert('Erro ao fazer upload da imagem.');
+      return;
+    }
   }
   if (!image) image = '';
   const ach = { id, title, description, status, difficulty, category, evidence, relatedSkills, image };
