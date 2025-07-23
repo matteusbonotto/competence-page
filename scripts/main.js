@@ -77,8 +77,16 @@ class SkillMappingApp {
         // Filtros de status de conquistas
         document.querySelectorAll('.status-filter-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const status = e.target.getAttribute('data-status');
-                this.changeAchievementFilter(status);
+                // Garante que o clique no ícone também funcione
+                let target = e.target;
+                // Se clicou no <i>, sobe para o botão
+                if (target.tagName === 'I' && target.closest('.status-filter-btn')) {
+                    target = target.closest('.status-filter-btn');
+                }
+                const status = target.getAttribute('data-status');
+                if (status) {
+                    this.changeAchievementFilter(status);
+                }
             });
         });
 
@@ -394,13 +402,13 @@ class SkillMappingApp {
         // Top skill
         const topSkill = window.dataService.getTopSkill();
         const topSkillNameElement = document.getElementById('top-skill-name');
-        const topSkillProgressElement = document.getElementById('top-skill-progress');
+        const topSkillDomainElement = document.getElementById('top-skill-domain');
 
         if (topSkillNameElement) {
             topSkillNameElement.textContent = topSkill.name;
         }
-        if (topSkillProgressElement) {
-            topSkillProgressElement.style.width = `${topSkill.progress}%`;
+        if (topSkillDomainElement) {
+            topSkillDomainElement.textContent = `${topSkill.progress}%`;
         }
 
         // Log para debug
@@ -540,10 +548,6 @@ class SkillMappingApp {
                 
                 <div class="content">
                     <h4>${achievement.title}</h4>
-                </div>
-                
-                <div class="status-badge ${isUnlocked ? 'unlocked' : 'locked'}">
-                    <i class="bi bi-${isUnlocked ? 'unlock' : 'lock'}"></i>
                 </div>
             `;
         } else {

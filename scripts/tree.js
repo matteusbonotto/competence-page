@@ -57,7 +57,7 @@ class SkillTree {
         const node = document.createElement('div');
         node.className = `tree-node ${isUnlocked ? 'unlocked' : 'locked'}`;
         node.setAttribute('data-category', skill.category || 'default');
-        node.setAttribute('data-tooltip', `Domínio: ${skill.domain || 0}/6`);
+        node.setAttribute('data-tooltip', `Domínio: ${skill.domain || 0}/5`);
 
         // Conteúdo do nó
         const nodeContent = document.createElement('div');
@@ -77,7 +77,7 @@ class SkillTree {
         // Domínio
         const domain = document.createElement('div');
         domain.className = 'node-domain';
-        domain.textContent = `${skill.domain || 0}/6`;
+        domain.textContent = `${skill.domain || 0}/5`;
         nodeContent.appendChild(domain);
 
         node.appendChild(nodeContent);
@@ -231,7 +231,7 @@ class SkillTree {
                 <div class="skill-header">
                     <i class="${skill.icon || 'bi-star'}"></i>
                     <h3>${skill.title}</h3>
-                    <div class="domain">Domínio: ${skill.domain || 0}/6</div>
+                    <div class="domain">Domínio: ${skill.domain || 0}/5</div>
                 </div>
         `;
 
@@ -254,7 +254,7 @@ class SkillTree {
             };
 
             Object.entries(skill.scores).forEach(([key, value]) => {
-                const stars = '★'.repeat(value) + '☆'.repeat(6 - value);
+                const stars = '★'.repeat(value) + '☆'.repeat(5 - value);
                 html += `
                     <div class="metric">
                         <span>${scoreLabels[key] || key}</span>

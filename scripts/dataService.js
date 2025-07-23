@@ -83,9 +83,19 @@ class DataService {
         if (this.skills.length === 0) return { total: 0, unlocked: 0, avgDomain: 0 };
 
         const unlockedSkills = this.skills.filter(skill => this.isSkillUnlocked(skill.id));
-        const totalDomain = this.skills.reduce((sum, skill) => sum + (skill.domain || 0), 0);
-        const maxPossibleDomain = this.skills.length * 6; // Máximo domínio possível (6 por skill)
-        const avgDomain = maxPossibleDomain > 0 ? Math.round((totalDomain / maxPossibleDomain) * 100) : 0;
+        // Novo cálculo: média dos 5 critérios de cada skill
+        const criteria = ['theoretical', 'technical', 'problem_solving', 'knowledge_transfer', 'trends'];
+        let totalScore = 0;
+        let maxScore = 0;
+        this.skills.forEach(skill => {
+            if (skill.scores) {
+                criteria.forEach(c => {
+                    totalScore += skill.scores[c] || 0;
+                    maxScore += 5; // cada critério vai de 0 a 5
+                });
+            }
+        });
+        const avgDomain = maxScore > 0 ? Math.round((totalScore / maxScore) * 100) : 0;
 
         return {
             total: this.skills.length,
@@ -108,13 +118,21 @@ class DataService {
     getTopSkill() {
         if (this.skills.length === 0) return { name: 'Nenhuma habilidade', progress: 0 };
 
+        const criteria = ['theoretical', 'technical', 'problem_solving', 'knowledge_transfer', 'trends'];
+        // Encontrar a skill com maior média dos critérios
         const topSkill = this.skills.reduce((max, skill) => {
-            return (skill.domain || 0) > (max.domain || 0) ? skill : max;
-        }, { domain: 0, title: 'Nenhuma habilidade encontrada' });
+            if (!skill.scores) return max;
+            const sum = criteria.reduce((acc, c) => acc + (skill.scores[c] || 0), 0);
+            const avg = sum / criteria.length;
+            if (avg > max.avg) {
+                return { ...skill, avg };
+            }
+            return max;
+        }, { avg: 0, title: 'Nenhuma habilidade encontrada' });
 
         return {
             name: topSkill.title || 'Nenhuma habilidade',
-            progress: Math.round(((topSkill.domain || 0) / 6) * 100)
+            progress: Math.round((topSkill.avg / 5) * 100) || 0
         };
     }
 
