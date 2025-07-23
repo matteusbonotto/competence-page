@@ -3,37 +3,67 @@
 
 /* ===== RESPONSIVIDADE DESKTOP ===== */
 @media (min-width: 769px) {
+
     /* ===== DRAWER/MODAL DESKTOP ===== */
     .skill-modal {
         display: none;
     }
-    
+
+    .achievement-drawer {
+        display: none !important;
+    }
+
+    /* ===== FILTROS DESKTOP - SEMPRE MOSTRAR TEXTO ===== */
+    .filter-btn .filter-text {
+        display: inline !important;
+    }
+
+    /* ===== BOTÕES DE STATUS DESKTOP - SEMPRE MOSTRAR TEXTO ===== */
+    .status-filter-btn[data-status="unlocked"],
+    .status-filter-btn[data-status="locked"] {
+        font-size: inherit !important;
+        /* Restaurar tamanho da fonte no desktop */
+    }
+
     /* ===== OTIMIZAÇÕES PARA DESKTOP ===== */
     .summary-container {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-    
+
     .category-filters {
         justify-content: center;
     }
-    
+
     .achievement-card {
-        grid-template-columns: auto 1fr auto;
-        text-align: initial;
+        display: grid;
+        grid-template-columns: 64px 1fr auto;
+        gap: 16px;
         align-items: center;
+        text-align: initial;
+        min-width: 0;
     }
-    
+
+    .achievement-card .achievement-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #222;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        word-break: break-word;
+    }
+
     /* ===== HOVER EFFECTS DESKTOP ===== */
     .summary-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     }
-    
+
     .achievement-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
-    
+
     .filter-btn:hover {
         transform: translateY(-2px);
     }

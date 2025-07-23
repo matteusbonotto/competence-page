@@ -10,7 +10,7 @@ class DataService {
     async loadData() {
         try {
             console.log('Carregando dados...');
-            
+
             const [skillsResponse, achievementsResponse] = await Promise.all([
                 fetch('data/skills.json'),
                 fetch('data/achievements.json')
@@ -80,9 +80,12 @@ class DataService {
     }
 
     getSkillStats() {
+        if (this.skills.length === 0) return { total: 0, unlocked: 0, avgDomain: 0 };
+
         const unlockedSkills = this.skills.filter(skill => this.isSkillUnlocked(skill.id));
-        const totalDomain = unlockedSkills.reduce((sum, skill) => sum + (skill.domain || 0), 0);
-        const avgDomain = unlockedSkills.length > 0 ? Math.round((totalDomain / unlockedSkills.length) * 100 / 6) : 0;
+        const totalDomain = this.skills.reduce((sum, skill) => sum + (skill.domain || 0), 0);
+        const maxPossibleDomain = this.skills.length * 6; // Máximo domínio possível (6 por skill)
+        const avgDomain = maxPossibleDomain > 0 ? Math.round((totalDomain / maxPossibleDomain) * 100) : 0;
 
         return {
             total: this.skills.length,
@@ -92,26 +95,31 @@ class DataService {
     }
 
     getAchievementStats() {
+        if (this.achievements.length === 0) return { unlocked: 0, locked: 0, total: 0, progress: 0 };
+
         const unlocked = this.achievements.filter(a => a.status === 'unlocked').length;
         const locked = this.achievements.filter(a => a.status === 'locked').length;
+        const total = this.achievements.length;
+        const progress = total > 0 ? Math.round((unlocked / total) * 100) : 0;
 
-        return { unlocked, locked };
+        return { unlocked, locked, total, progress };
     }
 
     getTopSkill() {
-        const unlockedSkills = this.skills.filter(skill => this.isSkillUnlocked(skill.id));
-        const topSkill = unlockedSkills.reduce((max, skill) => {
+        if (this.skills.length === 0) return { name: 'Nenhuma habilidade', progress: 0 };
+
+        const topSkill = this.skills.reduce((max, skill) => {
             return (skill.domain || 0) > (max.domain || 0) ? skill : max;
-        }, { domain: 0, title: 'Nenhuma' });
+        }, { domain: 0, title: 'Nenhuma habilidade encontrada' });
 
         return {
-            name: topSkill.title,
-            progress: Math.round((topSkill.domain || 0) * 100 / 6)
+            name: topSkill.title || 'Nenhuma habilidade',
+            progress: Math.round(((topSkill.domain || 0) / 6) * 100)
         };
     }
 
     getRelatedAchievements(skillId) {
-        return this.achievements.filter(achievement => 
+        return this.achievements.filter(achievement =>
             achievement.relatedSkills && achievement.relatedSkills.includes(skillId)
         );
     }
@@ -119,7 +127,7 @@ class DataService {
     // Método para simular dados de exemplo se os arquivos não existirem
     loadExampleData() {
         console.log('Carregando dados de exemplo...');
-        
+
         this.categories = [
             { id: 'qa', name: 'Quality Assurance' },
             { id: 'dev', name: 'Development' },

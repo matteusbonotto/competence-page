@@ -2,32 +2,24 @@
   {
     "id": "istqb-cert",
     "title": "ISTQB Foundation",
-    "description": "Certificação internacional em fundamentos de teste de software reconhecida mundialmente",
-    "image": "assets/istqb.png",
-    "status": "unlocked",
+    "description": "Certificação internacional em fundamentos de teste de software reconhecida mundialmente 4.0",
+    "image": "https://exseed.com.br/wp-content/uploads/2019/12/Selo-FL-1.png",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "QA",
     "evidence": "https://example.com/certificates/istqb-foundation.pdf",
-    "relatedSkills": ["qa-root", "qa-testing"],
-    "subcategories": {
-      "Fundamentos": "Conceitos básicos de teste de software",
-      "Técnicas": "Técnicas de design de casos de teste",
-      "Gestão": "Gestão de atividades de teste",
-      "Ferramentas": "Ferramentas de suporte ao teste"
-    }
+    "relatedSkills": ["qa-root", "qa-testing"]
   },
   {
     "id": "selenium-cert",
     "title": "Selenium WebDriver Expert",
     "description": "Certificação avançada em automação de testes web utilizando Selenium WebDriver",
-    "image": "assets/selenium.png",
-    "status": "unlocked",
+    "image": "https://sureshitacademy.com/wp-content/uploads/2024/05/4-1.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "QA",
     "evidence": "https://example.com/certificates/selenium-expert.pdf",
-    "relatedSkills": ["qa-automation", "qa-selenium"],
-    "subcategories": {
-      "WebDriver API": "Domínio completo da API do WebDriver",
-      "Page Object": "Implementação de padrões Page Object Model",
-      "Framework": "Criação de frameworks de automação robustos",
-      "CI/CD Integration": "Integração com pipelines de CI/CD"
-    }
+    "relatedSkills": ["qa-automation", "qa-selenium"]
   },
   {
     "id": "agile-cert",
@@ -35,29 +27,11 @@
     "description": "Certificação em práticas de teste em metodologias ágeis e DevOps",
     "image": "assets/agile.png",
     "status": "unlocked",
+    "difficulty": 3,
+    "category": "QA",
     "evidence": "https://example.com/certificates/agile-testing.pdf",
     "relatedSkills": ["qa-root", "qa-testing"],
-    "subcategories": {
-      "Scrum Testing": "Teste em sprints e incrementos",
-      "BDD/TDD": "Behavior e Test Driven Development",
-      "Continuous Testing": "Testes contínuos em DevOps",
-      "Team Collaboration": "Colaboração efetiva em equipes ágeis"
-    }
-  },
-  {
-    "id": "performance-cert",
-    "title": "Performance Testing Master",
-    "description": "Certificação em testes de performance, carga e estresse de aplicações",
-    "image": "assets/performance.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["qa-performance", "qa-load-testing", "qa-stress-testing"],
-    "subcategories": {
-      "Load Testing": "Testes de carga em condições normais",
-      "Stress Testing": "Testes além dos limites do sistema",
-      "JMeter": "Domínio avançado do Apache JMeter",
-      "Performance Analysis": "Análise e otimização de performance"
-    }
+    "unlockedDate": "2024-12-15"
   },
   {
     "id": "react-cert",
@@ -65,29 +39,11 @@
     "description": "Certificação profissional em desenvolvimento React e ecossistema",
     "image": "assets/react.png",
     "status": "unlocked",
+    "difficulty": 4,
+    "category": "DEV",
     "evidence": "https://example.com/certificates/react-professional.pdf",
     "relatedSkills": ["dev-frontend", "dev-react"],
-    "subcategories": {
-      "React Core": "Hooks, Context API e componentes avançados",
-      "State Management": "Redux, Zustand e gerenciamento de estado",
-      "Testing": "Jest, React Testing Library e testes unitários",
-      "Performance": "Otimização e melhores práticas"
-    }
-  },
-  {
-    "id": "fullstack-cert",
-    "title": "Full Stack Developer",
-    "description": "Certificação completa em desenvolvimento full stack com múltiplas tecnologias",
-    "image": "assets/fullstack.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["dev-root", "dev-frontend", "dev-backend"],
-    "subcategories": {
-      "Frontend": "React, Vue.js e tecnologias modernas",
-      "Backend": "Node.js, Python e APIs RESTful",
-      "Database": "SQL, NoSQL e modelagem de dados",
-      "DevOps": "Docker, CI/CD e deploy automatizado"
-    }
+    "unlockedDate": "2024-11-28"
   },
   {
     "id": "ux-cert",
@@ -95,89 +51,11 @@
     "description": "Certificação em design de experiência do usuário e pesquisa",
     "image": "assets/ux.png",
     "status": "unlocked",
+    "difficulty": 3,
+    "category": "DESIGN",
     "evidence": "https://example.com/certificates/ux-specialist.pdf",
     "relatedSkills": ["ux-root", "ux-research", "ux-design"],
-    "subcategories": {
-      "User Research": "Métodos de pesquisa qualitativa e quantitativa",
-      "Design Thinking": "Processo criativo centrado no usuário",
-      "Prototyping": "Figma, Sketch e ferramentas de prototipação",
-      "Usability Testing": "Testes de usabilidade e análise de dados"
-    }
-  },
-  {
-    "id": "api-testing-cert",
-    "title": "API Testing Expert",
-    "description": "Especialização em testes de APIs REST, GraphQL e microserviços",
-    "image": "assets/api.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["qa-automation", "qa-api-testing"],
-    "subcategories": {
-      "REST APIs": "Testes de APIs RESTful e validação de contratos",
-      "GraphQL": "Testes de queries, mutations e subscriptions",
-      "Postman": "Automação avançada com Postman e Newman",
-      "Contract Testing": "Testes de contrato com Pact e similares"
-    }
-  },
-  {
-    "id": "security-testing-cert",
-    "title": "Security Testing Professional",
-    "description": "Certificação em testes de segurança e análise de vulnerabilidades",
-    "image": "assets/security.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["qa-root"],
-    "subcategories": {
-      "OWASP": "Top 10 vulnerabilidades e práticas de segurança",
-      "Penetration Testing": "Testes de penetração básicos",
-      "SAST/DAST": "Análise estática e dinâmica de código",
-      "Security Compliance": "Conformidade com padrões de segurança"
-    }
-  },
-  {
-    "id": "mobile-testing-cert",
-    "title": "Mobile Testing Champion",
-    "description": "Especialização em testes de aplicações móveis Android e iOS",
-    "image": "assets/mobile.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["dev-mobile", "qa-automation"],
-    "subcategories": {
-      "Native Testing": "Testes em aplicações nativas Android/iOS",
-      "Cross-Platform": "Testes em React Native e Flutter",
-      "Device Testing": "Testes em dispositivos reais e emuladores",
-      "Appium": "Automação de testes móveis com Appium"
-    }
-  },
-  {
-    "id": "cloud-cert",
-    "title": "Cloud Testing Architect",
-    "description": "Certificação em testes e deployment em ambientes cloud",
-    "image": "assets/cloud.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["dev-backend", "qa-performance"],
-    "subcategories": {
-      "AWS Testing": "Testes em ambiente Amazon Web Services",
-      "Azure DevOps": "Integração com Azure e DevOps practices",
-      "Containerization": "Docker, Kubernetes e testes de containers",
-      "Scalability": "Testes de escalabilidade em cloud"
-    }
-  },
-  {
-    "id": "ai-testing-cert",
-    "title": "AI/ML Testing Pioneer",
-    "description": "Certificação em testes de sistemas de inteligência artificial e machine learning",
-    "image": "assets/ai.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["qa-root", "dev-python"],
-    "subcategories": {
-      "Model Testing": "Validação de modelos de machine learning",
-      "Data Quality": "Testes de qualidade e bias em dados",
-      "AI Ethics": "Considerações éticas em sistemas de IA",
-      "Automated Testing": "Automação de testes para sistemas AI/ML"
-    }
+    "unlockedDate": "2024-11-10"
   },
   {
     "id": "data-analyst-cert",
@@ -185,14 +63,11 @@
     "description": "Certificação profissional em análise de dados e business intelligence",
     "image": "assets/data-analyst.png",
     "status": "unlocked",
+    "difficulty": 3,
+    "category": "DADOS",
     "evidence": "https://example.com/certificates/data-analyst.pdf",
     "relatedSkills": ["data-root", "data-powerbi", "data-sql"],
-    "subcategories": {
-      "Data Analysis": "Técnicas avançadas de análise estatística",
-      "Visualization": "Criação de visualizações impactantes",
-      "Business Intelligence": "Transformação de dados em insights",
-      "Storytelling": "Narrativa efetiva com dados"
-    }
+    "unlockedDate": "2024-10-22"
   },
   {
     "id": "excel-expert",
@@ -200,14 +75,11 @@
     "description": "Especialista em Microsoft Excel com domínio de funcionalidades avançadas",
     "image": "assets/excel.png",
     "status": "unlocked",
+    "difficulty": 2,
+    "category": "DADOS",
     "evidence": "https://example.com/certificates/excel-expert.pdf",
     "relatedSkills": ["data-excel", "data-excel-formulas", "data-excel-pivot"],
-    "subcategories": {
-      "Advanced Formulas": "Fórmulas complexas e funções avançadas",
-      "Pivot Tables": "Tabelas dinâmicas e análise de dados",
-      "Macros & VBA": "Automação com Visual Basic",
-      "Data Modeling": "Modelagem e estruturação de dados"
-    }
+    "unlockedDate": "2024-09-15"
   },
   {
     "id": "powerbi-cert",
@@ -215,14 +87,11 @@
     "description": "Certificação Microsoft em Power BI para análise e visualização de dados",
     "image": "assets/powerbi.png",
     "status": "unlocked",
+    "difficulty": 3,
+    "category": "DADOS",
     "evidence": "https://example.com/certificates/powerbi-analyst.pdf",
     "relatedSkills": ["data-powerbi", "data-powerbi-dax", "data-powerbi-visual"],
-    "subcategories": {
-      "Data Preparation": "Preparação e limpeza de dados",
-      "Data Modeling": "Relacionamentos e modelagem",
-      "DAX Formulas": "Linguagem de expressões de análise",
-      "Visualization Design": "Design de visualizações efetivas"
-    }
+    "unlockedDate": "2024-08-20"
   },
   {
     "id": "sql-expert",
@@ -230,14 +99,11 @@
     "description": "Especialista em SQL e administração de bancos de dados relacionais",
     "image": "assets/sql.png",
     "status": "unlocked",
+    "difficulty": 4,
+    "category": "DADOS",
     "evidence": "https://example.com/certificates/sql-expert.pdf",
     "relatedSkills": ["data-sql", "data-sql-basic", "data-sql-advanced"],
-    "subcategories": {
-      "Query Optimization": "Otimização de consultas e performance",
-      "Database Design": "Design e normalização de bancos",
-      "Stored Procedures": "Procedimentos armazenados e triggers",
-      "Data Analysis": "Análise estatística com SQL"
-    }
+    "unlockedDate": "2024-07-30"
   },
   {
     "id": "excel-formulas-master",
@@ -245,14 +111,10 @@
     "description": "Dominação completa de fórmulas avançadas do Excel",
     "image": "assets/excel-formulas.png",
     "status": "unlocked",
+    "difficulty": 3,
+    "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-excel-formulas"],
-    "subcategories": {
-      "Lookup Functions": "VLOOKUP, INDEX, MATCH e variações",
-      "Array Formulas": "Fórmulas matriciais complexas",
-      "Statistical Functions": "Funções estatísticas avançadas",
-      "Conditional Logic": "Lógica condicional com IF, AND, OR"
-    }
+    "relatedSkills": ["data-excel-formulas"]
   },
   {
     "id": "pivot-expert",
@@ -260,59 +122,10 @@
     "description": "Especialista em tabelas dinâmicas e análise de dados",
     "image": "assets/pivot.png",
     "status": "unlocked",
+    "difficulty": 2,
+    "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-excel-pivot"],
-    "subcategories": {
-      "Data Summarization": "Sumarização eficiente de dados",
-      "Advanced Filtering": "Filtros e segmentações avançadas",
-      "Calculated Fields": "Campos calculados customizados",
-      "Dashboard Creation": "Criação de dashboards interativos"
-    }
-  },
-  {
-    "id": "vba-programmer",
-    "title": "VBA Programmer",
-    "description": "Programador em Visual Basic for Applications",
-    "image": "assets/vba.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["data-excel-macros"],
-    "subcategories": {
-      "Macro Recording": "Gravação e edição de macros",
-      "VBA Syntax": "Sintaxe e estruturas de programação",
-      "User Forms": "Criação de interfaces customizadas",
-      "Error Handling": "Tratamento de erros e debugging"
-    }
-  },
-  {
-    "id": "dax-expert",
-    "title": "DAX Formula Expert",
-    "description": "Especialista em fórmulas DAX para Power BI e Analysis Services",
-    "image": "assets/dax.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["data-powerbi-dax"],
-    "subcategories": {
-      "Calculated Columns": "Colunas calculadas e medidas",
-      "Time Intelligence": "Funções de inteligência temporal",
-      "Filter Context": "Contexto de filtro e relacionamentos",
-      "Advanced Functions": "Funções avançadas e otimização"
-    }
-  },
-  {
-    "id": "data-modeler",
-    "title": "Data Modeling Specialist",
-    "description": "Especialista em modelagem de dados para business intelligence",
-    "image": "assets/data-model.png",
-    "status": "locked",
-    "evidence": null,
-    "relatedSkills": ["data-powerbi-modeling"],
-    "subcategories": {
-      "Star Schema": "Modelagem em esquema estrela",
-      "Relationships": "Relacionamentos e cardinalidade",
-      "Performance": "Otimização de modelos de dados",
-      "Best Practices": "Melhores práticas de modelagem"
-    }
+    "relatedSkills": ["data-excel-pivot"]
   },
   {
     "id": "viz-expert",
@@ -320,14 +133,10 @@
     "description": "Especialista em visualização de dados e storytelling",
     "image": "assets/dataviz.png",
     "status": "unlocked",
+    "difficulty": 3,
+    "category": "DADOS",
     "evidence": "https://example.com/portfolio/dataviz",
-    "relatedSkills": ["data-powerbi-visual"],
-    "subcategories": {
-      "Chart Design": "Design efetivo de gráficos e charts",
-      "Color Theory": "Teoria das cores em visualizações",
-      "Interactive Dashboards": "Dashboards interativos e dinâmicos",
-      "Data Storytelling": "Narrativa visual com dados"
-    }
+    "relatedSkills": ["data-powerbi-visual"]
   },
   {
     "id": "sql-basic-cert",
@@ -335,14 +144,351 @@
     "description": "Certificação em fundamentos de SQL e consultas básicas",
     "image": "assets/sql-basic.png",
     "status": "unlocked",
+    "difficulty": 1,
+    "category": "DADOS",
     "evidence": "https://example.com/certificates/sql-fundamentals.pdf",
-    "relatedSkills": ["data-sql-basic"],
-    "subcategories": {
-      "Basic Queries": "SELECT, WHERE, ORDER BY",
-      "Data Manipulation": "INSERT, UPDATE, DELETE",
-      "Filtering": "Filtros e condições",
-      "Grouping": "GROUP BY e agregações"
-    }
+    "relatedSkills": ["data-sql-basic"]
+  },
+  {
+    "id": "crash-bug-coot",
+    "title": "Crash Bug Coot",
+    "description": "Encontre um bug que derrube o sistema como um Crash Bandicoot desgovernado",
+    "image": "assets/crash-bug.png",
+    "status": "unlocked",
+    "difficulty": 4,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root", "qa-testing"]
+  },
+  {
+    "id": "qaladica",
+    "title": "QAladica",
+    "description": "Descubra um bug tão absurdo que parece magia negra",
+    "image": "assets/qaladica.png",
+    "status": "unlocked",
+    "difficulty": 5,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root", "qa-testing"]
+  },
+  {
+    "id": "repelente",
+    "title": "Repelente",
+    "description": "Rejeite um bug mal reportado pelo time de DEV",
+    "image": "assets/repelente.png",
+    "status": "unlocked",
+    "difficulty": 2,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root", "qa-testing"]
+  },
+  {
+    "id": "detetizador",
+    "title": "Detetizador",
+    "description": "Elimine 10 bugs críticos em uma única sprint",
+    "image": "assets/detetizador.png",
+    "status": "unlocked",
+    "difficulty": 4,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root", "qa-testing"]
+  },
+  {
+    "id": "na-mosca",
+    "title": "Na Mosca!",
+    "description": "Reproduza um bug raro na primeira tentativa",
+    "image": "assets/na-mosca.png",
+    "status": "unlocked",
+    "difficulty": 5,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root", "qa-testing"]
+  },
+  {
+    "id": "fora-da-caixinha",
+    "title": "Fora da Caixinha",
+    "description": "Encontre um bug em um lugar que ninguém pensou em testar",
+    "image": "assets/fora-caixinha.png",
+    "status": "unlocked",
+    "difficulty": 4,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root", "qa-testing"]
+  },
+  {
+    "id": "manda-node",
+    "title": "Manda Node",
+    "description": "Crie um servidor Node.js que sobreviva a mais de 1k requests",
+    "image": "assets/manda-node.png",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-backend", "dev-nodejs"]
+  },
+  {
+    "id": "bibliotecario",
+    "title": "Bibliotecário",
+    "description": "Use 10 bibliotecas diferentes em um único projeto",
+    "image": "assets/bibliotecario.png",
+    "status": "unlocked",
+    "difficulty": 2,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-root"]
+  },
+  {
+    "id": "frontman",
+    "title": "Frontman",
+    "description": "Faça um componente Vue/React que todo mundo copia",
+    "image": "assets/frontman.png",
+    "status": "unlocked",
+    "difficulty": 4,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-frontend", "dev-react"]
+  },
+  {
+    "id": "my-back",
+    "title": "My Back!",
+    "description": "Resolva um bug no backend que estava afetando o front",
+    "image": "assets/my-back.png",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-backend", "dev-frontend"]
+  },
+  {
+    "id": "acesso-negado",
+    "title": "Acesso Negado",
+    "description": "Escreva uma query que só você consegue executar por ter permissões",
+    "image": "assets/acesso-negado.png",
+    "status": "unlocked",
+    "difficulty": 2,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-sql"]
+  },
+  {
+    "id": "crud-credo",
+    "title": "CRUD Crédo",
+    "description": "Faça um CRUD tão feio que até o banco de dados chora",
+    "image": "assets/crud-credo.png",
+    "status": "unlocked",
+    "difficulty": 1,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-sql"]
+  },
+  {
+    "id": "banco-de-dados",
+    "title": "Banco de Dados",
+    "description": "Restaure um backup corrompido sem perder dados",
+    "image": "assets/banco-dados.png",
+    "status": "unlocked",
+    "difficulty": 5,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-sql"]
+  },
+  {
+    "id": "power-ranger-bi",
+    "title": "Power Ranger BI",
+    "description": "Crie um dashboard colorido que parece um traje de Power Ranger",
+    "image": "assets/power-ranger-bi.png",
+    "status": "unlocked",
+    "difficulty": 2,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-powerbi"]
+  },
+  {
+    "id": "ui-ui",
+    "title": "UI UI",
+    "description": "Crie um protótipo que até seu avô consegue usar",
+    "image": "assets/ui-ui.png",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["ux-root", "ux-design"]
+  },
+  {
+    "id": "minimalista",
+    "title": "Minimalista",
+    "description": "Faça um design tão limpo que parece que não fez nada",
+    "image": "assets/minimalista.png",
+    "status": "unlocked",
+    "difficulty": 4,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["ux-design"]
+  },
+  {
+    "id": "n8n-vai-da",
+    "title": "n8n Vai Dá!",
+    "description": "Automatize um fluxo que economize 5h de trabalho manual",
+    "image": "assets/n8n-vai-da.png",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "DEVOPS",
+    "evidence": null,
+    "relatedSkills": ["devops-automation"]
+  },
+  {
+    "id": "jmeter-o-louco",
+    "title": "Jmeter o Louco",
+    "description": "Teste carga de 50k usuários sem derrubar o servidor",
+    "image": "assets/jmeter-louco.png",
+    "status": "unlocked",
+    "difficulty": 4,
+    "category": "DEVOPS",
+    "evidence": null,
+    "relatedSkills": ["qa-performance", "qa-load-testing"]
+  },
+  {
+    "id": "menino-do-ti",
+    "title": "Menino do TI",
+    "description": "Resolveu o Wi-Fi da firma e agora é o herói do escritório",
+    "image": "assets/menino-ti.png",
+    "status": "unlocked",
+    "difficulty": 1,
+    "category": "META",
+    "evidence": null,
+    "relatedSkills": []
+  },
+  {
+    "id": "el-professor",
+    "title": "El Professor",
+    "description": "Ensinou Git para um estagiário sem xingar",
+    "image": "assets/el-professor.png",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "META",
+    "evidence": null,
+    "relatedSkills": ["dev-git"]
+  },
+  {
+    "id": "pau-pra-toda-obra",
+    "title": "Pau pra Toda Obra",
+    "description": "Consertou o café, o servidor e o ar-condicionado no mesmo dia",
+    "image": "assets/pau-toda-obra.png",
+    "status": "unlocked",
+    "difficulty": 5,
+    "category": "META",
+    "evidence": null,
+    "relatedSkills": []
+  },
+  {
+    "id": "performance-cert",
+    "title": "Performance Testing Master",
+    "description": "Certificação em testes de performance, carga e estresse de aplicações",
+    "image": "assets/performance.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-performance", "qa-load-testing", "qa-stress-testing"]
+  },
+  {
+    "id": "fullstack-cert",
+    "title": "Full Stack Developer",
+    "description": "Certificação completa em desenvolvimento full stack com múltiplas tecnologias",
+    "image": "assets/fullstack.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-root", "dev-frontend", "dev-backend"]
+  },
+  {
+    "id": "api-testing-cert",
+    "title": "API Testing Expert",
+    "description": "Especialização em testes de APIs REST, GraphQL e microserviços",
+    "image": "assets/api.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-automation", "qa-api-testing"]
+  },
+  {
+    "id": "security-testing-cert",
+    "title": "Security Testing Professional",
+    "description": "Certificação em testes de segurança e análise de vulnerabilidades",
+    "image": "assets/security.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root"]
+  },
+  {
+    "id": "mobile-testing-cert",
+    "title": "Mobile Testing Champion",
+    "description": "Especialização em testes de aplicações móveis Android e iOS",
+    "image": "assets/mobile.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["dev-mobile", "qa-automation"]
+  },
+  {
+    "id": "cloud-cert",
+    "title": "Cloud Testing Architect",
+    "description": "Certificação em testes e deployment em ambientes cloud",
+    "image": "assets/cloud.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "INFRA",
+    "evidence": null,
+    "relatedSkills": ["dev-backend", "qa-performance"]
+  },
+  {
+    "id": "ai-testing-cert",
+    "title": "AI/ML Testing Pioneer",
+    "description": "Certificação em testes de sistemas de inteligência artificial e machine learning",
+    "image": "assets/ai.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root", "dev-python"]
+  },
+  {
+    "id": "vba-programmer",
+    "title": "VBA Programmer",
+    "description": "Programador em Visual Basic for Applications",
+    "image": "assets/vba.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-excel-macros"]
+  },
+  {
+    "id": "dax-expert",
+    "title": "DAX Formula Expert",
+    "description": "Especialista em fórmulas DAX para Power BI e Analysis Services",
+    "image": "assets/dax.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-powerbi-dax"]
+  },
+  {
+    "id": "data-modeler",
+    "title": "Data Modeling Specialist",
+    "description": "Especialista em modelagem de dados para business intelligence",
+    "image": "assets/data-model.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-powerbi-modeling"]
   },
   {
     "id": "sql-advanced-cert",
@@ -350,14 +496,10 @@
     "description": "Certificação avançada em desenvolvimento SQL",
     "image": "assets/sql-advanced.png",
     "status": "locked",
+    "difficulty": 4,
+    "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql-advanced"],
-    "subcategories": {
-      "Complex Joins": "JOINs complexos e subqueries",
-      "Window Functions": "Funções de janela avançadas",
-      "CTEs": "Common Table Expressions",
-      "Stored Procedures": "Procedimentos armazenados"
-    }
+    "relatedSkills": ["data-sql-advanced"]
   },
   {
     "id": "sql-performance-expert",
@@ -365,13 +507,438 @@
     "description": "Especialista em otimização e tuning de performance SQL",
     "image": "assets/sql-performance.png",
     "status": "locked",
+    "difficulty": 5,
+    "category": "DADOS",
     "evidence": null,
-    "relatedSkills": ["data-sql-optimization"],
-    "subcategories": {
-      "Query Optimization": "Otimização de consultas",
-      "Index Management": "Gerenciamento de índices",
-      "Execution Plans": "Análise de planos de execução",
-      "Performance Monitoring": "Monitoramento de performance"
-    }
+    "relatedSkills": ["data-sql-optimization"]
+  },
+  {
+    "id": "segue-seu-caminho",
+    "title": "Segue Seu Caminho",
+    "description": "Ignore um bug 'porque não é prioridade' e ele volta 3 sprints depois",
+    "image": "assets/segue-caminho.png",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root"]
+  },
+  {
+    "id": "qabracadabra",
+    "title": "QAbracadabra",
+    "description": "Faça um bug desaparecer só reiniciando o servidor",
+    "image": "assets/qabracadabra.png",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root"]
+  },
+  {
+    "id": "bug-do-milenio",
+    "title": "Bug do Milênio",
+    "description": "Encontre um bug que só acontece em condições específicas de eclipse lunar",
+    "image": "assets/bug-milenio.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root"]
+  },
+  {
+    "id": "qaranha",
+    "title": "QAranha",
+    "description": "Pegue um bug que só aparece 'teia' de madrugada",
+    "image": "assets/qaranha.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": ["qa-root"]
+  },
+  {
+    "id": "fatal-framework",
+    "title": "Fatal Framework",
+    "description": "Migre um projeto inteiro para um novo framework sem surtar",
+    "image": "assets/fatal-framework.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-root"]
+  },
+  {
+    "id": "ctrl-alt-mestre",
+    "title": "Ctrl+Alt+ Mestre dos Atalhos",
+    "description": "Faça um commit sem tocar no mouse",
+    "image": "assets/ctrl-alt-mestre.png",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-git"]
+  },
+  {
+    "id": "jsonaldito",
+    "title": "JSONaldito",
+    "description": "Parseie um JSON com 5 níveis de nesting sem se perder",
+    "image": "assets/jsonaldito.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-root"]
+  },
+  {
+    "id": "promessa-cumprida",
+    "title": "Promessa Cumprida",
+    "description": "Resolva um Promise Hell sem usar .then()",
+    "image": "assets/promessa-cumprida.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-javascript"]
+  },
+  {
+    "id": "async-fora-da-lei",
+    "title": "Async Fora da Lei",
+    "description": "Use await/async em um projeto que só tinha callbacks",
+    "image": "assets/async-fora-lei.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-javascript"]
+  },
+  {
+    "id": "firebasquete",
+    "title": "Firebasquete",
+    "description": "Acerte 100% dos testes no Firebase de primeira",
+    "image": "assets/firebasquete.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": ["dev-backend"]
+  },
+  {
+    "id": "wheres-waldo",
+    "title": "WHERE's Waldo?",
+    "description": "Encontre um dado perdido em 1M de registros",
+    "image": "assets/wheres-waldo.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-sql"]
+  },
+  {
+    "id": "excelentor",
+    "title": "Excelentor",
+    "description": "Faça uma planilha que substitua um sistema legado",
+    "image": "assets/excelentor.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-excel"]
+  },
+  {
+    "id": "pivotcraft",
+    "title": "PivotCraft",
+    "description": "Transforme dados bagunçados em um relatório lindo com PivotTable",
+    "image": "assets/pivotcraft.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-excel-pivot"]
+  },
+  {
+    "id": "supabasebol",
+    "title": "Supabasebol",
+    "description": "Faça uma query tão boa que merece um home run",
+    "image": "assets/supabasebol.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-sql"]
+  },
+  {
+    "id": "nosql-nocry",
+    "title": "NoSQL-NoCry",
+    "description": "Migre um banco SQL para NoSQL sem chorar",
+    "image": "assets/nosql-nocry.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-sql"]
+  },
+  {
+    "id": "dado-de-presente",
+    "title": "Dado de Presente",
+    "description": "Exporte dados para CSV sem quebrar caracteres especiais",
+    "image": "assets/dado-presente.png",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": ["data-root"]
+  },
+  {
+    "id": "saca-so-o-visual",
+    "title": "Saca Só o Visual",
+    "description": "Apresente um mockup que deixa o cliente sem palavras",
+    "image": "assets/saca-visual.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["ux-design"]
+  },
+  {
+    "id": "como-usa-isso",
+    "title": "Como Usa Isso?",
+    "description": "Desenhe um UX tão intuitivo que não precisa manual",
+    "image": "assets/como-usa-isso.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["ux-design"]
+  },
+  {
+    "id": "pixelpirata",
+    "title": "PixelPirata",
+    "description": "Copie um design famoso e ninguém perceba",
+    "image": "assets/pixelpirata.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["ux-design"]
+  },
+  {
+    "id": "cssmagico",
+    "title": "CSSMágico",
+    "description": "Estilize um componente sem usar !important",
+    "image": "assets/cssmagico.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["dev-frontend", "dev-css"]
+  },
+  {
+    "id": "ilustrador",
+    "title": "IlustraDor",
+    "description": "Desenhe um ícone vetorial sem usar a ferramenta Pen",
+    "image": "assets/ilustrador.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["ux-design"]
+  },
+  {
+    "id": "mockup-ou-morra",
+    "title": "Mockup ou Morra",
+    "description": "Entregue um protótipo antes do prazo",
+    "image": "assets/mockup-morra.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["ux-design"]
+  },
+  {
+    "id": "adobe-rable",
+    "title": "Adobe-rable",
+    "description": "Sobreviva a um crash do Photoshop sem autosave",
+    "image": "assets/adobe-rable.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["ux-design"]
+  },
+  {
+    "id": "coringa-do-css",
+    "title": "Coringa do CSS",
+    "description": "Resolva um bug de alinhamento que ninguém conseguia",
+    "image": "assets/coringa-css.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "DESIGN",
+    "evidence": null,
+    "relatedSkills": ["dev-frontend", "dev-css"]
+  },
+  {
+    "id": "transformers",
+    "title": "Transformers",
+    "description": "Migre um monólito para microserviços sem quebrar tudo",
+    "image": "assets/transformers.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "DEVOPS",
+    "evidence": null,
+    "relatedSkills": ["dev-backend"]
+  },
+  {
+    "id": "pacotao",
+    "title": "Pacotão",
+    "description": "Empacote uma aplicação em Docker sem vazar variáveis de ambiente",
+    "image": "assets/pacotao.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "INFRA",
+    "evidence": null,
+    "relatedSkills": ["devops-docker"]
+  },
+  {
+    "id": "yamlouco",
+    "title": "YAMLouco",
+    "description": "Escreva um pipeline CI/CD sem erro de sintaxe",
+    "image": "assets/yamlouco.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DEVOPS",
+    "evidence": null,
+    "relatedSkills": ["devops-cicd"]
+  },
+  {
+    "id": "kubernerd",
+    "title": "KuberNerd",
+    "description": "Rode um pod no Kubernetes sem travar o cluster",
+    "image": "assets/kubernerd.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "INFRA",
+    "evidence": null,
+    "relatedSkills": ["devops-kubernetes"]
+  },
+  {
+    "id": "terrafirma",
+    "title": "TerraFirma",
+    "description": "Faça deploy com Terraform sem destruir a AWS",
+    "image": "assets/terrafirma.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "INFRA",
+    "evidence": null,
+    "relatedSkills": ["devops-terraform"]
+  },
+  {
+    "id": "ssh-ou-nao",
+    "title": "SSH-ouNão",
+    "description": "Acesse um servidor remoto só com chave SSH",
+    "image": "assets/ssh-ou-nao.png",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "INFRA",
+    "evidence": null,
+    "relatedSkills": ["devops-ssh"]
+  },
+  {
+    "id": "dockerloki",
+    "title": "DockerLóki",
+    "description": "Engane o time com um container que 'funciona na sua máquina'",
+    "image": "assets/dockerloki.png",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "INFRA",
+    "evidence": null,
+    "relatedSkills": ["devops-docker"]
+  },
+  {
+    "id": "infrahero",
+    "title": "InfraHerói",
+    "description": "Resolva um downtime crítico em 10 minutos",
+    "image": "assets/infrahero.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "INFRA",
+    "evidence": null,
+    "relatedSkills": ["devops-monitoring"]
+  },
+  {
+    "id": "lost-in-translation",
+    "title": "Lost in Translation",
+    "description": "Traduza um erro do Stack Overflow e ainda não entenda",
+    "image": "assets/lost-translation.png",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": ["english-reading"]
+  },
+  {
+    "id": "404-dictionary",
+    "title": "404 Dictionary Not Found",
+    "description": "Procure uma palavra técnica no Google Translate e piorar",
+    "image": "assets/404-dictionary.png",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": ["english-reading"]
+  },
+  {
+    "id": "ctrl-c-internacional",
+    "title": "CTRL+C / CTRL+V Internacional",
+    "description": "Copie um código de um fórum gringo sem entender",
+    "image": "assets/ctrl-c-internacional.png",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": ["english-reading"]
+  },
+  {
+    "id": "sorry-my-bad",
+    "title": "Sorry, My Bad",
+    "description": "Cometa um erro em inglês e corrija com humor",
+    "image": "assets/sorry-my-bad.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": ["english-writing"]
+  },
+  {
+    "id": "br-huehue",
+    "title": "BR? HUEHUE",
+    "description": "Explique um meme brasileiro para um gringo",
+    "image": "assets/br-huehue.png",
+    "status": "locked",
+    "difficulty": 4,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": ["english-speaking"]
+  },
+  {
+    "id": "sendo-notado",
+    "title": "Sendo Notado",
+    "description": "Recebeu um elogio público do chefe",
+    "image": "assets/sendo-notado.png",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "META",
+    "evidence": null,
+    "relatedSkills": []
+  },
+  {
+    "id": "1-vida",
+    "title": "1 Vida",
+    "description": "Fez deploy na sexta-feira e não precisou de rollback",
+    "image": "assets/1-vida.png",
+    "status": "locked",
+    "difficulty": 5,
+    "category": "META",
+    "evidence": null,
+    "relatedSkills": ["devops-deploy"]
   }
 ]

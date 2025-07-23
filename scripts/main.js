@@ -2,18 +2,24 @@
 class SkillMappingApp {
     constructor() {
         this.currentCategory = 'all';
+        this.currentAchievementFilter = 'all';
+        this.currentViewMode = 'list';
+        this.currentSortOrder = 'unlocked-first'; // 'unlocked-first' ou 'locked-first'
+        this.achievementsPerPage = 10;
+        this.currentAchievementPage = 1;
+        this.filteredAchievements = [];
         this.init();
     }
 
     async init() {
         console.log('Inicializando aplicação...');
-        
+
         // Mostra loading inicial
         this.showGlobalLoading();
 
         // Carrega dados
         const dataLoaded = await window.dataService.loadData();
-        
+
         if (!dataLoaded) {
             console.log('Erro ao carregar dados, usando dados de exemplo...');
             window.dataService.loadExampleData();
@@ -28,12 +34,33 @@ class SkillMappingApp {
         this.hideGlobalLoading();
 
         console.log('Aplicação inicializada com sucesso');
+
+        // Configurar atualização periódica das métricas (a cada 30 segundos)
+        this.setupPeriodicUpdates();
+    }
+
+    setupPeriodicUpdates() {
+        // Atualizar métricas periodicamente para manter sincronização
+        setInterval(() => {
+            this.updateSummaryCards();
+        }, 30000); // 30 segundos
+
+        // Atualizar quando a janela ganha foco (usuário volta para a aba)
+        window.addEventListener('focus', () => {
+            this.updateSummaryCards();
+        });
+    }
+
+    // Método público para forçar atualização das métricas
+    refreshMetrics() {
+        this.updateSummaryCards();
+        console.log('Métricas atualizadas manualmente');
     }
 
     initializeComponents() {
         // Inicializa a árvore de habilidades
         window.skillTree = new SkillTree('skill-tree');
-        
+
         // Renderiza a árvore inicial
         window.skillTree.render(this.currentCategory);
     }
@@ -47,18 +74,44 @@ class SkillMappingApp {
             });
         });
 
+        // Filtros de status de conquistas
+        document.querySelectorAll('.status-filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const status = e.target.getAttribute('data-status');
+                this.changeAchievementFilter(status);
+            });
+        });
+
+        // Toggle de visualização (lista/grade)
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const view = e.target.getAttribute('data-view');
+                this.changeViewMode(view);
+            });
+        });
+
+        // Toggle de ordenação
+        document.getElementById('sort-btn').addEventListener('click', () => {
+            this.toggleSortOrder();
+        });
+
+        // Botão "Ver Mais" para paginação
+        document.getElementById('load-more-btn').addEventListener('click', () => {
+            this.loadMoreAchievements();
+        });
+
         // Botões de fechar drawer/modal
         document.getElementById('close-drawer').addEventListener('click', () => {
-            window.skillTree.closeDetails();
+            this.closeAchievementDetails();
         });
 
         document.getElementById('close-modal').addEventListener('click', () => {
-            window.skillTree.closeDetails();
+            this.closeAchievementDetails();
         });
 
         // Overlay para fechar modal
         document.getElementById('overlay').addEventListener('click', () => {
-            window.skillTree.closeDetails();
+            this.closeAchievementDetails();
         });
 
         // Responsividade
@@ -73,77 +126,63 @@ class SkillMappingApp {
 
         // Event listeners para evidências
         this.setupAchievementListeners();
-
-        // Event listeners para drawer mobile
-        this.setupAchievementDrawer();
     }
 
-    setupAchievementDrawer() {
-        // Criar drawer se não existir
-        if (!document.getElementById('achievement-drawer')) {
-            const drawer = document.createElement('div');
-            drawer.id = 'achievement-drawer';
-            drawer.className = 'achievement-drawer';
-            drawer.innerHTML = `
-                <div class="achievement-drawer-handle"></div>
-                <div class="achievement-drawer-header">
-                    <h3 id="achievement-drawer-title">Detalhes da Conquista</h3>
-                    <button class="achievement-drawer-close" id="achievement-drawer-close">
-                        <i class="bi bi-x"></i>
-                    </button>
-                </div>
-                <div class="achievement-drawer-content" id="achievement-drawer-content">
-                    <!-- Conteúdo será inserido dinamicamente -->
-                </div>
-            `;
-            document.body.appendChild(drawer);
-
-            // Event listeners para fechar drawer
-            document.getElementById('achievement-drawer-close').addEventListener('click', () => {
-                this.closeAchievementDrawer();
-            });
-
-            // Fechar drawer ao clicar no handle
-            drawer.querySelector('.achievement-drawer-handle').addEventListener('click', () => {
-                this.closeAchievementDrawer();
-            });
-
-            // Fechar drawer com swipe down (touch)
-            let startY = 0;
-            let currentY = 0;
-            drawer.addEventListener('touchstart', (e) => {
-                startY = e.touches[0].clientY;
-            });
-
-            drawer.addEventListener('touchmove', (e) => {
-                currentY = e.touches[0].clientY;
-                const diff = currentY - startY;
-                
-                if (diff > 0 && diff < 100) {
-                    drawer.style.transform = `translateY(${diff}px)`;
-                }
-            });
-
-            drawer.addEventListener('touchend', () => {
-                const diff = currentY - startY;
-                
-                if (diff > 50) {
-                    this.closeAchievementDrawer();
-                } else {
-                    drawer.style.transform = 'translateY(0)';
-                }
-            });
-        }
-    }
-
-    openAchievementDrawer(achievementId) {
+    // Função principal para abrir detalhes das conquistas
+    openAchievementDetails(achievementId) {
         const achievement = window.dataService.achievements.find(a => a.id === achievementId);
         if (!achievement) return;
 
-        const drawer = document.getElementById('achievement-drawer');
-        const title = document.getElementById('achievement-drawer-title');
-        const content = document.getElementById('achievement-drawer-content');
+        const isMobile = window.innerWidth <= 768;
 
+        if (isMobile) {
+            // Mobile: usar modal compartilhado
+            this.showAchievementModal(achievement);
+        } else {
+            // Desktop: usar drawer compartilhado
+            this.showAchievementDrawer(achievement);
+        }
+    }
+
+    showAchievementDrawer(achievement) {
+        const container = document.getElementById('skill-drawer');
+        const content = container.querySelector('.drawer-content');
+
+        content.innerHTML = this.generateAchievementDetailsHTML(achievement);
+        container.classList.add('open');
+    }
+
+    showAchievementModal(achievement) {
+        const container = document.getElementById('skill-modal');
+        const content = container.querySelector('.modal-body');
+
+        content.innerHTML = this.generateAchievementDetailsHTML(achievement);
+        container.classList.add('open');
+
+        // Prevenir scroll do body no mobile
+        if (window.innerWidth <= 768) {
+            document.body.classList.add('modal-open');
+        }
+    }
+
+    closeAchievementDetails() {
+        // Fechar drawer e modal
+        const drawer = document.getElementById('skill-drawer');
+        const modal = document.getElementById('skill-modal');
+
+        if (drawer) drawer.classList.remove('open');
+        if (modal) modal.classList.remove('open');
+
+        // Restaurar scroll do body
+        document.body.classList.remove('modal-open');
+
+        // Também chamar o método da árvore se existir
+        if (window.skillTree && window.skillTree.closeDetails) {
+            window.skillTree.closeDetails();
+        }
+    }
+
+    generateAchievementDetailsHTML(achievement) {
         const isUnlocked = achievement.status === 'unlocked';
 
         let subcategoriesHTML = '';
@@ -153,63 +192,67 @@ class SkillMappingApp {
                 .join('');
         }
 
-        title.textContent = achievement.title;
-        
-        content.innerHTML = `
-            <div class="achievement-drawer-image">
-                <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}" 
-                     onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23333\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"12\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">IMG</text></svg>'"
-                     ${!isUnlocked ? 'style="filter: grayscale(100%); opacity: 0.6;"' : ''}>
-            </div>
-            
-            <div class="achievement-drawer-status ${isUnlocked ? 'unlocked' : 'locked'}">
-                <i class="bi bi-${isUnlocked ? 'unlock' : 'lock'}"></i>
-                ${isUnlocked ? 'CONQUISTA DESBLOQUEADA' : 'CONQUISTA BLOQUEADA'}
-            </div>
-            
-            <div class="achievement-drawer-description">
-                ${subcategoriesHTML || achievement.description}
-            </div>
-            
-            ${isUnlocked && achievement.evidence ? 
-                `<div class="achievement-drawer-evidence">
-                    <button class="evidence-btn" onclick="window.open('${achievement.evidence}', '_blank')">
-                        <i class="bi bi-file-earmark-arrow-down"></i>
-                        Ver Evidência
-                    </button>
-                </div>` : ''
+        // Status combinado com data
+        let statusHTML = '';
+        if (isUnlocked) {
+            if (achievement.unlockedDate) {
+                const date = new Date(achievement.unlockedDate);
+                const formattedDate = date.toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+                statusHTML = `
+                    <div class="achievement-status unlocked">
+                        <i class="bi bi-unlock"></i>
+                        DESBLOQUEADA EM ${formattedDate}
+                    </div>
+                `;
+            } else {
+                statusHTML = `
+                    <div class="achievement-status unlocked">
+                        <i class="bi bi-unlock"></i>
+                        CONQUISTA DESBLOQUEADA
+                    </div>
+                `;
             }
+        } else {
+            statusHTML = `
+                <div class="achievement-status locked">
+                    <i class="bi bi-lock"></i>
+                    CONQUISTA BLOQUEADA
+                </div>
+            `;
+        }
+
+        return `
+            <div class="achievement-details">
+                <div class="achievement-header">
+                    <div class="achievement-image">
+                        <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}" 
+                             onerror="this.src='data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;%23333&quot;/></svg>'"
+                             ${!isUnlocked ? 'style="filter: grayscale(100%); opacity: 0.6;"' : ''}>
+                    </div>
+                    
+                    <h3>${achievement.title}</h3>
+                    
+                    ${statusHTML}
+                </div>
+                
+                <div class="achievement-description">
+                    ${subcategoriesHTML || achievement.description || ''}
+                </div>
+                
+                ${isUnlocked && achievement.evidence ?
+                `<div class="achievement-evidence">
+                        <a href="${achievement.evidence}" target="_blank" class="evidence-btn">
+                            <i class="bi bi-file-earmark-arrow-down"></i>
+                            Ver Evidência
+                        </a>
+                    </div>` : ''
+            }
+            </div>
         `;
-
-        // Abrir drawer
-        drawer.classList.add('open');
-
-        // Adicionar overlay se não existir
-        if (!document.getElementById('achievement-overlay')) {
-            const overlay = document.createElement('div');
-            overlay.id = 'achievement-overlay';
-            overlay.className = 'overlay';
-            overlay.addEventListener('click', () => {
-                this.closeAchievementDrawer();
-            });
-            document.body.appendChild(overlay);
-        }
-        
-        document.getElementById('achievement-overlay').classList.add('active');
-    }
-
-    closeAchievementDrawer() {
-        const drawer = document.getElementById('achievement-drawer');
-        const overlay = document.getElementById('achievement-overlay');
-        
-        if (drawer) {
-            drawer.classList.remove('open');
-            drawer.style.transform = '';
-        }
-        
-        if (overlay) {
-            overlay.classList.remove('active');
-        }
     }
 
     changeCategory(category) {
@@ -229,44 +272,255 @@ class SkillMappingApp {
         this.updateSummaryCards();
     }
 
+    changeAchievementFilter(status) {
+        // Atualiza filtro atual
+        this.currentAchievementFilter = status;
+
+        // Atualiza botões de filtro
+        document.querySelectorAll('.status-filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-status="${status}"]`).classList.add('active');
+
+        // Re-renderiza conquistas (resetará paginação)
+        this.renderAchievements();
+
+        // Atualiza métricas para refletir mudanças no filtro
+        this.updateSummaryCards();
+    }
+
+    changeViewMode(view) {
+        // Atualiza modo de visualização atual
+        this.currentViewMode = view;
+
+        // Atualiza botões de visualização
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-view="${view}"]`).classList.add('active');
+
+        // Atualiza classe do container
+        const achievementsList = document.getElementById('achievements-list');
+        if (view === 'grid') {
+            achievementsList.classList.add('grid-view');
+        } else {
+            achievementsList.classList.remove('grid-view');
+        }
+
+        // Re-renderiza TODAS as conquistas para aplicar o novo formato de estrutura HTML
+        this.renderAchievements();
+    }
+
+    toggleSortOrder() {
+        // Alterna entre ordenações
+        this.currentSortOrder = this.currentSortOrder === 'unlocked-first' ? 'locked-first' : 'unlocked-first';
+
+        // Atualiza visual do botão
+        const sortBtn = document.getElementById('sort-btn');
+        const sortIcon = sortBtn.querySelector('i');
+        const sortText = sortBtn.querySelector('.sort-text');
+
+        if (this.currentSortOrder === 'locked-first') {
+            sortBtn.classList.add('locked-first');
+            sortBtn.setAttribute('data-sort', 'locked-first');
+            sortBtn.setAttribute('title', 'Ordenação: Bloqueadas primeiro');
+            sortIcon.className = 'bi bi-sort-up';
+            if (sortText) sortText.textContent = 'Bloqueadas primeiro';
+        } else {
+            sortBtn.classList.remove('locked-first');
+            sortBtn.setAttribute('data-sort', 'unlocked-first');
+            sortBtn.setAttribute('title', 'Ordenação: Desbloqueadas primeiro');
+            sortIcon.className = 'bi bi-sort-down';
+            if (sortText) sortText.textContent = 'Desbloqueadas primeiro';
+        }
+
+        // Re-renderiza conquistas com nova ordenação (resetará paginação)
+        this.renderAchievements();
+    }
+
     updateUI() {
         this.updateSummaryCards();
         this.renderAchievements();
+
+        // Aplica modo de visualização inicial (que já re-renderiza as conquistas no formato correto)
+        // this.changeViewMode(this.currentViewMode);
+
+        // Apenas atualiza a classe CSS e botões sem re-renderizar
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-view="${this.currentViewMode}"]`)?.classList.add('active');
+
+        const achievementsList = document.getElementById('achievements-list');
+        if (this.currentViewMode === 'grid') {
+            achievementsList.classList.add('grid-view');
+        } else {
+            achievementsList.classList.remove('grid-view');
+        }
     }
 
     updateSummaryCards() {
         // Estatísticas de habilidades
         const skillStats = window.dataService.getSkillStats();
-        document.getElementById('avg-domain').textContent = `${skillStats.avgDomain}%`;
+        const avgDomainElement = document.getElementById('avg-domain');
+        if (avgDomainElement) {
+            avgDomainElement.textContent = `${skillStats.avgDomain}%`;
+        }
 
         // Estatísticas de conquistas
         const achievementStats = window.dataService.getAchievementStats();
-        document.getElementById('unlocked-count').textContent = achievementStats.unlocked.toString().padStart(2, '0');
-        document.getElementById('locked-count').textContent = achievementStats.locked.toString().padStart(2, '0');
+        const unlockedCountElement = document.getElementById('unlocked-count');
+        const lockedCountElement = document.getElementById('locked-count');
+
+        if (unlockedCountElement) {
+            unlockedCountElement.textContent = achievementStats.unlocked.toString().padStart(2, '0');
+        }
+        if (lockedCountElement) {
+            lockedCountElement.textContent = achievementStats.locked.toString().padStart(2, '0');
+        }
+
+        // Atualizar progresso de conquistas se existe um elemento para isso
+        const achievementProgressElement = document.getElementById('achievement-progress');
+        if (achievementProgressElement) {
+            achievementProgressElement.style.width = `${achievementStats.progress}%`;
+        }
+
+        // Atualizar texto de progresso se existir
+        const achievementProgressTextElement = document.getElementById('achievement-progress-text');
+        if (achievementProgressTextElement) {
+            achievementProgressTextElement.textContent = `${achievementStats.progress}% Concluído`;
+        }
 
         // Top skill
         const topSkill = window.dataService.getTopSkill();
-        document.getElementById('top-skill-name').textContent = topSkill.name;
-        document.getElementById('top-skill-progress').style.width = `${topSkill.progress}%`;
+        const topSkillNameElement = document.getElementById('top-skill-name');
+        const topSkillProgressElement = document.getElementById('top-skill-progress');
+
+        if (topSkillNameElement) {
+            topSkillNameElement.textContent = topSkill.name;
+        }
+        if (topSkillProgressElement) {
+            topSkillProgressElement.style.width = `${topSkill.progress}%`;
+        }
+
+        // Log para debug
+        console.log('Métricas atualizadas:', {
+            skillStats,
+            achievementStats,
+            topSkill
+        });
     }
 
     renderAchievements() {
         const container = document.getElementById('achievements-list');
-        const achievements = window.dataService.achievements;
+        let achievements = [...window.dataService.achievements]; // Cópia para não modificar o original
 
-        container.innerHTML = '';
+        // Aplica filtro de status
+        if (this.currentAchievementFilter !== 'all') {
+            if (this.currentAchievementFilter === 'unlocked') {
+                achievements = achievements.filter(a => a.status === 'unlocked');
+            } else if (this.currentAchievementFilter === 'locked') {
+                achievements = achievements.filter(a => a.status === 'locked');
+            }
+        }
 
-        achievements.forEach(achievement => {
-            const card = this.createAchievementCard(achievement);
-            container.appendChild(card);
+        // Aplica ordenação
+        achievements.sort((a, b) => {
+            if (this.currentSortOrder === 'unlocked-first') {
+                // Desbloqueadas primeiro
+                if (a.status === 'unlocked' && b.status === 'locked') return -1;
+                if (a.status === 'locked' && b.status === 'unlocked') return 1;
+                return a.title.localeCompare(b.title); // Alfabética como critério secundário
+            } else {
+                // Bloqueadas primeiro
+                if (a.status === 'locked' && b.status === 'unlocked') return -1;
+                if (a.status === 'unlocked' && b.status === 'locked') return 1;
+                return a.title.localeCompare(b.title); // Alfabética como critério secundário
+            }
         });
+
+        // Armazena as conquistas filtradas
+        this.filteredAchievements = achievements;
+
+        // Reset da paginação quando muda filtro
+        this.currentAchievementPage = 1;
+
+        // Renderiza apenas a primeira página
+        this.renderAchievementPage();
+    }
+
+    renderAchievementPage() {
+        const container = document.getElementById('achievements-list');
+        const startIndex = 0; // Sempre do início
+        const endIndex = this.currentAchievementPage * this.achievementsPerPage;
+        const achievementsToShow = this.filteredAchievements.slice(startIndex, endIndex);
+
+        // Limpa container apenas na primeira página
+        if (this.currentAchievementPage === 1) {
+            container.innerHTML = '';
+        }
+
+        // Se não é a primeira página, adiciona apenas os novos itens
+        if (this.currentAchievementPage > 1) {
+            const newAchievements = this.filteredAchievements.slice(
+                (this.currentAchievementPage - 1) * this.achievementsPerPage,
+                endIndex
+            );
+            newAchievements.forEach(achievement => {
+                const card = this.createAchievementCard(achievement);
+                container.appendChild(card);
+            });
+        } else {
+            // Primeira página - renderiza tudo
+            achievementsToShow.forEach(achievement => {
+                const card = this.createAchievementCard(achievement);
+                container.appendChild(card);
+            });
+        }
+
+        // Atualiza controles de paginação
+        this.updatePaginationControls();
+    }
+
+    loadMoreAchievements() {
+        this.currentAchievementPage++;
+        this.renderAchievementPage();
+    }
+
+    updatePaginationControls() {
+        const showingCount = Math.min(
+            this.currentAchievementPage * this.achievementsPerPage,
+            this.filteredAchievements.length
+        );
+        const totalCount = this.filteredAchievements.length;
+        const hasMore = showingCount < totalCount;
+
+        // Atualiza contador
+        this.updateShowingCount(showingCount, totalCount);
+
+        // Mostra/esconde botão "Ver Mais"
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        if (hasMore) {
+            loadMoreBtn.style.display = 'block';
+            loadMoreBtn.querySelector('span') && (loadMoreBtn.querySelector('span').textContent = `Ver Mais ${Math.min(this.achievementsPerPage, totalCount - showingCount)} Conquistas`);
+        } else {
+            loadMoreBtn.style.display = 'none';
+        }
+    }
+
+    updateShowingCount(showing, total) {
+        const showingCountElement = document.getElementById('showing-count');
+        if (showingCountElement) {
+            showingCountElement.textContent = `Mostrando ${showing} de ${total} conquistas`;
+        }
     }
 
     createAchievementCard(achievement) {
         const isUnlocked = achievement.status === 'unlocked';
-        
+        const isGridMode = this.currentViewMode === 'grid';
+
         const card = document.createElement('div');
-        card.className = `achievement-card ${isUnlocked ? 'unlocked' : 'locked'}`;
+        card.className = `achievement-card ${isUnlocked ? 'unlocked' : 'locked'} ${isGridMode ? 'grid-mode' : 'list-mode'}`;
 
         let subcategoriesHTML = '';
         if (achievement.subcategories) {
@@ -275,62 +529,77 @@ class SkillMappingApp {
                 .join('');
         }
 
-        // Container da imagem com overlay de cadeado se necessário
-        const imageContainer = `
-            <div class="image-container">
-                <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}" 
-                     onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23333\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"12\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">IMG</text></svg>'">
-                ${!isUnlocked ? '<div class="image-lock-overlay"><i class="bi bi-lock"></i></div>' : ''}
-            </div>
-        `;
-
-        // Verifica se é mobile para usar layout simplificado
-        const isMobile = window.innerWidth <= 768;
-        
-        if (isMobile) {
+        if (isGridMode) {
+            // Modo grid: formato circular
             card.innerHTML = `
-                <!-- Status badge pequeno no canto -->
-                <div class="status-badge-mobile ${isUnlocked ? 'unlocked' : 'locked'}">
-                    <i class="bi bi-${isUnlocked ? 'unlock' : 'lock'}"></i>
-                    <span>${isUnlocked ? 'OK' : 'LOCK'}</span>
+                <div class="grid-image-container">
+                    <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}" 
+                         onerror="this.src='data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;%23333&quot;/></svg>'">
+                    ${!isUnlocked ? '<div class="lock-overlay"><i class="bi bi-lock"></i></div>' : ''}
                 </div>
-                
-                ${imageContainer}
                 
                 <div class="content">
                     <h4>${achievement.title}</h4>
-                </div>
-                
-                <button class="view-btn-mobile" onclick="window.skillMappingApp.openAchievementDrawer('${achievement.id}')">
-                    Ver
-                </button>
-            `;
-        } else {
-            // Layout desktop original
-            card.innerHTML = `
-                ${imageContainer}
-                
-                <div class="content">
-                    <h4>${achievement.title}</h4>
-                    <div class="subcategories">
-                        ${subcategoriesHTML || achievement.description}
-                    </div>
-                    ${isUnlocked && achievement.evidence ? 
-                        `<button class="evidence-btn" onclick="window.open('${achievement.evidence}', '_blank')">
-                            Ver evidência <i class="bi bi-file-earmark-arrow-down"></i>
-                        </button>` : ''
-                    }
                 </div>
                 
                 <div class="status-badge ${isUnlocked ? 'unlocked' : 'locked'}">
                     <i class="bi bi-${isUnlocked ? 'unlock' : 'lock'}"></i>
-                    ${isUnlocked ? 'DESBLOQUEADO' : 'BLOQUEADO'}
+                </div>
+            `;
+        } else {
+            // Modo lista: layout original com containers corretos
+            const imageContainer = `
+                <div class="list-image-container">
+                    <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}" 
+                         onerror="this.src='data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;%23333&quot;/></svg>'">
+                    ${!isUnlocked ? '<div class="lock-overlay"><i class="bi bi-lock"></i></div>' : ''}
+                </div>
+            `;
+
+            // Formatar data de desbloqueio se existir
+            let unlockedDateHTML = '';
+            if (isUnlocked && achievement.unlockedDate) {
+                const date = new Date(achievement.unlockedDate);
+                const formattedDate = date.toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+                unlockedDateHTML = `<div class="unlocked-date">CONQUISTA DESBLOQUEADA EM ${formattedDate}</div>`;
+            }
+
+            card.innerHTML = `
+                ${imageContainer}
+                
+                <div class="content">
+                    <h4>${achievement.title}</h4>
+                    <div class="description">
+                        ${subcategoriesHTML || achievement.description || ''}
+                    </div>
+                    ${unlockedDateHTML}
+                    ${isUnlocked && achievement.evidence ?
+                    `<button class="evidence-btn" onclick="window.open('${achievement.evidence}', '_blank')">
+                            Ver evidência <i class="bi bi-file-earmark-arrow-down"></i>
+                        </button>` : ''
+                }
+                </div>
+                
+                <div class="status-badge ${isUnlocked ? 'unlocked' : 'locked'}">
+                    <i class="bi bi-${isUnlocked ? 'unlock' : 'lock'}"></i>
                 </div>
             `;
         }
 
         // Animação de entrada
         card.classList.add('fade-in');
+
+        // Adiciona evento de clique para abrir drawer
+        card.addEventListener('click', (e) => {
+            // Só abre drawer se não clicou em um botão
+            if (!e.target.closest('.evidence-btn')) {
+                this.openAchievementDetails(achievement.id);
+            }
+        });
 
         return card;
     }
@@ -341,7 +610,7 @@ class SkillMappingApp {
             if (e.target.closest('.evidence-btn')) {
                 const btn = e.target.closest('.evidence-btn');
                 const url = btn.getAttribute('data-url') || btn.onclick;
-                
+
                 if (typeof url === 'string') {
                     window.open(url, '_blank');
                 }
@@ -354,18 +623,20 @@ class SkillMappingApp {
         const isMobile = window.innerWidth <= 768;
         const drawer = document.getElementById('skill-drawer');
         const modal = document.getElementById('skill-modal');
-        
+
         if (isMobile && drawer && drawer.classList.contains('open')) {
             drawer.classList.remove('open');
             if (modal) modal.classList.add('open');
+            document.body.classList.add('modal-open');
         } else if (!isMobile && modal && modal.classList.contains('open')) {
             modal.classList.remove('open');
+            document.body.classList.remove('modal-open');
             if (drawer) drawer.classList.add('open');
         }
 
-        // Fechar drawer de conquistas no mobile se mudou para desktop
+        // Fechar detalhes completamente ao redimensionar
         if (!isMobile) {
-            this.closeAchievementDrawer();
+            document.body.classList.remove('modal-open');
         }
 
         // Recriar cards de conquistas para layout correto
@@ -375,8 +646,7 @@ class SkillMappingApp {
     handleKeyboardNavigation(e) {
         // ESC para fechar detalhes
         if (e.key === 'Escape') {
-            window.skillTree.closeDetails();
-            this.closeAchievementDrawer();
+            this.closeAchievementDetails();
         }
 
         // Números para filtros rápidos
@@ -465,12 +735,12 @@ class SkillMappingApp {
 
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
-        
+
         const a = document.createElement('a');
         a.href = url;
         a.download = `competencias-${new Date().toISOString().split('T')[0]}.json`;
         a.click();
-        
+
         URL.revokeObjectURL(url);
     }
 
@@ -481,7 +751,7 @@ class SkillMappingApp {
             return;
         }
 
-        const results = window.dataService.skills.filter(skill => 
+        const results = window.dataService.skills.filter(skill =>
             skill.title.toLowerCase().includes(query.toLowerCase()) ||
             skill.description.toLowerCase().includes(query.toLowerCase())
         );

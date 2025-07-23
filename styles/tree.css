@@ -41,9 +41,9 @@
     justify-content: center;
     transition: all 0.3s ease;
     position: relative;
-    box-shadow: 
-        0 4px 15px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.1);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .node-content::before {
@@ -53,7 +53,7 @@
     left: 3px;
     right: 3px;
     bottom: 3px;
-    background: linear-gradient(145deg, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), transparent);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -61,10 +61,10 @@
 .tree-node.unlocked .node-content {
     border-color: var(--color-unlocked);
     background: linear-gradient(145deg, #27ae60, #2ecc71);
-    box-shadow: 
-        0 4px 15px rgba(0,0,0,0.3),
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
         0 0 20px rgba(46, 204, 113, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .tree-node.locked .node-content {
@@ -76,14 +76,14 @@
 
 .tree-node:hover .node-content {
     transform: translateY(-3px);
-    box-shadow: 
-        0 8px 25px rgba(0,0,0,0.4),
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.4),
         0 0 30px rgba(52, 152, 219, 0.4);
 }
 
 .tree-node.locked:hover .node-content {
-    box-shadow: 
-        0 8px 25px rgba(0,0,0,0.4),
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.4),
         0 0 30px rgba(149, 165, 166, 0.3);
 }
 
@@ -91,7 +91,7 @@
     font-size: 1.8rem;
     margin-bottom: var(--spacing-xs);
     display: block;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .node-title {
@@ -99,7 +99,7 @@
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     margin-bottom: 2px;
     line-height: 1.1;
 }
@@ -206,13 +206,14 @@
 }
 
 @keyframes expandChildren {
-    from { 
-        opacity: 0; 
-        transform: translateY(-20px) scale(0.9); 
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
     }
-    to { 
-        opacity: 1; 
-        transform: translateY(0) scale(1); 
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -275,10 +276,10 @@
 
 .tree-node[data-category="qa"].unlocked .node-content {
     background: linear-gradient(145deg, #2980b9, #3498db);
-    box-shadow: 
-        0 4px 15px rgba(0,0,0,0.3),
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
         0 0 20px rgba(52, 152, 219, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .tree-node[data-category="dev"] .node-content {
@@ -287,10 +288,10 @@
 
 .tree-node[data-category="dev"].unlocked .node-content {
     background: linear-gradient(145deg, #c0392b, #e74c3c);
-    box-shadow: 
-        0 4px 15px rgba(0,0,0,0.3),
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
         0 0 20px rgba(231, 76, 60, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .tree-node[data-category="ux"] .node-content {
@@ -299,10 +300,10 @@
 
 .tree-node[data-category="ux"].unlocked .node-content {
     background: linear-gradient(145deg, #8e44ad, #9b59b6);
-    box-shadow: 
-        0 4px 15px rgba(0,0,0,0.3),
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
         0 0 20px rgba(155, 89, 182, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .tree-node[data-category="data"] .node-content {
@@ -311,10 +312,46 @@
 
 .tree-node[data-category="data"].unlocked .node-content {
     background: linear-gradient(145deg, #e67e22, #f39c12);
-    box-shadow: 
-        0 4px 15px rgba(0,0,0,0.3),
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
         0 0 20px rgba(243, 156, 18, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.tree-node[data-category="devops"] .node-content {
+    border-color: #27ae60;
+}
+
+.tree-node[data-category="devops"].unlocked .node-content {
+    background: linear-gradient(145deg, #229954, #27ae60);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(39, 174, 96, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.tree-node[data-category="infra"] .node-content {
+    border-color: #34495e;
+}
+
+.tree-node[data-category="infra"].unlocked .node-content {
+    background: linear-gradient(145deg, #2c3e50, #34495e);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(52, 73, 94, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.tree-node[data-category="idiomas"] .node-content {
+    border-color: #22c2e6;
+}
+
+.tree-node[data-category="idiomas"].unlocked .node-content {
+    background: linear-gradient(145deg, #00a5d3, #22dce6);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(230, 126, 34, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* ===== TOOLTIP PARA DOMÍNIO ===== */
@@ -324,7 +361,7 @@
     bottom: -35px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.9);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: 4px;
@@ -467,36 +504,36 @@
         overflow-x: auto;
         overflow-y: hidden;
     }
-    
+
     .skill-tree {
         min-width: 800px;
         padding: var(--spacing-md);
     }
-    
+
     .tree-level {
         gap: var(--spacing-md);
     }
-    
+
     .node-content {
         width: 100px;
         height: 100px;
         padding: var(--spacing-md);
     }
-    
+
     .node-icon {
         font-size: 1.4rem;
     }
-    
+
     .node-title {
         font-size: 0.6rem;
     }
-    
+
     .expand-btn {
         width: 25px;
         height: 25px;
         font-size: 0.8rem;
     }
-    
+
     .children-container.expanded {
         gap: var(--spacing-md);
     }
@@ -506,21 +543,21 @@
     .skill-tree {
         min-width: 600px;
     }
-    
+
     .node-content {
         width: 80px;
         height: 80px;
         padding: var(--spacing-sm);
     }
-    
+
     .node-icon {
         font-size: 1.2rem;
     }
-    
+
     .node-title {
         font-size: 0.5rem;
     }
-    
+
     .children-container.expanded {
         gap: var(--spacing-sm);
     }
@@ -548,8 +585,13 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* ===== EFEITOS ESPECIAIS ===== */
@@ -558,14 +600,17 @@
 }
 
 @keyframes pulse {
-    0%, 100% { 
-        box-shadow: 
-            0 4px 15px rgba(0,0,0,0.3),
+
+    0%,
+    100% {
+        box-shadow:
+            0 4px 15px rgba(0, 0, 0, 0.3),
             0 0 20px rgba(52, 152, 219, 0.3);
     }
-    50% { 
-        box-shadow: 
-            0 4px 15px rgba(0,0,0,0.3),
+
+    50% {
+        box-shadow:
+            0 4px 15px rgba(0, 0, 0, 0.3),
             0 0 40px rgba(52, 152, 219, 0.6);
     }
 }
@@ -575,16 +620,18 @@
 }
 
 @keyframes unlock {
-    0% { 
+    0% {
         transform: scale(0.8);
         opacity: 0.5;
         filter: grayscale(100%);
     }
-    50% { 
+
+    50% {
         transform: scale(1.1);
         box-shadow: 0 0 50px rgba(46, 204, 113, 0.8);
     }
-    100% { 
+
+    100% {
         transform: scale(1);
         opacity: 1;
         filter: grayscale(0%);

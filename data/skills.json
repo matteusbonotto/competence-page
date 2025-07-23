@@ -23,6 +23,24 @@
       "name": "Data Science",
       "color": "#f39c12",
       "rootSkillId": "data-root"
+    },
+    {
+      "id": "devops",
+      "name": "DevOps",
+      "color": "#27ae60",
+      "rootSkillId": "devops-root"
+    },
+    {
+      "id": "infra",
+      "name": "Infrastructure",
+      "color": "#34495e",
+      "rootSkillId": "infra-root"
+    },
+    {
+      "id": "idiomas",
+      "name": "Languages",
+      "color": "#e67e22",
+      "rootSkillId": "idiomas-root"
     }
   ],
   "skills": [
@@ -743,6 +761,212 @@
       },
       "children": [],
       "relatedAchievements": ["sql-performance-expert"]
+    },
+    {
+      "id": "devops-root",
+      "title": "DEVOPS",
+      "description": "Cultura e práticas que combinam desenvolvimento de software e operações de TI para melhorar a colaboração e produtividade através de automação de infraestrutura, fluxos de trabalho e medição contínua do desempenho da aplicação.",
+      "category": "devops",
+      "icon": "bi-gear-fill",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 5
+      },
+      "children": ["devops-cicd", "devops-automation", "devops-monitoring"],
+      "relatedAchievements": ["n8n-vai-da", "yamlouco"]
+    },
+    {
+      "id": "devops-cicd",
+      "title": "CI/CD PIPELINES",
+      "description": "Integração contínua e entrega contínua usando ferramentas como Jenkins, GitHub Actions, Azure DevOps para automatizar builds, testes e deployments.",
+      "category": "devops",
+      "icon": "bi-arrow-repeat",
+      "domain": 4,
+      "unlock_threshold": 2,
+      "parent": "devops-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 4,
+        "trends": 5
+      },
+      "children": [],
+      "relatedAchievements": ["yamlouco"]
+    },
+    {
+      "id": "devops-automation",
+      "title": "AUTOMAÇÃO",
+      "description": "Automação de processos e fluxos de trabalho usando ferramentas como n8n, Zapier, scripts e workflows automatizados.",
+      "category": "devops",
+      "icon": "bi-robot",
+      "domain": 4,
+      "unlock_threshold": 2,
+      "parent": "devops-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 5,
+        "problem_solving": 4,
+        "knowledge_transfer": 4,
+        "trends": 5
+      },
+      "children": [],
+      "relatedAchievements": ["n8n-vai-da"]
+    },
+    {
+      "id": "devops-monitoring",
+      "title": "MONITORAMENTO",
+      "description": "Monitoramento de aplicações, infraestrutura e performance usando ferramentas de observabilidade e alertas.",
+      "category": "devops",
+      "icon": "bi-activity",
+      "domain": 2,
+      "unlock_threshold": 3,
+      "parent": "devops-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 3,
+        "problem_solving": 5,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": ["infrahero"]
+    },
+    {
+      "id": "infra-root",
+      "title": "INFRAESTRUTURA",
+      "description": "Gestão e administração de infraestrutura de TI, incluindo servidores, redes, cloud computing e sistemas operacionais para suporte a aplicações e serviços.",
+      "category": "infra",
+      "icon": "bi-server",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 5,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": ["infra-cloud", "infra-containers", "infra-networking"],
+      "relatedAchievements": ["cloud-cert", "kubernerd"]
+    },
+    {
+      "id": "infra-cloud",
+      "title": "CLOUD COMPUTING",
+      "description": "Administração e deploy em plataformas cloud como AWS, Azure, Google Cloud Platform.",
+      "category": "infra",
+      "icon": "bi-cloud-fill",
+      "domain": 3,
+      "unlock_threshold": 2,
+      "parent": "infra-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 5
+      },
+      "children": [],
+      "relatedAchievements": ["cloud-cert", "terrafirma"]
+    },
+    {
+      "id": "infra-containers",
+      "title": "CONTAINERS",
+      "description": "Docker, Kubernetes e orquestração de containers para deployment e escalabilidade.",
+      "category": "infra",
+      "icon": "bi-box-seam",
+      "domain": 3,
+      "unlock_threshold": 2,
+      "parent": "infra-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 5
+      },
+      "children": [],
+      "relatedAchievements": ["pacotao", "kubernerd", "dockerloki"]
+    },
+    {
+      "id": "infra-networking",
+      "title": "REDES & SEGURANÇA",
+      "description": "Configuração de redes, segurança, SSH, VPN e protocolos de comunicação.",
+      "category": "infra",
+      "icon": "bi-shield-lock-fill",
+      "domain": 2,
+      "unlock_threshold": 3,
+      "parent": "infra-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 3,
+        "problem_solving": 4,
+        "knowledge_transfer": 2,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": ["ssh-ou-nao"]
+    },
+    {
+      "id": "idiomas-root",
+      "title": "IDIOMAS",
+      "description": "Competências em idiomas estrangeiros essenciais para comunicação global, documentação técnica e colaboração internacional no ambiente de tecnologia.",
+      "category": "idiomas",
+      "icon": "bi-translate",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 4,
+        "technical": 2,
+        "problem_solving": 3,
+        "knowledge_transfer": 5,
+        "trends": 4
+      },
+      "children": ["idiomas-ingles", "idiomas-espanhol"],
+      "relatedAchievements": ["lost-in-translation", "sorry-my-bad"]
+    },
+    {
+      "id": "idiomas-ingles",
+      "title": "INGLÊS TÉCNICO",
+      "description": "Proficiência em inglês para leitura de documentação, comunicação em equipes internacionais e consumo de conteúdo técnico.",
+      "category": "idiomas",
+      "icon": "bi-flag",
+      "domain": 4,
+      "unlock_threshold": 1,
+      "parent": "idiomas-root",
+      "scores": {
+        "theoretical": 4,
+        "technical": 2,
+        "problem_solving": 3,
+        "knowledge_transfer": 5,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": ["lost-in-translation", "404-dictionary", "ctrl-c-internacional", "sorry-my-bad", "br-huehue"]
+    },
+    {
+      "id": "idiomas-espanhol",
+      "title": "ESPANHOL",
+      "description": "Conhecimentos básicos de espanhol para comunicação em projetos regionais da América Latina.",
+      "category": "idiomas",
+      "icon": "bi-flag-fill",
+      "domain": 2,
+      "unlock_threshold": 2,
+      "parent": "idiomas-root",
+      "scores": {
+        "theoretical": 3,
+        "technical": 1,
+        "problem_solving": 2,
+        "knowledge_transfer": 4,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
     }
   ]
 }

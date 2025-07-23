@@ -12,235 +12,532 @@
         gap: var(--spacing-md);
         padding-bottom: var(--spacing-md);
     }
-    
+
     .summary-card {
         min-width: 280px;
         scroll-snap-align: center;
     }
-    
+
     .category-filters {
         overflow-x: auto;
         justify-content: flex-start;
         padding-bottom: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
     }
-    
+
+    .category-filters::-webkit-scrollbar {
+        /* WebKit */
+        display: none;
+    }
+
     .filter-btn {
         white-space: nowrap;
         min-width: max-content;
+        flex-shrink: 0;
+        font-size: 0.85rem;
+        padding: var(--spacing-sm) var(--spacing-md);
     }
-    
-    /* ===== CONQUISTAS MOBILE - LAYOUT SIMPLIFICADO ===== */
+
+    /* Substituir texto por ícones nos filtros mobile */
+    .filter-btn[data-category="all"] {
+        font-size: 0;
+    }
+
+    .filter-btn[data-category="all"]:before {
+        content: "☰";
+        font-size: 1rem;
+    }
+
+    .filter-btn[data-category="qa"] .filter-text,
+    .filter-btn[data-category="dev"] .filter-text,
+    .filter-btn[data-category="ux"] .filter-text,
+    .filter-btn[data-category="data"] .filter-text,
+    .filter-btn[data-category="devops"] .filter-text,
+    .filter-btn[data-category="infra"] .filter-text,
+    .filter-btn[data-category="idiomas"] .filter-text {
+        display: none;
+    }
+
+    /* Controles de conquistas no mobile */
+    .achievements-controls {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: stretch;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .controls-right {
+        flex-direction: row;
+        gap: var(--spacing-sm);
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .status-filters {
+        display: flex;
+        gap: var(--spacing-xs);
+        overflow-x: auto;
+        padding: var(--spacing-xs) 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        order: 1;
+    }
+
+    .status-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .status-filter-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-size: 0.75rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        min-width: max-content;
+        border-radius: 16px;
+        background: var(--color-dark-secondary);
+        border: 1px solid var(--color-dark-tertiary);
+        color: var(--color-text-secondary);
+        transition: all 0.3s ease;
+    }
+
+    .status-filter-btn.active {
+        background: var(--color-primary);
+        color: white;
+        border-color: var(--color-primary);
+    }
+
+    /* Ocultar texto dos botões de status no mobile, deixar apenas ícones */
+    .status-filter-btn[data-status="unlocked"],
+    .status-filter-btn[data-status="locked"] {
+        font-size: 0;
+        /* Ocultar texto */
+    }
+
+    .status-filter-btn[data-status="unlocked"] i,
+    .status-filter-btn[data-status="locked"] i {
+        font-size: 1rem;
+        /* Manter ícones visíveis */
+    }
+
+    .sort-toggle,
+    .view-toggle {
+        flex-shrink: 0;
+    }
+
+    .sort-toggle {
+        order: 2;
+    }
+
+    .view-toggle {
+        order: 3;
+        display: none !important;
+        /* Esconder no mobile já que sempre usamos lista */
+    }
+
+    .sort-btn {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs);
+        min-width: auto;
+    }
+
+    .sort-btn .sort-text {
+        display: none;
+    }
+
+    .view-btn {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs);
+        min-width: auto;
+        border-radius: 4px;
+    }
+
+    /* ===== CONQUISTAS MOBILE - LAYOUT RESPONSIVO ===== */
+
+    /* Modo Lista - col-12 (padrão mobile) */
+    .achievements-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: var(--spacing-md);
+        width: 100%;
+    }
+
     .achievement-card {
-        grid-template-columns: auto 1fr auto;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
         text-align: left;
         gap: var(--spacing-md);
         position: relative;
         padding: var(--spacing-md);
         min-height: 80px;
-        align-items: center;
-    }
-    
-    .achievement-card .content {
-        text-align: left;
-        flex-grow: 1;
-    }
-    
-    .achievement-card .content h4 {
-        text-align: left;
-        margin-bottom: 0;
-        font-size: 1rem;
-        line-height: 1.3;
-    }
-    
-    /* Esconder subcategorias no mobile */
-    .achievement-card .subcategories {
-        display: none;
-    }
-    
-    .achievement-card img {
-        width: 50px;
-        height: 50px;
-        flex-shrink: 0;
-    }
-    
-    /* Status badge pequeno no canto superior esquerdo */
-    .status-badge-mobile {
-        position: absolute;
-        top: var(--spacing-xs);
-        left: var(--spacing-xs);
-        background: rgba(0,0,0,0.8);
+        width: 100%;
+        background: var(--color-dark-secondary);
+        border: 1px solid var(--color-dark-tertiary);
         border-radius: 12px;
-        padding: 2px 6px;
-        font-size: 0.6rem;
-        font-weight: 600;
-        z-index: 2;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    /* Modo Grid - col-6 */
+    .achievements-list.grid-view {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        /* col-6 = 2 colunas */
+        gap: var(--spacing-md);
+        width: 100%;
+    }
+
+    .achievements-list.grid-view .achievement-card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+        min-height: 140px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    /* === LAYOUT DE LISTA (col-12) === */
+    /* Layout mobile grid-style mas em coluna única */
+    .achievement-card .list-image-container,
+    .achievement-card .grid-image-container {
+        width: 60px !important;
+        height: 60px !important;
+        flex-shrink: 0;
+        position: relative;
         display: flex;
         align-items: center;
-        gap: 2px;
-        border: 1px solid;
+        justify-content: center;
     }
-    
-    .status-badge-mobile.unlocked {
-        color: var(--color-unlocked);
+
+    .achievement-card .list-image-container img,
+    .achievement-card .grid-image-container img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid transparent;
+    }
+
+    .achievement-card.unlocked .list-image-container img,
+    .achievement-card.unlocked .grid-image-container img {
         border-color: var(--color-unlocked);
+        box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
     }
-    
-    .status-badge-mobile.locked {
-        color: var(--color-locked);
+
+    .achievement-card.locked .list-image-container img,
+    .achievement-card.locked .grid-image-container img {
         border-color: var(--color-locked);
+        filter: grayscale(70%) brightness(0.6);
     }
-    
-    .status-badge-mobile i {
-        font-size: 0.7rem;
+
+    /* === LAYOUT GRID (col-6) === */
+    .achievements-list.grid-view .achievement-card .list-image-container,
+    .achievements-list.grid-view .achievement-card .grid-image-container {
+        width: 80px !important;
+        height: 80px !important;
+        margin-bottom: var(--spacing-xs);
     }
-    
-    /* Esconder status badge original no mobile */
-    .status-badge {
-        display: none;
+
+    .achievements-list.grid-view .achievement-card .list-image-container img,
+    .achievements-list.grid-view .achievement-card .grid-image-container img {
+        border-width: 2px;
     }
-    
-    /* Esconder botão de evidência original */
-    .evidence-btn {
-        display: none;
+
+    /* === CONTEÚDO MODO LISTA === */
+    .achievement-card .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        text-align: left;
+        min-width: 0;
+        overflow: hidden;
     }
-    
-    /* Botão "Ver" simplificado */
-    .view-btn-mobile {
-        background: var(--color-primary);
-        color: white;
-        border: none;
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.8rem;
+
+    .achievement-card .content h4 {
+        text-align: left;
+        margin: 0;
+        font-size: 1.1rem;
+        line-height: 1.3;
         font-weight: 600;
-        transition: all 0.3s ease;
-        flex-shrink: 0;
+        color: var(--color-text-primary);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+        word-break: break-word;
     }
-    
-    .view-btn-mobile:hover {
-        background: var(--color-secondary);
+
+    .achievement-card.locked .content h4 {
+        color: var(--color-text-secondary);
     }
-    
-    /* ===== DRAWER/MODAL MOBILE ===== */
-    .skill-drawer {
+
+    .achievement-card .content .description {
+        color: var(--color-text-secondary);
+        font-size: 0.85rem;
+        line-height: 1.3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .achievement-card .content .unlocked-date {
+        color: var(--color-unlocked);
+        font-size: 0.75rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* === CONTEÚDO MODO GRID === */
+    .achievements-list.grid-view .achievement-card .content {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+        display: flex !important;
+        /* Garantir que o conteúdo seja exibido no grid */
+    }
+
+    .achievements-list.grid-view .achievement-card .content h4 {
+        text-align: center;
+        font-size: 0.9rem;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        display: -webkit-box !important;
+        /* Garantir que o título seja exibido no grid */
+        color: var(--color-text-primary) !important;
+    }
+
+    .achievements-list.grid-view .achievement-card.locked .content h4 {
+        color: var(--color-text-secondary) !important;
+    }
+
+    /* === STATUS BADGE MODO LISTA === */
+    .achievement-card .status-badge {
+        display: none !important;
+        /* Ocultar completamente no mobile */
+    }
+
+    .achievement-card .status-badge.unlocked {
+        display: none !important;
+    }
+
+    .achievement-card .status-badge.locked {
+        display: none !important;
+    }
+
+    /* === STATUS BADGE MODO GRID === */
+    .achievements-list.grid-view .achievement-card .status-badge {
+        display: none !important;
+        /* Ocultar também no grid mobile */
+    }
+
+    /* Lock overlay para cards bloqueados */
+    .achievement-card .lock-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-locked);
+        font-size: 0.8rem;
+        z-index: 2;
+    }
+
+    .achievement-card.unlocked .lock-overlay {
         display: none;
     }
-    
-    /* ===== DRAWER DE DETALHES DA CONQUISTA MOBILE ===== */
+
+    /* Grid overlay para lock */
+    .achievements-list.grid-view .achievement-card .lock-overlay {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    /* === ELEMENTOS DESNECESSÁRIOS NO MOBILE === */
+    .achievement-card .subcategories,
+    .achievement-card .evidence-btn,
+    .achievement-card .grid-title {
+        display: none !important;
+    }
+
+    /* Ocultar descrição e data apenas no modo lista */
+    .achievement-card:not(.grid-mode) .description,
+    .achievement-card:not(.grid-mode) .unlocked-date {
+        display: none !important;
+    }
+
+    /* No grid, ocultar apenas descrição e data, mas manter título */
+    .achievements-list.grid-view .achievement-card .description,
+    .achievements-list.grid-view .achievement-card .unlocked-date {
+        display: none !important;
+    }
+
+    /* === REEXIBIR TOGGLE DE VISUALIZAÇÃO === */
+    .view-toggle {
+        order: 3;
+        display: flex !important;
+        /* Reabilitar para permitir troca entre lista e grid */
+    }
+
+    /* === RESPONSIVIDADES MOVIDAS DO STYLES.CSS === */
+
+    /* Responsividade para drawer de conquistas */
     .achievement-drawer {
+        width: 100%;
+        right: -100%;
+    }
+
+    .achievement-drawer-image img {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Adicionar cursor pointer para cliques em mobile */
+    .achievements-list.grid-view .achievement-card {
+        cursor: pointer;
+    }
+
+    .achievements-list .achievement-card {
+        cursor: pointer;
+    }
+
+    /* Responsividade dos controles */
+    .achievements-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .controls-right {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .status-filters {
+        justify-content: center;
+    }
+
+    .sort-toggle,
+    .view-toggle {
+        align-self: center;
+    }
+
+    .sort-btn .sort-text {
+        display: none;
+    }
+
+    /* Sobrescrever regras específicas do grid no mobile */
+    .achievements-list.grid-view .achievement-card .list-image-container,
+    .achievements-list.grid-view .achievement-card .grid-image-container {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    /* ===== DRAWER/MODAL RESPONSIVO NO MOBILE ===== */
+    .skill-drawer {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    .skill-modal {
         position: fixed;
-        bottom: -100%;
+        top: 0;
         left: 0;
         right: 0;
-        height: 70vh;
-        background: var(--color-dark-tertiary);
-        border-top: 2px solid var(--color-primary);
-        border-radius: 20px 20px 0 0;
-        z-index: 1000;
-        transition: bottom 0.3s ease;
-        overflow-y: auto;
-        box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
-    }
-    
-    .achievement-drawer.open {
         bottom: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--color-dark-tertiary);
+        border: none;
+        border-radius: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+        transform: translateY(100%);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
     }
-    
-    .achievement-drawer-handle {
-        width: 40px;
-        height: 4px;
-        background: var(--color-text-muted);
-        border-radius: 2px;
-        margin: var(--spacing-sm) auto;
-        cursor: pointer;
+
+    .skill-modal.open {
+        transform: translateY(0);
+        position: fixed;
+        overflow-y: auto;
     }
-    
-    .achievement-drawer-header {
-        padding: 0 var(--spacing-lg) var(--spacing-md) var(--spacing-lg);
+
+    .skill-modal .modal-header {
+        padding: var(--spacing-lg);
         border-bottom: 1px solid var(--color-dark-secondary);
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: sticky;
+        top: 0;
+        background: var(--color-dark-tertiary);
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
-    
-    .achievement-drawer-header h3 {
-        font-size: 1.2rem;
-        color: var(--color-text-primary);
-        margin: 0;
-    }
-    
-    .achievement-drawer-close {
+
+    .skill-modal .close-btn {
         background: none;
         border: none;
         color: var(--color-text-secondary);
         font-size: 1.5rem;
         cursor: pointer;
-        padding: var(--spacing-xs);
+        padding: var(--spacing-sm);
         transition: color 0.3s ease;
-    }
-    
-    .achievement-drawer-close:hover {
-        color: var(--color-text-primary);
-    }
-    
-    .achievement-drawer-content {
-        padding: var(--spacing-lg);
-    }
-    
-    .achievement-drawer-image {
-        text-align: center;
-        margin-bottom: var(--spacing-lg);
-    }
-    
-    .achievement-drawer-image img {
-        width: 100px;
-        height: 100px;
         border-radius: 50%;
-        border: 3px solid var(--color-primary);
-    }
-    
-    .achievement-drawer-status {
-        text-align: center;
-        margin-bottom: var(--spacing-lg);
-        font-weight: 600;
-        font-size: 1rem;
-    }
-    
-    .achievement-drawer-status.unlocked {
-        color: var(--color-unlocked);
-    }
-    
-    .achievement-drawer-status.locked {
-        color: var(--color-locked);
-    }
-    
-    .achievement-drawer-description {
-        color: var(--color-text-secondary);
-        line-height: 1.6;
-        margin-bottom: var(--spacing-lg);
-    }
-    
-    .achievement-drawer-evidence {
-        text-align: center;
-    }
-    
-    .achievement-drawer-evidence .evidence-btn {
-        display: inline-flex;
-        background: var(--color-primary);
-        color: white;
-        border: none;
-        padding: var(--spacing-sm) var(--spacing-lg);
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
+        width: 40px;
+        height: 40px;
+        display: flex;
         align-items: center;
-        gap: var(--spacing-xs);
-        transition: all 0.3s ease;
+        justify-content: center;
+        touch-action: manipulation;
     }
-    
-    .achievement-drawer-evidence .evidence-btn:hover {
-        background: var(--color-secondary);
-        transform: translateY(-2px);
+
+    .skill-modal .close-btn:hover,
+    .skill-modal .close-btn:active {
+        color: var(--color-text-primary);
+        background: var(--color-dark-secondary);
+    }
+
+    .skill-modal .modal-body {
+        padding: var(--spacing-lg);
+        min-height: calc(100vh - 80px);
+        overscroll-behavior: contain;
+    }
+
+    /* Prevenir scroll no body quando modal está aberto */
+    body.modal-open {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
     }
 }
