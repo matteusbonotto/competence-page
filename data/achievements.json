@@ -156,5 +156,16 @@
     "evidence": null,
     "relatedSkills": [],
     "image": "assets/achievements/unnamed10-1753304086412-49430240.png"
+  },
+  {
+    "id": "ach-1753304754369",
+    "title": "Level UP 4x",
+    "description": "Conquiste a certificação CTFL (Certified Tester Foundation Level 4.0)",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/twitter_thumb_201604_Brightest_CTFL-1753304754385-394350895.png"
   }
 ]
