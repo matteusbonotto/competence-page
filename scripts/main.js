@@ -542,12 +542,11 @@ class SkillMappingApp {
         if (isGridMode) {
             // Modo grid: formato circular
             card.innerHTML = `
-                <div class="grid-image-container">
-                    <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}" 
-                         onerror="this.src='data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;%23333&quot;/></svg>'">
-                    ${!isUnlocked ? '<div class="lock-overlay"><i class="bi bi-lock"></i></div>' : ''}
+                <div class="grid-image-container" style="position:relative;">
+                    <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}"
+                        onerror="this.src='data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;%23333&quot;/></svg>'">
+                    ${!isUnlocked ? '<span class="image-lock-overlay"><i class="bi bi-lock"></i></span>' : ''}
                 </div>
-                
                 <div class="content">
                     <h4>${achievement.title}</h4>
                 </div>
@@ -555,10 +554,10 @@ class SkillMappingApp {
         } else {
             // Modo lista: layout original com containers corretos
             const imageContainer = `
-                <div class="list-image-container">
-                    <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}" 
-                         onerror="this.src='data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;%23333&quot;/></svg>'">
-                    ${!isUnlocked ? '<div class="lock-overlay"><i class="bi bi-lock"></i></div>' : ''}
+                <div class="list-image-container" style="position:relative;">
+                    <img src="${achievement.image || 'assets/default-achievement.png'}" alt="${achievement.title}"
+                        onerror="this.src='data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;%23333&quot;/></svg>'">
+                    ${!isUnlocked ? '<span class="image-lock-overlay"><i class="bi bi-lock"></i></span>' : ''}
                 </div>
             `;
 
@@ -576,7 +575,6 @@ class SkillMappingApp {
 
             card.innerHTML = `
                 ${imageContainer}
-                
                 <div class="content">
                     <h4>${achievement.title}</h4>
                     <div class="description">
@@ -589,7 +587,6 @@ class SkillMappingApp {
                         </button>` : ''
                 }
                 </div>
-                
                 <div class="status-badge ${isUnlocked ? 'unlocked' : 'locked'}">
                     <i class="bi bi-${isUnlocked ? 'unlock' : 'lock'}"></i>
                 </div>
