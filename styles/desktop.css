@@ -99,4 +99,13 @@
     word-wrap: break-word !important;
     word-break: break-word !important;
   }
+
+  /* Centralizar título no modo grid */
+  .grid-view .achievement-card .content h4 {
+    text-align: center !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto !important;
+  }
 }
