@@ -72,7 +72,7 @@
   {
     "id": "ach-1753302104355",
     "title": "Crise de identidade",
-    "description": "Crie 10 logotipos diferentes",
+    "description": "Crie 10 identidades visuais diferentes",
     "status": "unlocked",
     "difficulty": 3,
     "category": "DESIGN",
@@ -167,5 +167,118 @@
     "evidence": null,
     "relatedSkills": [],
     "image": "assets/achievements/twitter_thumb_201604_Brightest_CTFL-1753304754385-394350895.png"
+  },
+  {
+    "id": "ach-1753313333717",
+    "title": "O Mestre do Desprezo",
+    "description": "Coloque arquivos em um .gitignore para não subir para o repositório.",
+    "status": "unlocked",
+    "difficulty": 5,
+    "category": "DEVOPS",
+    "evidence": null,
+    "relatedSkills": [
+      "dev-backend"
+    ],
+    "image": "assets/achievements/Ativo1-1753313333722-654287151.png",
+    "unlockedDate": "2025-07-23"
+  },
+  {
+    "id": "ach-1753314940596",
+    "title": "Moonwalker",
+    "description": "Realize um git checkout em uma branch anterior a sua, ou use o git checkout <commit-hash>",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "DEVOPS",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed1-1753314940602-776563490.png"
+  },
+  {
+    "id": "ach-1753323727373",
+    "title": "Duro de testar",
+    "description": "Crie uma cobertura de testes sem documentação e sem história de usuário.",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed2-1753323727377-801628074.png"
+  },
+  {
+    "id": "ach-1753324409984",
+    "title": "HOLY SHEETS (holy sh*t)",
+    "description": "Com uma planilha de excel feita, refaça ela adaptando as formulas para o google sheets.",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "DADOS",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/Capturadetela2025-07-23233255-1753324409987-356056251.png"
+  },
+  {
+    "id": "ach-1753325600593",
+    "title": "A1",
+    "description": "Conquiste o certificado de INGLÊS nivel A1",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "https://sris.edu.kg/wp-content/uploads/2021/10/Language-proficiency-framework-cefr-A1-badge.png"
+  },
+  {
+    "id": "ach-1753325626339",
+    "title": "A2",
+    "description": "Conquiste o certificado de INGLÊS nivel A2",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "https://sris.edu.kg/wp-content/uploads/2021/10/Language-proficiency-framework-cefr-A2-badge.png"
+  },
+  {
+    "id": "ach-1753325657892",
+    "title": "B1",
+    "description": "Conquiste o certificado de INGLÊS nivel B1",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "https://sris.edu.kg/wp-content/uploads/2021/10/Language-proficiency-framework-cefr-B1-badge.png"
+  },
+  {
+    "id": "ach-1753325691535",
+    "title": "B2",
+    "description": "Conquiste o certificado de INGLÊS nivel B2",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "https://sris.edu.kg/wp-content/uploads/2021/10/Language-proficiency-framework-cefr-B2-badge.png"
+  },
+  {
+    "id": "ach-1753325720011",
+    "title": "C1",
+    "description": "Conquiste o certificado de INGLÊS nivel C1",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "https://sris.edu.kg/wp-content/uploads/2021/10/Language-proficiency-framework-cefr-C1-badge.png"
+  },
+  {
+    "id": "ach-1753325770805",
+    "title": "C2",
+    "description": "Conquiste o certificado de INGLÊS nivel C2",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "INGLÊS",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "https://sris.edu.kg/wp-content/uploads/2021/10/Language-proficiency-framework-cefr-C2-badge.png"
   }
 ]
