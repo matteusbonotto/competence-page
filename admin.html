@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="styles/desktop.css" />
     <link rel="stylesheet" href="styles/mobile.css" />
     <link rel="stylesheet" href="styles/tree.css" />
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <style>
       body {
         background: #f0f2f5;
@@ -193,32 +198,95 @@
         <button
           class="admin-menu-btn active"
           id="menu-skills"
-          onclick="showCrudSection('skills')"
-        >
+          onclick="showCrudSection('skills')">
           Habilidades
         </button>
         <button
           class="admin-menu-btn"
           id="menu-achievements"
-          onclick="showCrudSection('achievements')"
-        >
+          onclick="showCrudSection('achievements')">
           Conquistas
         </button>
       </nav>
       <section class="crud-section active" id="skills-section">
+
         <h2>Habilidades (skills.json)</h2>
         <button
           class="save-btn"
           style="margin-bottom: 1rem"
-          onclick="showSkillForm()"
-        >
-          Adicionar Habilidade
+          id="btnAddSkillModal"
+          type="button">
+          <i class="bi bi-plus-circle" style="font-size:1.2em;"></i> Adicionar
+          Habilidade
         </button>
+
+        <!-- Modal Bootstrap 5 -->
+        <div class="modal fade" id="skillModal" tabindex="-1"
+          aria-labelledby="skillModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="skillModalLabel">Nova
+                  Habilidade</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label="Fechar"></button>
+              </div>
+              <form id="skill-modal-form">
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="modal-skill-name"
+                      class="form-label">Nome</label>
+                    <input type="text" class="form-control"
+                      id="modal-skill-name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="modal-skill-category"
+                      class="form-label">Categoria</label>
+                    <select class="form-select" id="modal-skill-category">
+                      <option value="qa">QA</option>
+                      <option value="dev">DEV</option>
+                      <option value="ux">UX</option>
+                      <option value="data">DATA</option>
+                      <option value="devops">DEVOPS</option>
+                      <option value="infra">INFRA</option>
+                      <option value="idiomas">IDIOMAS</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="modal-skill-domain"
+                      class="form-label">Domínio</label>
+                    <input type="range" class="form-range"
+                      id="modal-skill-domain" min="1" max="5" value="3"
+                      step="1">
+                    <span id="modal-domain-value">3</span>
+                  </div>
+                  <div class="mb-3">
+                    <label for="modal-skill-icon" class="form-label">Ícone
+                      (Bootstrap Icon)</label>
+                    <input type="text" class="form-control"
+                      id="modal-skill-icon" placeholder="ex: bi-code-slash">
+                  </div>
+                  <div class="mb-3">
+                    <label for="modal-skill-desc"
+                      class="form-label">Descrição</label>
+                    <textarea class="form-control" id="modal-skill-desc"
+                      rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-success">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
         <form
           class="crud-form"
           id="skill-form"
-          style="display: none; margin-bottom: 1.5rem"
-        >
+          style="display: none; margin-bottom: 1.5rem">
           <div class="crud-form-row">
             <div>
               <label>Nome</label>
@@ -245,16 +313,14 @@
                 max="5"
                 value="3"
                 step="1"
-                oninput="document.getElementById('domain-value').innerText=this.value"
-              />
+                oninput="document.getElementById('domain-value').innerText=this.value" />
             </div>
             <div>
               <label>Ícone (Bootstrap Icon)</label>
               <input
                 type="text"
                 id="skill-icon"
-                placeholder="ex: bi-code-slash"
-              />
+                placeholder="ex: bi-code-slash" />
             </div>
           </div>
           <div class="crud-form-row">
@@ -264,42 +330,32 @@
                 type="number"
                 id="skill-unlock-threshold"
                 min="0"
-                value="0"
-              />
+                value="0" />
             </div>
             <div>
               <label>Parent (opcional)</label>
               <input
                 type="text"
                 id="skill-parent"
-                placeholder="id da skill pai"
-              />
+                placeholder="id da skill pai" />
             </div>
             <div>
-              <label
-                >Children<br /><span
-                  style="font-weight: normal; font-size: 0.9em"
-                  >(ids separados por vírgula)</span
-                ></label
-              >
+              <label>Children<br /><span
+                  style="font-weight: normal; font-size: 0.9em">(ids separados
+                  por vírgula)</span></label>
               <input
                 type="text"
                 id="skill-children"
-                placeholder="ex: qa-testing,qa-automation"
-              />
+                placeholder="ex: qa-testing,qa-automation" />
             </div>
             <div>
-              <label
-                >Related Achievements<br /><span
-                  style="font-weight: normal; font-size: 0.9em"
-                  >(ids separados por vírgula)</span
-                ></label
-              >
+              <label>Related Achievements<br /><span
+                  style="font-weight: normal; font-size: 0.9em">(ids separados
+                  por vírgula)</span></label>
               <input
                 type="text"
                 id="skill-relatedAchievements"
-                placeholder="ex: istqb-cert,agile-cert"
-              />
+                placeholder="ex: istqb-cert,agile-cert" />
             </div>
           </div>
           <div class="crud-form-row">
@@ -310,8 +366,7 @@
                 id="score-theoretical"
                 min="1"
                 max="5"
-                value="3"
-              />
+                value="3" />
             </div>
             <div>
               <label>Técnico</label>
@@ -320,8 +375,7 @@
                 id="score-technical"
                 min="1"
                 max="5"
-                value="3"
-              />
+                value="3" />
             </div>
             <div>
               <label>Resolução de Problemas</label>
@@ -330,8 +384,7 @@
                 id="score-problem-solving"
                 min="1"
                 max="5"
-                value="3"
-              />
+                value="3" />
             </div>
             <div>
               <label>Transferência de Conhecimento</label>
@@ -340,8 +393,7 @@
                 id="score-knowledge-transfer"
                 min="1"
                 max="5"
-                value="3"
-              />
+                value="3" />
             </div>
             <div>
               <label>Tendências</label>
@@ -350,8 +402,7 @@
                 id="score-trends"
                 min="1"
                 max="5"
-                value="3"
-              />
+                value="3" />
             </div>
           </div>
           <div>
@@ -359,8 +410,7 @@
             <textarea
               id="skill-desc"
               rows="2"
-              style="width: 100%; resize: vertical"
-            ></textarea>
+              style="width: 100%; resize: vertical"></textarea>
           </div>
           <input type="hidden" id="skill-id" />
           <div>
@@ -389,8 +439,7 @@
         <button
           class="save-btn"
           style="margin-bottom: 1rem"
-          onclick="showAchievementForm()"
-        >
+          onclick="showAchievementForm()">
           Adicionar Conquista
         </button>
         <form class="crud-form" id="achievement-form" style="display: none">
@@ -417,8 +466,7 @@
                 id="achievement-difficulty"
                 min="1"
                 max="5"
-                value="3"
-              />
+                value="3" />
             </div>
           </div>
           <div class="crud-form-row">
@@ -436,17 +484,13 @@
               </select>
             </div>
             <div>
-              <label
-                >Skills Relacionadas<br /><span
-                  style="font-weight: normal; font-size: 0.9em"
-                  >(ids separados por vírgula)</span
-                ></label
-              >
+              <label>Skills Relacionadas<br /><span
+                  style="font-weight: normal; font-size: 0.9em">(ids separados
+                  por vírgula)</span></label>
               <input
                 type="text"
                 id="achievement-relatedSkills"
-                placeholder="ex: qa-root,qa-testing"
-              />
+                placeholder="ex: qa-root,qa-testing" />
             </div>
             <div>
               <label>Data de Desbloqueio</label>
@@ -457,29 +501,26 @@
               <input
                 type="text"
                 id="achievement-evidence"
-                placeholder="https://..."
-              />
+                placeholder="https://..." />
             </div>
             <div>
               <label>Imagem</label>
               <input type="file" id="achievement-img" accept="image/*" />
               <img
                 id="achievement-img-preview"
-                src=""
-                alt=""
+                src
+                alt
                 style="
                   display: none;
                   max-width: 60px;
                   margin-top: 0.5rem;
                   border-radius: 6px;
-                "
-              />
+                " />
               <input
                 type="text"
                 id="achievement-img-url"
                 placeholder="ou cole a URL da imagem"
-                style="margin-top: 0.3rem"
-              />
+                style="margin-top: 0.3rem" />
             </div>
           </div>
           <input type="hidden" id="achievement-id" />
@@ -488,8 +529,7 @@
             <button
               type="button"
               class="cancel-btn"
-              onclick="hideAchievementForm()"
-            >
+              onclick="hideAchievementForm()">
               Cancelar
             </button>
           </div>
@@ -511,6 +551,46 @@
     </div>
     <script src="scripts/admin.js"></script>
     <script>
+      // Abrir modal Bootstrap 5 ao clicar no botão
+      document.addEventListener('DOMContentLoaded', function() {
+        var btnAddSkill = document.getElementById('btnAddSkillModal');
+        var skillModal = new bootstrap.Modal(document.getElementById('skillModal'));
+        if (btnAddSkill) {
+          btnAddSkill.addEventListener('click', function() {
+            skillModal.show();
+          });
+        }
+        // Atualizar valor do domínio
+        var domainRange = document.getElementById('modal-skill-domain');
+        var domainValue = document.getElementById('modal-domain-value');
+        if (domainRange && domainValue) {
+          domainRange.addEventListener('input', function() {
+            domainValue.textContent = domainRange.value;
+          });
+        }
+        // Submit do modal
+        var skillModalForm = document.getElementById('skill-modal-form');
+        if (skillModalForm) {
+          skillModalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Coletar dados
+            var skill = {
+              title: document.getElementById('modal-skill-name').value.trim(),
+              category: document.getElementById('modal-skill-category').value,
+              domain: parseInt(document.getElementById('modal-skill-domain').value),
+              icon: document.getElementById('modal-skill-icon').value.trim(),
+              description: document.getElementById('modal-skill-desc').value.trim()
+            };
+            // Aqui você pode enviar skill para backend ou atualizar tabela
+            alert('Habilidade salva!\n' + JSON.stringify(skill, null, 2));
+            skillModal.hide();
+            skillModalForm.reset();
+            domainValue.textContent = '3';
+          });
+        }
+      });
+    </script>
+    <script>
       function showCrudSection(section) {
         const skillsSection = document.getElementById("skills-section");
         const achievementsSection = document.getElementById(
@@ -531,5 +611,9 @@
         }
       }
     </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"></script>
   </body>
 </html>
