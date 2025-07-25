@@ -5,17 +5,15 @@
 const API_BASE = 'http://localhost:3001/api';
 
 // Funções utilitárias para API
-async function fetchJsonApi(endpoint) {
-  const res = await fetch(`${API_BASE}/${endpoint}`);
+// Funções utilitárias para arquivos locais
+async function fetchJsonLocal(path) {
+  const res = await fetch(path);
   return res.json();
 }
-async function postJsonApi(endpoint, data) {
-  const res = await fetch(`${API_BASE}/${endpoint}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  return res.json();
+// Simulação de persistência local (não salva no arquivo real)
+async function postJsonLocal(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+  return data;
 }
 
 // CRUD de Habilidades baseado em skills.json
@@ -23,30 +21,52 @@ window.skillsData = { categories: [], skills: [] };
 window.editingSkillIdx = null;
 
 
+
+// Corrigir endpoint para 'skills' (plural)
 async function loadSkills() {
-  const data = await fetchJsonApi('skills');
+  // Tenta carregar do localStorage primeiro (simulação de persistência)
+  let data = null;
+  try {
+    const local = localStorage.getItem('skillsData');
+    if (local) {
+      data = JSON.parse(local);
+    } else {
+      data = await fetchJsonLocal('data/skills.json');
+    }
+  } catch (e) {
+    data = await fetchJsonLocal('data/skills.json');
+  }
   window.skillsData = data;
   window.renderSkills();
 }
 
 window.renderSkills = function renderSkills() {
-  const tbody = document.querySelector('#skills-table tbody');
-  tbody.innerHTML = '';
-  window.skillsData.skills.forEach((skill, idx) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${skill.id || idx + 1}</td>
-      <td>${skill.icon ? `<i class='bi ${skill.icon}' style='font-size:1.5rem;'></i>` : ''}</td>
-      <td>${skill.title}</td>
-      <td>${skill.category}</td>
-      <td>${skill.domain}</td>
-      <td class="crud-actions">
-        <button onclick="window.editSkill(${idx})"><i class="bi bi-pencil"></i></button>
-        <button onclick="window.deleteSkill(${idx})"><i class="bi bi-trash"></i></button>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
+    const list = document.getElementById('skills-list');
+    if (!list) return;
+    list.innerHTML = '';
+    if (!window.skillsData.skills || window.skillsData.skills.length === 0) {
+      list.innerHTML = '<div class="alert alert-info">Nenhuma habilidade cadastrada.</div>';
+      return;
+    }
+    window.skillsData.skills.forEach(function(skill) {
+      var card = document.createElement('div');
+      card.className = 'card mb-2 shadow-sm';
+      card.innerHTML = '<div class="card-body d-flex align-items-center justify-content-between flex-wrap">'
+        + '<div class="d-flex align-items-center flex-wrap gap-3">'
+        +   '<i class="bi ' + (skill.icon || 'bi-lightbulb') + ' fs-2 text-primary me-2"></i>'
+        +   '<div>'
+        +     '<h5 class="card-title mb-1">' + (skill.title || '') + '</h5>'
+        +     '<div class="mb-1"><span class="badge bg-secondary">' + (skill.category || '') + '</span></div>'
+        +     '<small class="text-muted">Domínio: ' + (skill.domain || 3) + '</small>'
+        +   '</div>'
+        + '</div>'
+        + '<div class="d-flex align-items-center gap-2 flex-wrap">'
+        +   '<button class="btn btn-outline-primary btn-sm" title="Editar" onclick=\"showSkillModal(window.skillsData.skills.find(function(s){return s.id==\'' + skill.id + '\'}))\"><i class="bi bi-pencil"></i></button>'
+        +   '<button class="btn btn-outline-danger btn-sm" title="Excluir" onclick=\"if(confirm(\'Excluir habilidade?\')){window.deleteSkill && window.deleteSkill(\'' + skill.id + '\');}\"><i class="bi bi-trash"></i></button>'
+        + '</div>'
+        + '</div>';
+      list.appendChild(card);
+    });
 }
 
 window.showSkillForm = function showSkillForm(editIdx = null) {
@@ -149,28 +169,70 @@ window.deleteSkill = async function deleteSkill(idx) {
 window.achievements = [];
 window.editingAchievementId = null;
 
+
+// Corrigir endpoint para 'achievements' (plural)
 async function loadAchievements() {
-  window.achievements = await fetchJsonApi('achievements');
-  renderAchievements();
+  let data = null;
+  try {
+    const local = localStorage.getItem('achievementsData');
+    if (local) {
+      data = JSON.parse(local);
+    } else {
+      data = await fetchJsonLocal('data/achievements.json');
+    }
+  } catch (e) {
+    data = await fetchJsonLocal('data/achievements.json');
+  }
+  window.achievements = data;
+  window.renderAchievements();
 }
+  await postJsonLocal('skillsData', window.skillsData);
 
 window.renderAchievements = function renderAchievements() {
-  const tbody = document.querySelector('#achievements-table tbody');
-  tbody.innerHTML = '';
+  const list = document.getElementById('achievements-list');
+  if (!list) return;
+  list.innerHTML = '';
+  if (!window.achievements || window.achievements.length === 0) {
+    list.innerHTML = '<div class="empty-msg">Nenhuma conquista cadastrada.</div>';
+    return;
+  }
   window.achievements.forEach((ach, idx) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${ach.id || idx + 1}</td>
-      <td>${ach.image ? `<img src="${ach.image}" alt="img" style="width:44px;height:44px;object-fit:cover;border-radius:6px;"/>` : ''}</td>
-      <td>${ach.title}</td>
-      <td>${ach.description}</td>
-      <td>${ach.status === 'unlocked' ? 'Desbloqueada' : 'Bloqueada'}</td>
-      <td class="crud-actions">
-        <button onclick="window.editAchievement(${idx})"><i class="bi bi-pencil"></i></button>
-        <button onclick="window.deleteAchievement(${idx})"><i class="bi bi-trash"></i></button>
-      </td>
+    const card = document.createElement('div');
+    card.className = 'admin-card achievement-card col-12';
+    card.innerHTML = `
+      <div class="card-img">${ach.image ? `<img src="${ach.image}" alt="${ach.title}" />` : ''}</div>
+      <div class="card-content">
+        <div class="card-title-row">
+          <span class="card-title">${ach.title}</span>
+          <span class="card-category badge bg-primary">${(ach.category || '').toUpperCase()}</span>
+          <span class="card-status badge bg-secondary">${ach.status === 'unlocked' ? 'Desbloqueada' : 'Bloqueada'}</span>
+        </div>
+        <div class="card-desc">${ach.description || ''}</div>
+        <div class="card-scores">
+          <span>Dificuldade: <span class="stars">${'⭐'.repeat(ach.difficulty || 1)}</span></span>
+          <span>Data: <b>${ach.unlockedDate || '-'}</b></span>
+          <span>Evidência: ${ach.evidence ? `<a href="${ach.evidence}" target="_blank">Ver</a>` : '-'}</span>
+        </div>
+        <div class="card-meta">
+          <span>Skills Relacionadas: <b>${(ach.relatedSkills || []).join(', ')}</b></span>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-outline-success btn-sm">Ativo</button>
+        <button class="btn btn-outline-primary btn-sm" data-edit-achievement="${idx}">Editar</button>
+        <button class="btn btn-outline-danger btn-sm" onclick="window.deleteAchievement(${idx})">Excluir</button>
+      </div>
     `;
-    tbody.appendChild(tr);
+    // Adiciona evento para o botão Editar
+    setTimeout(() => {
+      const btnEdit = card.querySelector('[data-edit-achievement]');
+      if (btnEdit) {
+        btnEdit.addEventListener('click', function() {
+          window.showAchievementModal(window.achievements[idx]);
+        });
+      }
+    }, 0);
+    list.appendChild(card);
   });
 }
 
@@ -272,6 +334,7 @@ document.getElementById('achievement-form').onsubmit = async function (e) {
     window.achievements.push(ach);
   }
   await postJsonApi('achievements', window.achievements);
+  await postJsonLocal('achievementsData', window.achievements);
   window.renderAchievements();
   window.hideAchievementForm();
 };
@@ -302,9 +365,7 @@ document.getElementById('achievement-img-url').addEventListener('input', functio
   }
 });
 
-window.editAchievement = function editAchievement(idx) {
-  window.showAchievementForm(idx);
-}
+// Não é mais necessário: edição agora usa showAchievementModal diretamente
 window.deleteAchievement = async function deleteAchievement(idx) {
   if (confirm('Excluir esta conquista?')) {
     window.achievements.splice(idx, 1);
