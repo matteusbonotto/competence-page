@@ -292,139 +292,102 @@
           </div>
         </div>
       </div>
-      <aside class="admin-sidebar">
-        <div class="sidebar-title">
-          <i class="bi bi-kanban"></i>
-          <span>Admin</span>
-        </div>
-        <ul class="sidebar-menu">
-          <li><button class="sidebar-btn active" id="sidebar-skills" onclick="showCrudSection('skills')"><i class="bi bi-lightbulb"></i> Habilidades</button></li>
-          <li><button class="sidebar-btn" id="sidebar-achievements" onclick="showCrudSection('achievements')"><i class="bi bi-trophy"></i> Conquistas</button></li>
-        </ul>
-      </aside>
-      <main class="admin-main">
-        <header class="admin-header">
-          <h1>Painel Admin - CRUD</h1>
-        </header>
-        <section class="crud-section active" id="skills-section">
-          <div class="section-header">
-            <h2><i class="bi bi-lightbulb"></i> Habilidades</h2>
-            <button class="save-btn" id="btnAddSkillModal" type="button"><i class="bi bi-plus-circle"></i> Nova Habilidade</button>
-          </div>
-          <div id="skills-list" class="card-list"></div>
-
-        </section>
-        <section class="crud-section" id="achievements-section">
-          <div class="section-header">
-            <h2><i class="bi bi-trophy"></i> Conquistas</h2>
-            <button class="save-btn" type="button"><i class="bi bi-plus-circle"></i> Nova Conquista</button>
-          </div>
-          <div id="achievements-list" class="card-list"></div>
-        </section>
-      </main>
-    </div>
-    </div>
-
-    <!-- Toast de feedback -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
-      <div id="adminToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-          <div class="toast-body" id="adminToastMsg">Salvo com sucesso!</div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Fechar"></button>
-        </div>
+    <aside class="admin-sidebar">
+      <div class="sidebar-title">
+        <i class="bi bi-kanban"></i>
+        <span>Admin</span>
       </div>
-    </div>
-
-
-    <script src="scripts/admin.js"></script>
+      <ul class="sidebar-menu">
+        <li><button class="sidebar-btn active" id="sidebar-skills" onclick="showCrudSection('skills')"><i class="bi bi-lightbulb"></i> Habilidades</button></li>
+        <li><button class="sidebar-btn" id="sidebar-achievements" onclick="showCrudSection('achievements')"><i class="bi bi-trophy"></i> Conquistas</button></li>
+      </ul>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Painel Admin - CRUD</h1>
+      </header>
+      <section class="crud-section active" id="skills-section">
+        <div class="section-header d-flex justify-content-between align-items-center">
+          <h2><i class="bi bi-lightbulb"></i> Habilidades</h2>
+          <button class="btn btn-success" id="btnAddSkillModal" type="button"><i class="bi bi-plus-circle"></i> Nova Habilidade</button>
+        </div>
+        <div id="skills-list" class="card-list"></div>
+      </section>
+      <section class="crud-section" id="achievements-section">
+        <div class="section-header">
+          <h2><i class="bi bi-trophy"></i> Conquistas</h2>
+        </div>
+        <table class="crud-table" id="achievements-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Categoria</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
     <script>
-      // Inicializar carregamento das listas ao abrir a página
+      // Listagem de habilidades em cards horizontais col-12
+      async function renderSkillsList() {
+        const list = document.getElementById('skills-list');
+        list.innerHTML = '<div class="text-center py-4">Carregando...</div>';
+        try {
+          const res = await fetch('data/skills.json');
+          const data = await res.json();
+          if (!data.skills || data.skills.length === 0) {
+            list.innerHTML = '<div class="alert alert-info">Nenhuma habilidade encontrada.</div>';
+            return;
+          }
+          list.innerHTML = '';
+          data.skills.forEach(skill => {
+            const scores = skill.scores || {};
+            const related = (skill.children && skill.children.length) ? skill.children.join(', ') : '-';
+            const card = document.createElement('div');
+            card.className = 'card mb-3 col-12 shadow-sm';
+            card.innerHTML = `
+              <div class="card-body d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3 flex-wrap">
+                  <i class="bi ${(skill.icon || 'bi-lightbulb')} fs-2 text-primary"></i>
+                  <div>
+                    <h5 class="mb-1">${skill.title || ''} <small class="text-muted">#${skill.id || ''}</small></h5>
+                    <div class="mb-1"><span class="badge bg-secondary">${skill.category || ''}</span> <span class="badge bg-info">${skill.domain || 0}</span> <span class="badge bg-light text-dark">${skill.parent ? 'Filho' : 'Raiz'}</span></div>
+                    <div class="mb-1">${skill.description || ''}</div>
+                    <div class="mb-1">
+                      <span class="badge bg-warning text-dark">Teórico: ${scores.theoretical ?? '-'}</span>
+                      <span class="badge bg-warning text-dark">Técnico: ${scores.technical ?? '-'}</span>
+                      <span class="badge bg-warning text-dark">Problemas: ${scores.problem_solving ?? '-'}</span>
+                      <span class="badge bg-warning text-dark">Transferência: ${scores.knowledge_transfer ?? '-'}</span>
+                      <span class="badge bg-warning text-dark">Tendências: ${scores.trends ?? '-'}</span>
+                    </div>
+                    <div class="mb-1"><small class="text-muted">Filhos: ${related}</small></div>
+                  </div>
+                </div>
+                <div class="d-flex flex-column gap-2 align-items-end">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="active-skill-${skill.id}" checked>
+                    <label class="form-check-label" for="active-skill-${skill.id}">Ativo</label>
+                  </div>
+                  <div class="btn-group">
+                    <button class="btn btn-outline-primary btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-outline-danger btn-sm" title="Excluir"><i class="bi bi-trash"></i></button>
+                  </div>
+                </div>
+              </div>
+            `;
+            list.appendChild(card);
+          });
+        } catch (e) {
+          list.innerHTML = '<div class="alert alert-danger">Erro ao carregar habilidades.</div>';
+        }
+      }
       document.addEventListener('DOMContentLoaded', function() {
-        if (window.loadSkills) window.loadSkills();
-        if (window.loadAchievements) window.loadAchievements();
+        renderSkillsList();
       });
     </script>
-
-    <style>
-      /* Microinteração: destaque visual para opções selecionadas nos multi-selects */
-      .selected-option {
-        background-color: #e0f3ff !important;
-        color: #0d6efd !important;
-        font-weight: bold;
-      }
-      /* Destaque visual para campo em foco */
-      .focus-highlight {
-        box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
-        border-color: #0d6efd;
-      }
-      /* Tooltip customizado para campos obrigatórios */
-      .form-label[required]:after {
-        content: '*';
-        color: #dc3545;
-        margin-left: 2px;
-        font-weight: bold;
-      }
-    </style>
-    <script>
-      // Preencher dropdowns dinâmicos no modal de habilidades
-      document.addEventListener('DOMContentLoaded', function() {
-        function fillParentSkillDropdown(selected = '') {
-          var select = document.getElementById('modal-skill-parent');
-          if (!select) return;
-          select.innerHTML = '<option value="">Nenhuma</option>';
-          if (window.skillsData && Array.isArray(window.skillsData.skills)) {
-            window.skillsData.skills.forEach(skill => {
-              var opt = document.createElement('option');
-              opt.value = skill.id;
-              opt.textContent = skill.title + (skill.id ? ` (${skill.id})` : '');
-              if (selected === skill.id) opt.selected = true;
-              select.appendChild(opt);
-            });
-          }
-        }
-        function fillChildrenSkillsDropdown(selected = []) {
-          var select = document.getElementById('modal-skill-children');
-          if (!select) return;
-          select.innerHTML = '';
-          if (window.skillsData && Array.isArray(window.skillsData.skills)) {
-            window.skillsData.skills.forEach(skill => {
-              var opt = document.createElement('option');
-              opt.value = skill.id;
-              opt.textContent = skill.title + (skill.id ? ` (${skill.id})` : '');
-              if (selected.includes(skill.id)) opt.selected = true;
-              select.appendChild(opt);
-            });
-          }
-        }
-        function fillRelatedAchievementsDropdown(selected = []) {
-          var select = document.getElementById('modal-skill-relatedAchievements');
-          if (!select) return;
-          select.innerHTML = '';
-          if (window.achievements && Array.isArray(window.achievements)) {
-            window.achievements.forEach(ach => {
-              var opt = document.createElement('option');
-              opt.value = ach.id;
-              opt.textContent = ach.title + (ach.id ? ` (${ach.id})` : '');
-              if (selected.includes(ach.id)) opt.selected = true;
-              select.appendChild(opt);
-            });
-          }
-        }
-        // Ao abrir o modal de habilidade para novo ou edição
-        window.showSkillModal = (function(origFn) {
-          return function(skill) {
-            fillParentSkillDropdown(skill && skill.parent ? skill.parent : '');
-            fillChildrenSkillsDropdown(skill && skill.children ? skill.children : []);
-            fillRelatedAchievementsDropdown(skill && skill.relatedAchievements ? skill.relatedAchievements : []);
-            origFn(skill);
-          }
-        })(window.showSkillModal);
-        // Ao clicar em Nova Habilidade
-        var btnAddSkill = document.getElementById('btnAddSkillModal');
-        if (btnAddSkill) {
-          btnAddSkill.addEventListener('click', function() {
-            fillParentSkillDropdown('');
-            fillChildrenSkillsDropdown([]);
             fillRelatedAchievementsDropdown([]);
           });
         }
