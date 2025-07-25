@@ -21,7 +21,30 @@
 
   </head>
   <body>
-    <div class="admin-layout">
+    <div class="admin-layout d-flex">
+      <!-- Sidebar moderno -->
+      <nav id="admin-sidebar" class="sidebar bg-white border-end shadow-sm d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 100vh; position:sticky; top:0; z-index: 1020;">
+        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+          <i class="bi bi-award fs-3 text-primary me-2"></i>
+          <span class="fs-4 fw-bold">Admin</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto gap-2">
+          <li class="nav-item">
+            <a href="#" id="sidebar-skills" class="nav-link active d-flex align-items-center" onclick="showCrudSection('skills')">
+              <i class="bi bi-lightbulb me-2"></i> Habilidades
+            </a>
+          </li>
+          <li>
+            <a href="#" id="sidebar-achievements" class="nav-link d-flex align-items-center" onclick="showCrudSection('achievements')">
+              <i class="bi bi-trophy me-2"></i> Conquistas
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="text-muted small mt-auto">&copy; 2025 Competence Admin</div>
+      </nav>
+      <div class="flex-grow-1">
       <!-- Modal de Conquista -->
       <div class="modal fade" id="achievementModal" tabindex="-1" aria-labelledby="achievementModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -31,7 +54,8 @@
               <div class="modal-header">
                 <h5 class="modal-title" id="achievementModalLabel">Nova Conquista</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-              </div>
+      </div>
+    </div>
               <div class="modal-body">
                 <div class="row g-3">
                   <div class="col-md-6">
@@ -118,7 +142,15 @@
                   </script>
 
                     <label for="modal-achievement-img-url" class="form-label">Imagem (URL)</label>
-                    <input type="text" class="form-control" id="modal-achievement-img-url" placeholder="https://..." />
+                    <div class="input-group mb-2">
+                      <input type="file" class="form-control" id="modal-achievement-img" accept="image/*" style="max-width: 60%" />
+                    </div>
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control" id="modal-achievement-img-url" placeholder="https://..." />
+                    </div>
+                    <div class="mb-2">
+                      <img id="modal-achievement-img-preview" src="" alt="Preview" style="max-width: 100px; max-height: 100px; display: none; border:1px solid #ccc; border-radius:4px;" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -164,8 +196,28 @@
                     <input type="text" class="form-control mt-2 d-none" id="modal-skill-category-new" placeholder="Digite nova categoria" />
                   </div>
                   <div class="col-md-3">
-                    <label for="modal-skill-domain" class="form-label">Domínio <span id="modal-domain-value">3</span></label>
-                    <input type="range" class="form-range" min="1" max="5" value="3" id="modal-skill-domain" />
+                    <label class="form-label">Domínio <span id="modal-domain-value">3/25 (12%)</span></label>
+                    <input type="text" class="form-control-plaintext" id="modal-skill-domain" value="3/25 (12%)" readonly tabindex="-1" style="pointer-events:none;user-select:all;" />
+                    <script>
+                      // Atualiza domínio ao mudar scores no modal
+                      function updateModalDomain() {
+                        const t = parseInt(document.getElementById('modal-score-theoretical')?.value) || 0;
+                        const tec = parseInt(document.getElementById('modal-score-technical')?.value) || 0;
+                        const ps = parseInt(document.getElementById('modal-score-problem-solving')?.value) || 0;
+                        const kt = parseInt(document.getElementById('modal-score-knowledge-transfer')?.value) || 0;
+                        const tr = parseInt(document.getElementById('modal-score-trends')?.value) || 0;
+                        const total = t + tec + ps + kt + tr;
+                        const percent = Math.round((total / 25) * 100);
+                        document.getElementById('modal-domain-value').innerText = `${total}/25 (${percent}%)`;
+                        document.getElementById('modal-skill-domain').value = `${total}/25 (${percent}%)`;
+                      }
+                      ['modal-score-theoretical','modal-score-technical','modal-score-problem-solving','modal-score-knowledge-transfer','modal-score-trends'].forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) {
+                          el.addEventListener('input', updateModalDomain);
+                        }
+                      });
+                    </script>
                   </div>
                   <div class="col-md-6">
                     <label for="modal-skill-icon" class="form-label">Ícone (Bootstrap Icon)</label>
@@ -190,6 +242,29 @@
                     <label for="modal-skill-relatedAchievements" class="form-label">Conquistas Relacionadas</label>
                     <select class="form-select" id="modal-skill-relatedAchievements" multiple size="6" aria-describedby="modal-skill-relatedAchievements-help"></select>
                     <small id="modal-skill-relatedAchievements-help" class="form-text text-muted">Segure Ctrl (Windows) ou Cmd (Mac) para selecionar múltiplas conquistas.</small>
+    <style>
+      .sidebar {
+        transition: box-shadow 0.2s;
+        background: #fff;
+      }
+      .sidebar .nav-link {
+        color: #333;
+        border-radius: 0.375rem;
+        font-weight: 500;
+        transition: background 0.15s, color 0.15s;
+      }
+      .sidebar .nav-link.active, .sidebar .nav-link:hover {
+        background: #0d6efd;
+        color: #fff;
+      }
+      .sidebar .nav-link i {
+        font-size: 1.2rem;
+      }
+      @media (max-width: 991px) {
+        .sidebar { width: 100vw; min-height: auto; position: static; }
+        .admin-layout { flex-direction: column !important; }
+      }
+    </style>
     <script>
       // Foco automático no primeiro campo relevante ao abrir modais
       document.addEventListener('DOMContentLoaded', function() {
@@ -292,33 +367,24 @@
           </div>
         </div>
       </div>
-    <aside class="admin-sidebar">
-      <div class="sidebar-title">
-        <i class="bi bi-kanban"></i>
-        <span>Admin</span>
-      </div>
-      <ul class="sidebar-menu">
-        <li><button class="sidebar-btn active" id="sidebar-skills" onclick="showCrudSection('skills')"><i class="bi bi-lightbulb"></i> Habilidades</button></li>
-        <li><button class="sidebar-btn" id="sidebar-achievements" onclick="showCrudSection('achievements')"><i class="bi bi-trophy"></i> Conquistas</button></li>
-      </ul>
-    </aside>
-    <main class="admin-main">
-      <header class="admin-header">
-        <h1>Painel Admin - CRUD</h1>
+
+    <main class="admin-main container-xl py-4" style="max-width: 1100px; margin: 0 auto;">
+      <header class="admin-header mb-4">
+        <h1 class="fw-bold" style="font-size:2.2rem;">Painel Admin - CRUD</h1>
       </header>
       <section class="crud-section active" id="skills-section">
         <div class="section-header d-flex justify-content-between align-items-center">
           <h2><i class="bi bi-lightbulb"></i> Habilidades</h2>
           <button class="btn btn-success" id="btnAddSkillModal" type="button"><i class="bi bi-plus-circle"></i> Nova Habilidade</button>
         </div>
-        <div id="skills-list" class="card-list"></div>
+        <div id="skills-list" class="card-list w-100"></div>
       </section>
       <section class="crud-section" id="achievements-section">
         <div class="section-header d-flex justify-content-between align-items-center">
           <h2><i class="bi bi-trophy"></i> Conquistas</h2>
-          <button class="btn btn-success" id="btnAddAchievementModal" type="button"><i class="bi bi-plus-circle"></i> Nova Conquista</button>
+          <button class="btn btn-success" id="btnAddAchievementModal" type="button" onclick="window.showAchievementForm && window.showAchievementForm(null)"><i class="bi bi-plus-circle"></i> Nova Conquista</button>
         </div>
-        <div id="achievements-list" class="card-list"></div>
+        <div id="achievements-list" class="card-list w-100"></div>
       </section>
     </main>
     <script>
@@ -494,26 +560,7 @@
         renderAchievementsList();
       });
     </script>
-            fillRelatedAchievementsDropdown([]);
-          });
-        }
-        // Ao submeter, coletar múltiplos selecionados
-        var skillModalForm = document.getElementById('skill-modal-form');
-        if (skillModalForm) {
-          skillModalForm.addEventListener('submit', function(e) {
-            var childrenSelect = document.getElementById('modal-skill-children');
-            if (childrenSelect) {
-              var selected = Array.from(childrenSelect.selectedOptions).map(opt => opt.value);
-              childrenSelect.dataset.values = selected.join(',');
-            }
-            var relAchSelect = document.getElementById('modal-skill-relatedAchievements');
-            if (relAchSelect) {
-              var selected = Array.from(relAchSelect.selectedOptions).map(opt => opt.value);
-              relAchSelect.dataset.values = selected.join(',');
-            }
-          }, true);
-        }
-      });
+      
     </script>
     <script>
       // Preencher dropdown de skills relacionadas no modal de conquistas
@@ -858,6 +905,7 @@ window.showSkillModal = async function(skill) {
     });
   }
 
+
   // Estrelas de pontuação e cálculo do domínio
   const scores = skill.scores || {};
   const scoreFields = [
@@ -880,10 +928,11 @@ window.showSkillModal = async function(skill) {
       starDiv.dataset.score = val;
     }
   });
-  // Domínio = média dos scores, arredondado
+  // Domínio = soma dos scores, máximo 25, exibe n/5 e %
   const dominio = Math.round(soma / 5);
+  const percent = Math.round((soma / 25) * 100);
   document.getElementById('modal-skill-domain').value = dominio;
-  document.getElementById('modal-domain-value').textContent = dominio;
+  document.getElementById('modal-domain-value').textContent = `${dominio}/5 ${percent}%`;
 
   var skillModal = new bootstrap.Modal(document.getElementById('skillModal'));
   skillModal.show();
