@@ -363,13 +363,41 @@
                     <label class="form-check-label" for="active-skill-${skill.id}">Ativo</label>
                   </div>
                   <div class="btn-group">
-                    <button class="btn btn-outline-primary btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-outline-danger btn-sm" title="Excluir"><i class="bi bi-trash"></i></button>
+                    <button class="btn btn-outline-primary btn-sm btn-edit-skill" data-id="${skill.id}" title="Editar"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-outline-danger btn-sm btn-delete-skill" data-id="${skill.id}" title="Excluir"><i class="bi bi-trash"></i></button>
                   </div>
                 </div>
               </div>
             `;
             list.appendChild(card);
+          });
+          // Adicionar eventos aos botões de editar/excluir
+          list.querySelectorAll('.btn-edit-skill').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const skillId = btn.getAttribute('data-id');
+              const skill = data.skills.find(s => s.id == skillId);
+              if (skill && window.showSkillModal) window.showSkillModal(skill);
+            });
+          });
+          list.querySelectorAll('.btn-delete-skill').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const skillId = btn.getAttribute('data-id');
+              const skill = data.skills.find(s => s.id == skillId);
+              if (!skill) return;
+              if (confirm(`Tem certeza que deseja excluir a habilidade "${skill.title}"?`)) {
+                // Remover do array global e atualizar UI
+                if (window.skillsData && Array.isArray(window.skillsData.skills)) {
+                  window.skillsData.skills = window.skillsData.skills.filter(s => s.id != skillId);
+                  if (window.postJsonApi) window.postJsonApi('skills', window.skillsData);
+                  renderSkillsList();
+                  // Toast feedback
+                  var toastMsg = document.getElementById('adminToastMsg');
+                  toastMsg.textContent = 'Habilidade excluída com sucesso!';
+                  var toast = new bootstrap.Toast(document.getElementById('adminToast'));
+                  toast.show();
+                }
+              }
+            });
           });
         } catch (e) {
           list.innerHTML = '<div class="alert alert-danger">Erro ao carregar habilidades.</div>';
@@ -420,13 +448,41 @@
                     <label class="form-check-label" for="active-achievement-${ach.id}">Ativo</label>
                   </div>
                   <div class="btn-group">
-                    <button class="btn btn-outline-primary btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-outline-danger btn-sm" title="Excluir"><i class="bi bi-trash"></i></button>
+                    <button class="btn btn-outline-primary btn-sm btn-edit-achievement" data-id="${ach.id}" title="Editar"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-outline-danger btn-sm btn-delete-achievement" data-id="${ach.id}" title="Excluir"><i class="bi bi-trash"></i></button>
                   </div>
                 </div>
               </div>
             `;
             list.appendChild(card);
+          });
+          // Adicionar eventos aos botões de editar/excluir
+          list.querySelectorAll('.btn-edit-achievement').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const achId = btn.getAttribute('data-id');
+              const ach = data.find(a => a.id == achId);
+              if (ach && window.showAchievementModal) window.showAchievementModal(ach);
+            });
+          });
+          list.querySelectorAll('.btn-delete-achievement').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const achId = btn.getAttribute('data-id');
+              const ach = data.find(a => a.id == achId);
+              if (!ach) return;
+              if (confirm(`Tem certeza que deseja excluir a conquista "${ach.title}"?`)) {
+                // Remover do array global e atualizar UI
+                if (window.achievements && Array.isArray(window.achievements)) {
+                  window.achievements = window.achievements.filter(a => a.id != achId);
+                  if (window.postJsonApi) window.postJsonApi('achievements', window.achievements);
+                  renderAchievementsList();
+                  // Toast feedback
+                  var toastMsg = document.getElementById('adminToastMsg');
+                  toastMsg.textContent = 'Conquista excluída com sucesso!';
+                  var toast = new bootstrap.Toast(document.getElementById('adminToast'));
+                  toast.show();
+                }
+              }
+            });
           });
         } catch (e) {
           list.innerHTML = '<div class="alert alert-danger">Erro ao carregar conquistas.</div>';
@@ -712,41 +768,126 @@
     </script>
     <script>
       // Preencher modal ao editar habilidade
-      window.showSkillModal = function(skill) {
-        document.getElementById('modal-skill-id').value = skill.id || '';
-        document.getElementById('modal-skill-name').value = skill.title || '';
-        document.getElementById('modal-skill-category').value = skill.category || 'QA';
-        document.getElementById('modal-skill-domain').value = skill.domain || 3;
-        document.getElementById('modal-domain-value').textContent = skill.domain || 3;
-        document.getElementById('modal-skill-icon').value = skill.icon || '';
-        document.getElementById('modal-skill-desc').value = skill.description || '';
-        document.getElementById('modal-skill-unlock-threshold').value = skill.unlock_threshold || 0;
-        // Pai já preenchido pelo fillParentSkillDropdown
-        // Filhos já preenchidos pelo fillChildrenSkillsDropdown
-        // Conquistas relacionadas já preenchidas pelo fillRelatedAchievementsDropdown
-        // Estrelas de pontuação:
-        const scores = skill.scores || {};
-        const scoreFields = [
-          {star: 'modal-score-theoretical-stars', input: 'modal-score-theoretical', val: scores.theoretical ?? 3},
-          {star: 'modal-score-technical-stars', input: 'modal-score-technical', val: scores.technical ?? 3},
-          {star: 'modal-score-problem-solving-stars', input: 'modal-score-problem-solving', val: scores.problem_solving ?? 3},
-          {star: 'modal-score-knowledge-transfer-stars', input: 'modal-score-knowledge-transfer', val: scores.knowledge_transfer ?? 3},
-          {star: 'modal-score-trends-stars', input: 'modal-score-trends', val: scores.trends ?? 3}
-        ];
-        scoreFields.forEach(({star, input, val}) => {
-          document.getElementById(input).value = val;
-          const starDiv = document.getElementById(star);
-          if (starDiv) {
-            const stars = starDiv.querySelectorAll('i');
-            stars.forEach((s, i) => {
-              s.className = i < val ? 'bi bi-star-fill' : 'bi bi-star';
-            });
-            starDiv.dataset.score = val;
-          }
-        });
-        var skillModal = new bootstrap.Modal(document.getElementById('skillModal'));
-        skillModal.show();
+window.showSkillModal = async function(skill) {
+  // Garante que dados globais estejam carregados
+  if (!window.skillsData || !Array.isArray(window.skillsData.skills)) {
+    try {
+      const res = await fetch('data/skills.json');
+      window.skillsData = await res.json();
+    } catch {}
+  }
+  if (!window.achievements || !Array.isArray(window.achievements)) {
+    try {
+      const res = await fetch('data/achievements.json');
+      window.achievements = await res.json();
+    } catch {}
+  }
+
+  // Preencher campos básicos
+  document.getElementById('modal-skill-id').value = skill.id || '';
+  document.getElementById('modal-skill-name').value = skill.title || '';
+  document.getElementById('modal-skill-icon').value = skill.icon || '';
+  document.getElementById('modal-skill-desc').value = skill.description || '';
+  document.getElementById('modal-skill-unlock-threshold').value = skill.unlock_threshold || 0;
+
+  // Preencher categoria (dropdown ou campo novo)
+  var catSelect = document.getElementById('modal-skill-category');
+  var catInput = document.getElementById('modal-skill-category-new');
+  var catCheck = document.getElementById('modal-skill-category-new-check');
+  if (catSelect && catInput && catCheck) {
+    if (skill.category && Array.from(catSelect.options).some(opt => opt.value === skill.category)) {
+      catSelect.value = skill.category;
+      catSelect.classList.remove('d-none');
+      catInput.classList.add('d-none');
+      catInput.value = '';
+      catCheck.checked = false;
+    } else if (skill.category) {
+      catSelect.classList.add('d-none');
+      catInput.classList.remove('d-none');
+      catInput.value = skill.category;
+      catCheck.checked = true;
+    } else {
+      catSelect.value = 'QA';
+      catSelect.classList.remove('d-none');
+      catInput.classList.add('d-none');
+      catInput.value = '';
+      catCheck.checked = false;
+    }
+  }
+
+  // Preencher dropdown de Habilidade Pai
+  var parentSelect = document.getElementById('modal-skill-parent');
+  if (parentSelect && window.skillsData && Array.isArray(window.skillsData.skills)) {
+    parentSelect.innerHTML = '<option value="">Nenhuma</option>';
+    window.skillsData.skills.forEach(s => {
+      if (s.id !== skill.id) {
+        var opt = document.createElement('option');
+        opt.value = s.id;
+        opt.textContent = s.title + (s.id ? ` (${s.id})` : '');
+        parentSelect.appendChild(opt);
       }
+    });
+    parentSelect.value = skill.parent || '';
+  }
+
+  // Preencher múltipla seleção de filhos
+  var childrenSelect = document.getElementById('modal-skill-children');
+  if (childrenSelect && window.skillsData && Array.isArray(window.skillsData.skills)) {
+    childrenSelect.innerHTML = '';
+    window.skillsData.skills.forEach(s => {
+      if (s.id !== skill.id) {
+        var opt = document.createElement('option');
+        opt.value = s.id;
+        opt.textContent = s.title + (s.id ? ` (${s.id})` : '');
+        if (Array.isArray(skill.children) && skill.children.includes(s.id)) opt.selected = true;
+        childrenSelect.appendChild(opt);
+      }
+    });
+  }
+
+  // Preencher múltipla seleção de conquistas relacionadas
+  var relAchSelect = document.getElementById('modal-skill-relatedAchievements');
+  if (relAchSelect && window.achievements && Array.isArray(window.achievements)) {
+    relAchSelect.innerHTML = '';
+    window.achievements.forEach(a => {
+      var opt = document.createElement('option');
+      opt.value = a.id;
+      opt.textContent = a.title + (a.id ? ` (${a.id})` : '');
+      if (Array.isArray(skill.relatedAchievements) && skill.relatedAchievements.includes(a.id)) opt.selected = true;
+      relAchSelect.appendChild(opt);
+    });
+  }
+
+  // Estrelas de pontuação e cálculo do domínio
+  const scores = skill.scores || {};
+  const scoreFields = [
+    {star: 'modal-score-theoretical-stars', input: 'modal-score-theoretical', val: scores.theoretical ?? 3},
+    {star: 'modal-score-technical-stars', input: 'modal-score-technical', val: scores.technical ?? 3},
+    {star: 'modal-score-problem-solving-stars', input: 'modal-score-problem-solving', val: scores.problem_solving ?? 3},
+    {star: 'modal-score-knowledge-transfer-stars', input: 'modal-score-knowledge-transfer', val: scores.knowledge_transfer ?? 3},
+    {star: 'modal-score-trends-stars', input: 'modal-score-trends', val: scores.trends ?? 3}
+  ];
+  let soma = 0;
+  scoreFields.forEach(({star, input, val}) => {
+    document.getElementById(input).value = val;
+    soma += Number(val) || 0;
+    const starDiv = document.getElementById(star);
+    if (starDiv) {
+      const stars = starDiv.querySelectorAll('i');
+      stars.forEach((s, i) => {
+        s.className = i < val ? 'bi bi-star-fill' : 'bi bi-star';
+      });
+      starDiv.dataset.score = val;
+    }
+  });
+  // Domínio = média dos scores, arredondado
+  const dominio = Math.round(soma / 5);
+  document.getElementById('modal-skill-domain').value = dominio;
+  document.getElementById('modal-domain-value').textContent = dominio;
+
+  var skillModal = new bootstrap.Modal(document.getElementById('skillModal'));
+  skillModal.show();
+}
     </script>
     </script>
     <script>
