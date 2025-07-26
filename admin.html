@@ -18,230 +18,6 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
       rel="stylesheet" />
-
-  </head>
-  <body>
-    <div class="admin-layout d-flex">
-      <!-- Sidebar moderno -->
-      <nav id="admin-sidebar" class="sidebar bg-white border-end shadow-sm d-flex flex-column flex-shrink-0 p-3" style="width: 250px; min-height: 100vh; position:sticky; top:0; z-index: 1020;">
-        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-          <i class="bi bi-award fs-3 text-primary me-2"></i>
-          <span class="fs-4 fw-bold">Admin</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto gap-2">
-          <li class="nav-item">
-            <a href="#" id="sidebar-skills" class="nav-link active d-flex align-items-center" onclick="showCrudSection('skills')">
-              <i class="bi bi-lightbulb me-2"></i> Habilidades
-            </a>
-          </li>
-          <li>
-            <a href="#" id="sidebar-achievements" class="nav-link d-flex align-items-center" onclick="showCrudSection('achievements')">
-              <i class="bi bi-trophy me-2"></i> Conquistas
-            </a>
-          </li>
-        </ul>
-        <hr>
-        <div class="text-muted small mt-auto">&copy; 2025 Competence Admin</div>
-      </nav>
-      <div class="flex-grow-1">
-      <!-- Modal de Conquista -->
-      <div class="modal fade" id="achievementModal" tabindex="-1" aria-labelledby="achievementModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <form id="achievement-modal-form">
-              <input type="hidden" id="modal-achievement-id" />
-              <div class="modal-header">
-                <h5 class="modal-title" id="achievementModalLabel">Nova Conquista</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-      </div>
-    </div>
-              <div class="modal-body">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="modal-achievement-title" class="form-label">Título</label>
-                    <input type="text" class="form-control" id="modal-achievement-title" required />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="modal-achievement-category" class="form-label">Categoria</label>
-                    <div class="input-group">
-                      <select class="form-select" id="modal-achievement-category">
-                        <option value="QA">QA</option>
-                        <option value="DEV">DEV</option>
-                        <option value="SOFT">SOFT</option>
-                        <option value="GESTAO">GESTÃO</option>
-                      </select>
-                      <div class="input-group-text">
-                        <input type="checkbox" id="modal-achievement-category-new-check" title="Nova categoria" />
-                      </div>
-                    </div>
-                    <input type="text" class="form-control mt-2 d-none" id="modal-achievement-category-new" placeholder="Digite nova categoria" />
-                  </div>
-                  <div class="col-md-12">
-                    <label for="modal-achievement-desc" class="form-label">Descrição</label>
-                    <textarea class="form-control" id="modal-achievement-desc" rows="2"></textarea>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label">Status</label>
-                    <div class="form-check form-switch mt-2">
-                      <input class="form-check-input" type="checkbox" id="modal-achievement-status-switch" checked>
-                      <label class="form-check-label" for="modal-achievement-status-switch">Desbloqueada</label>
-                    </div>
-                    <input type="hidden" id="modal-achievement-status" value="unlocked" />
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label">Dificuldade</label>
-                    <div id="modal-achievement-difficulty-stars" class="star-rating" data-score="3">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star"></i>
-                      <i class="bi bi-star"></i>
-                    </div>
-                    <input type="hidden" id="modal-achievement-difficulty" value="3" />
-                  </div>
-                  <div class="col-md-4">
-                    <label for="modal-achievement-unlockedDate" class="form-label">Data</label>
-                    <input type="date" class="form-control" id="modal-achievement-unlockedDate" />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="modal-achievement-evidence" class="form-label">Evidência (URL)</label>
-                    <input type="text" class="form-control" id="modal-achievement-evidence" placeholder="https://..." />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="modal-achievement-relatedSkills" class="form-label">Skills Relacionadas</label>
-                    <select class="form-select" id="modal-achievement-relatedSkills" multiple size="6" aria-describedby="modal-achievement-relatedSkills-help"></select>
-                    <small id="modal-achievement-relatedSkills-help" class="form-text text-muted">Segure Ctrl (Windows) ou Cmd (Mac) para selecionar múltiplas skills.</small>
-                  </div>
-                  <div class="col-md-12">
-
-                  <script>
-                    // Microinteração: destaque visual ao selecionar itens no multi-select
-                    document.addEventListener('DOMContentLoaded', function() {
-                      function setupMultiSelectHighlight(selectId) {
-                        var select = document.getElementById(selectId);
-                        if (!select) return;
-                        select.addEventListener('change', function() {
-                          Array.from(select.options).forEach(opt => {
-                            if (opt.selected) {
-                              opt.classList.add('selected-option');
-                            } else {
-                              opt.classList.remove('selected-option');
-                            }
-                          });
-                        });
-                        // Inicializar estado visual
-                        Array.from(select.options).forEach(opt => {
-                          if (opt.selected) opt.classList.add('selected-option');
-                        });
-                      }
-                      setupMultiSelectHighlight('modal-achievement-relatedSkills');
-                      setupMultiSelectHighlight('modal-skill-children');
-                      setupMultiSelectHighlight('modal-skill-relatedAchievements');
-                    });
-                  </script>
-
-                    <label for="modal-achievement-img-url" class="form-label">Imagem (URL)</label>
-                    <div class="input-group mb-2">
-                      <input type="file" class="form-control" id="modal-achievement-img" accept="image/*" style="max-width: 60%" />
-                    </div>
-                    <div class="input-group mb-2">
-                      <input type="text" class="form-control" id="modal-achievement-img-url" placeholder="https://..." />
-                    </div>
-                    <div class="mb-2">
-                      <img id="modal-achievement-img-preview" src="" alt="Preview" style="max-width: 100px; max-height: 100px; display: none; border:1px solid #ccc; border-radius:4px;" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- Modal de Habilidade -->
-      <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="skillModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <form id="skill-modal-form">
-              <!-- Campos ocultos para ID e unlock_threshold -->
-              <input type="hidden" id="modal-skill-id" />
-              <input type="hidden" id="modal-skill-unlock-threshold" value="0" />
-              <div class="modal-header">
-                <h5 class="modal-title" id="skillModalLabel">Nova Habilidade</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-              </div>
-              <div class="modal-body">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="modal-skill-name" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="modal-skill-name" required />
-                  </div>
-                  <div class="col-md-3">
-                    <label for="modal-skill-category" class="form-label">Categoria</label>
-                    <div class="input-group">
-                      <select class="form-select" id="modal-skill-category">
-                        <option value="QA">QA</option>
-                        <option value="DEV">DEV</option>
-                        <option value="SOFT">SOFT</option>
-                        <option value="GESTAO">GESTÃO</option>
-                      </select>
-                      <div class="input-group-text">
-                        <input type="checkbox" id="modal-skill-category-new-check" title="Nova categoria" />
-                      </div>
-                    </div>
-                    <input type="text" class="form-control mt-2 d-none" id="modal-skill-category-new" placeholder="Digite nova categoria" />
-                  </div>
-                  <div class="col-md-3">
-                    <label class="form-label">Domínio <span id="modal-domain-value">3/25 (12%)</span></label>
-                    <input type="text" class="form-control-plaintext" id="modal-skill-domain" value="3/25 (12%)" readonly tabindex="-1" style="pointer-events:none;user-select:all;" />
-                    <script>
-                      // Atualiza domínio ao mudar scores no modal
-                      function updateModalDomain() {
-                        const t = parseInt(document.getElementById('modal-score-theoretical')?.value) || 0;
-                        const tec = parseInt(document.getElementById('modal-score-technical')?.value) || 0;
-                        const ps = parseInt(document.getElementById('modal-score-problem-solving')?.value) || 0;
-                        const kt = parseInt(document.getElementById('modal-score-knowledge-transfer')?.value) || 0;
-                        const tr = parseInt(document.getElementById('modal-score-trends')?.value) || 0;
-                        const total = t + tec + ps + kt + tr;
-                        const percent = Math.round((total / 25) * 100);
-                        document.getElementById('modal-domain-value').innerText = `${total}/25 (${percent}%)`;
-                        document.getElementById('modal-skill-domain').value = `${total}/25 (${percent}%)`;
-                      }
-                      ['modal-score-theoretical','modal-score-technical','modal-score-problem-solving','modal-score-knowledge-transfer','modal-score-trends'].forEach(id => {
-                        const el = document.getElementById(id);
-                        if (el) {
-                          el.addEventListener('input', updateModalDomain);
-                        }
-                      });
-                    </script>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="modal-skill-icon" class="form-label">Ícone (Bootstrap Icon)</label>
-                    <input type="text" class="form-control" id="modal-skill-icon" placeholder="bi-lightbulb" />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="modal-skill-desc" class="form-label">Descrição</label>
-                    <textarea class="form-control" id="modal-skill-desc" rows="2"></textarea>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="modal-skill-parent" class="form-label">Habilidade Pai (opcional)</label>
-                    <select class="form-select" id="modal-skill-parent">
-                      <option value="">Nenhuma</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Filhos</label>
-                    <select class="form-select" id="modal-skill-children" multiple size="6" aria-describedby="modal-skill-children-help"></select>
-                    <small id="modal-skill-children-help" class="form-text text-muted">Segure Ctrl (Windows) ou Cmd (Mac) para selecionar múltiplos filhos.</small>
-                  </div>
-                  <div class="col-md-12">
-                    <label for="modal-skill-relatedAchievements" class="form-label">Conquistas Relacionadas</label>
-                    <select class="form-select" id="modal-skill-relatedAchievements" multiple size="6" aria-describedby="modal-skill-relatedAchievements-help"></select>
-                    <small id="modal-skill-relatedAchievements-help" class="form-text text-muted">Segure Ctrl (Windows) ou Cmd (Mac) para selecionar múltiplas conquistas.</small>
     <style>
       .sidebar {
         transition: box-shadow 0.2s;
@@ -260,134 +36,399 @@
       .sidebar .nav-link i {
         font-size: 1.2rem;
       }
+      .achievement-img {
+        border-radius: 50% !important; /* Imagens redondas */
+      }
       @media (max-width: 991px) {
         .sidebar { width: 100vw; min-height: auto; position: static; }
         .admin-layout { flex-direction: column !important; }
       }
     </style>
-    <script>
-      // Foco automático no primeiro campo relevante ao abrir modais
-      document.addEventListener('DOMContentLoaded', function() {
-        var achievementModal = document.getElementById('achievementModal');
-        if (achievementModal) {
-          achievementModal.addEventListener('shown.bs.modal', function() {
-            var input = document.getElementById('modal-achievement-title');
-            if (input) input.focus();
-            // Microinteração: destaque visual no campo ativo
-            input && input.classList.add('focus-highlight');
-            input && input.addEventListener('blur', function() { input.classList.remove('focus-highlight'); }, {once:true});
-          });
-        }
-        var skillModal = document.getElementById('skillModal');
-        if (skillModal) {
-          skillModal.addEventListener('shown.bs.modal', function() {
-            var input = document.getElementById('modal-skill-name');
-            if (input) input.focus();
-            // Microinteração: destaque visual no campo ativo
-            input && input.classList.add('focus-highlight');
-            input && input.addEventListener('blur', function() { input.classList.remove('focus-highlight'); }, {once:true});
-          });
-        }
-      });
-    </script>
-                  </div>
-                  <div class="col-md-12">
-                    <label class="form-label">Pontuações</label>
-                    <div class="row g-2">
-                      <div class="col">
-                        <label class="form-label">Teórico</label>
-                        <div class="star-rating" id="modal-score-theoretical-stars" data-score="3">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+  </head>
+  <body>
+    <div class="admin-layout d-flex">
+      <!-- Sidebar moderno -->
+      <nav id="admin-sidebar"
+        class="sidebar bg-white border-end shadow-sm d-flex flex-column flex-shrink-0 p-3"
+        style="width: 250px; min-height: 100vh; position:sticky; top:0; z-index: 1020;">
+        <a href="#"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+          <i class="bi bi-award fs-3 text-primary me-2"></i>
+          <span class="fs-4 fw-bold">Admin</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto gap-2">
+          <li class="nav-item">
+            <a href="#" id="sidebar-skills"
+              class="nav-link active d-flex align-items-center"
+              onclick="showCrudSection('skills')">
+              <i class="bi bi-lightbulb me-2"></i> Habilidades
+            </a>
+          </li>
+          <li>
+            <a href="#" id="sidebar-achievements"
+              class="nav-link d-flex align-items-center"
+              onclick="showCrudSection('achievements')">
+              <i class="bi bi-trophy me-2"></i> Conquistas
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="text-muted small mt-auto">&copy; 2025 Competence Admin</div>
+      </nav>
+      <div class="flex-grow-1">
+        <!-- Modal de Conquista -->
+        <div class="modal fade" id="achievementModal" tabindex="-1"
+          aria-labelledby="achievementModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <form id="achievement-modal-form">
+                <input type="hidden" id="modal-achievement-id" />
+                <div class="modal-header">
+                  <h5 class="modal-title" id="achievementModalLabel">Nova
+                    Conquista</h5>
+                  <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="modal-achievement-title"
+                        class="form-label">Título</label>
+                      <input type="text" class="form-control"
+                        id="modal-achievement-title" required />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="modal-achievement-category"
+                        class="form-label">Categoria</label>
+                      <div class="input-group">
+                        <select class="form-select"
+                          id="modal-achievement-category">
+                          <option value="QA">QA</option>
+                          <option value="DEV">DEV</option>
+                          <option value="SOFT">SOFT</option>
+                          <option value="GESTAO">GESTÃO</option>
+                        </select>
+                        <div class="input-group-text">
+                          <input type="checkbox"
+                            id="modal-achievement-category-new-check"
+                            title="Nova categoria" />
                         </div>
-                        <input type="hidden" id="modal-score-theoretical" value="3" />
                       </div>
-                      <div class="col">
-                        <label class="form-label">Técnico</label>
-                        <div class="star-rating" id="modal-score-technical-stars" data-score="3">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
-                        </div>
-                        <input type="hidden" id="modal-score-technical" value="3" />
+                      <input type="text" class="form-control mt-2 d-none"
+                        id="modal-achievement-category-new"
+                        placeholder="Digite nova categoria" />
+                    </div>
+                    <div class="col-md-12">
+                      <label for="modal-achievement-desc"
+                        class="form-label">Descrição</label>
+                      <textarea class="form-control" id="modal-achievement-desc"
+                        rows="2"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Status</label>
+                      <div class="form-check form-switch mt-2">
+                        <input class="form-check-input" type="checkbox"
+                          id="modal-achievement-status-switch" checked>
+                        <label class="form-check-label"
+                          for="modal-achievement-status-switch">Desbloqueada</label>
                       </div>
-                      <div class="col">
-                        <label class="form-label">Problemas</label>
-                        <div class="star-rating" id="modal-score-problem-solving-stars" data-score="3">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
-                        </div>
-                        <input type="hidden" id="modal-score-problem-solving" value="3" />
+                      <input type="hidden" id="modal-achievement-status"
+                        value="unlocked" />
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Dificuldade</label>
+                      <div id="modal-achievement-difficulty-stars"
+                        class="star-rating" data-score="3">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
                       </div>
-                      <div class="col">
-                        <label class="form-label">Transferência</label>
-                        <div class="star-rating" id="modal-score-knowledge-transfer-stars" data-score="3">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
-                        </div>
-                        <input type="hidden" id="modal-score-knowledge-transfer" value="3" />
+                      <input type="hidden" id="modal-achievement-difficulty"
+                        value="3" />
+                    </div>
+                    <div class="col-md-4">
+                      <label for="modal-achievement-unlockedDate"
+                        class="form-label">Data</label>
+                      <input type="date" class="form-control"
+                        id="modal-achievement-unlockedDate" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="modal-achievement-evidence"
+                        class="form-label">Evidência (URL)</label>
+                      <input type="text" class="form-control"
+                        id="modal-achievement-evidence"
+                        placeholder="https://..." />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="modal-achievement-relatedSkills"
+                        class="form-label">Skills Relacionadas</label>
+                      <select class="form-select"
+                        id="modal-achievement-relatedSkills" multiple size="6"
+                        aria-describedby="modal-achievement-relatedSkills-help"></select>
+                      <small id="modal-achievement-relatedSkills-help"
+                        class="form-text text-muted">Segure Ctrl (Windows) ou
+                        Cmd (Mac) para selecionar múltiplas skills.</small>
+                    </div>
+                    <div class="col-md-12">
+                      <label for="modal-achievement-img-url"
+                        class="form-label">Imagem (URL)</label>
+                      <div class="input-group mb-2">
+                        <input type="file" class="form-control"
+                          id="modal-achievement-img" accept="image/*"
+                          style="max-width: 60%" />
                       </div>
-                      <div class="col">
-                        <label class="form-label">Tendências</label>
-                        <div class="star-rating" id="modal-score-trends-stars" data-score="3">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
-                        </div>
-                        <input type="hidden" id="modal-score-trends" value="3" />
+                      <div class="input-group mb-2">
+                        <input type="text" class="form-control"
+                          id="modal-achievement-img-url"
+                          placeholder="https://..." />
+                      </div>
+                      <div class="mb-2">
+                        <img id="modal-achievement-img-preview" src
+                          alt="Preview" class="achievement-img"
+                          style="max-width: 100px; max-height: 100px; border:1px solid #ccc; display: none;" />
                       </div>
                     </div>
                   </div>
-    <script>
-      // Estrelas interativas para pontuações no modal de habilidades
-      document.addEventListener('DOMContentLoaded', function() {
-        function setupStarRating(starDivId, inputId) {
-          var starDiv = document.getElementById(starDivId);
-          var input = document.getElementById(inputId);
-          if (starDiv && input) {
-            const stars = starDiv.querySelectorAll('i');
-            stars.forEach((star, idx) => {
-              star.addEventListener('click', function() {
-                stars.forEach((s, i) => {
-                  s.className = i <= idx ? 'bi bi-star-fill' : 'bi bi-star';
-                });
-                starDiv.dataset.score = idx + 1;
-                input.value = idx + 1;
-              });
-            });
-          }
-        }
-        setupStarRating('modal-score-theoretical-stars', 'modal-score-theoretical');
-        setupStarRating('modal-score-technical-stars', 'modal-score-technical');
-        setupStarRating('modal-score-problem-solving-stars', 'modal-score-problem-solving');
-        setupStarRating('modal-score-knowledge-transfer-stars', 'modal-score-knowledge-transfer');
-        setupStarRating('modal-score-trends-stars', 'modal-score-trends');
-      });
-    </script>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-              </div>
-            </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+        <!-- Modal de Habilidade -->
+        <div class="modal fade" id="skillModal" tabindex="-1"
+          aria-labelledby="skillModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <form id="skill-modal-form">
+                <input type="hidden" id="modal-skill-id" />
+                <input type="hidden" id="modal-skill-unlock-threshold"
+                  value="0" />
+                <div class="modal-header">
+                  <h5 class="modal-title" id="skillModalLabel">Nova
+                    Habilidade</h5>
+                  <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="modal-skill-name"
+                        class="form-label">Nome</label>
+                      <input type="text" class="form-control"
+                        id="modal-skill-name" required />
+                    </div>
+                    <div class="col-md-3">
+                      <label for="modal-skill-category"
+                        class="form-label">Categoria</label>
+                      <div class="input-group">
+                        <select class="form-select" id="modal-skill-category">
+                          <option value="QA">QA</option>
+                          <option value="DEV">DEV</option>
+                          <option value="SOFT">SOFT</option>
+                          <option value="GESTAO">GESTÃO</option>
+                        </select>
+                        <div class="input-group-text">
+                          <input type="checkbox"
+                            id="modal-skill-category-new-check"
+                            title="Nova categoria" />
+                        </div>
+                      </div>
+                      <input type="text" class="form-control mt-2 d-none"
+                        id="modal-skill-category-new"
+                        placeholder="Digite nova categoria" />
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Domínio <span
+                          id="modal-domain-value">3/25 (12%)</span></label>
+                      <input type="text" class="form-control-plaintext"
+                        id="modal-skill-domain" value="3/25 (12%)" readonly
+                        tabindex="-1"
+                        style="pointer-events:none;user-select:all;" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="modal-skill-icon" class="form-label">Ícone
+                        (Bootstrap Icon)</label>
+                      <input type="text" class="form-control"
+                        id="modal-skill-icon" placeholder="bi-lightbulb" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="modal-skill-desc"
+                        class="form-label">Descrição</label>
+                      <textarea class="form-control" id="modal-skill-desc"
+                        rows="2"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="modal-skill-parent"
+                        class="form-label">Habilidade Pai (opcional)</label>
+                      <select class="form-select" id="modal-skill-parent">
+                        <option value>Nenhuma</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Filhos</label>
+                      <select class="form-select" id="modal-skill-children"
+                        multiple size="6"
+                        aria-describedby="modal-skill-children-help"></select>
+                      <small id="modal-skill-children-help"
+                        class="form-text text-muted">Segure Ctrl (Windows) ou
+                        Cmd (Mac) para selecionar múltiplos filhos.</small>
+                    </div>
+                    <div class="col-md-12">
+                      <label for="modal-skill-relatedAchievements"
+                        class="form-label">Conquistas Relacionadas</label>
+                      <select class="form-select"
+                        id="modal-skill-relatedAchievements" multiple size="6"
+                        aria-describedby="modal-skill-relatedAchievements-help"></select>
+                      <small id="modal-skill-relatedAchievements-help"
+                        class="form-text text-muted">Segure Ctrl (Windows) ou
+                        Cmd (Mac) para selecionar múltiplas conquistas.</small>
+                    </div>
+                    <div class="col-md-12">
+                      <label class="form-label">Pontuações</label>
+                      <div class="row g-2">
+                        <div class="col">
+                          <label class="form-label">Teórico</label>
+                          <div class="star-rating"
+                            id="modal-score-theoretical-stars" data-score="3">
+                            <i class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star"></i><i class="bi bi-star"></i>
+                          </div>
+                          <input type="hidden" id="modal-score-theoretical"
+                            value="3" />
+                        </div>
+                        <div class="col">
+                          <label class="form-label">Técnico</label>
+                          <div class="star-rating"
+                            id="modal-score-technical-stars" data-score="3">
+                            <i class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star"></i><i class="bi bi-star"></i>
+                          </div>
+                          <input type="hidden" id="modal-score-technical"
+                            value="3" />
+                        </div>
+                        <div class="col">
+                          <label class="form-label">Problemas</label>
+                          <div class="star-rating"
+                            id="modal-score-problem-solving-stars"
+                            data-score="3">
+                            <i class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star"></i><i class="bi bi-star"></i>
+                          </div>
+                          <input type="hidden" id="modal-score-problem-solving"
+                            value="3" />
+                        </div>
+                        <div class="col">
+                          <label class="form-label">Transferência</label>
+                          <div class="star-rating"
+                            id="modal-score-knowledge-transfer-stars"
+                            data-score="3">
+                            <i class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star"></i><i class="bi bi-star"></i>
+                          </div>
+                          <input type="hidden"
+                            id="modal-score-knowledge-transfer" value="3" />
+                        </div>
+                        <div class="col">
+                          <label class="form-label">Tendências</label>
+                          <div class="star-rating" id="modal-score-trends-stars"
+                            data-score="3">
+                            <i class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star-fill"></i><i
+                              class="bi bi-star"></i><i class="bi bi-star"></i>
+                          </div>
+                          <input type="hidden" id="modal-score-trends"
+                            value="3" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Toast para feedback -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div id="adminToast" class="toast" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="toast-header">
+              <strong class="me-auto">Notificação</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast"
+                aria-label="Fechar"></button>
+            </div>
+            <div class="toast-body" id="adminToastMsg"></div>
+          </div>
+        </div>
 
-    <main class="admin-main container-xl py-4" style="max-width: 1100px; margin: 0 auto;">
-      <header class="admin-header mb-4">
-        <h1 class="fw-bold" style="font-size:2.2rem;">Painel Admin - CRUD</h1>
-      </header>
-      <section class="crud-section active" id="skills-section">
-        <div class="section-header d-flex justify-content-between align-items-center">
-          <h2><i class="bi bi-lightbulb"></i> Habilidades</h2>
-          <button class="btn btn-success" id="btnAddSkillModal" type="button"><i class="bi bi-plus-circle"></i> Nova Habilidade</button>
-        </div>
-        <div id="skills-list" class="card-list w-100"></div>
-      </section>
-      <section class="crud-section" id="achievements-section">
-        <div class="section-header d-flex justify-content-between align-items-center">
-          <h2><i class="bi bi-trophy"></i> Conquistas</h2>
-          <button class="btn btn-success" id="btnAddAchievementModal" type="button" onclick="window.showAchievementForm && window.showAchievementForm(null)"><i class="bi bi-plus-circle"></i> Nova Conquista</button>
-        </div>
-        <div id="achievements-list" class="card-list w-100"></div>
-      </section>
-    </main>
+        <main class="admin-main container-xl py-4"
+          style="max-width: 1100px; margin: 0 auto;">
+          <header class="admin-header mb-4">
+            <h1 class="fw-bold" style="font-size:2.2rem;">Painel Admin -
+              CRUD</h1>
+          </header>
+          <section class="crud-section active" id="skills-section">
+            <div
+              class="section-header d-flex justify-content-between align-items-center">
+              <h2><i class="bi bi-lightbulb"></i> Habilidades</h2>
+              <button class="btn btn-success" id="btnAddSkillModal"
+                type="button"><i class="bi bi-plus-circle"></i> Nova
+                Habilidade</button>
+            </div>
+            <div id="skills-list" class="card-list w-100"></div>
+          </section>
+          <section class="crud-section" id="achievements-section">
+            <div
+              class="section-header d-flex justify-content-between align-items-center">
+              <h2><i class="bi bi-trophy"></i> Conquistas</h2>
+              <button class="btn btn-success" id="btnAddAchievementModal"
+                type="button"><i class="bi bi-plus-circle"></i> Nova
+                Conquista</button>
+            </div>
+            <div id="achievements-list" class="card-list w-100"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
     <script>
+      // Função auxiliar para persistência de dados
+      window.postJsonApi = async function(endpoint, data) {
+        try {
+          const response = await fetch(`data/${endpoint}.json`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!response.ok) throw new Error('Erro ao salvar dados');
+          return await response.json();
+        } catch (e) {
+          console.error(`Erro ao salvar ${endpoint}:`, e);
+          throw e;
+        }
+      };
+
       // Listagem de habilidades em cards horizontais col-12
       async function renderSkillsList() {
         const list = document.getElementById('skills-list');
@@ -395,12 +436,15 @@
         try {
           const res = await fetch('data/skills.json');
           const data = await res.json();
+          window.skillsData = data;
           if (!data.skills || data.skills.length === 0) {
             list.innerHTML = '<div class="alert alert-info">Nenhuma habilidade encontrada.</div>';
             return;
           }
           list.innerHTML = '';
           data.skills.forEach(skill => {
+            // Oculta habilidades inativas
+            if (skill.ativo === false) return;
             const scores = skill.scores || {};
             const related = (skill.children && skill.children.length) ? skill.children.join(', ') : '-';
             const card = document.createElement('div');
@@ -425,7 +469,7 @@
                 </div>
                 <div class="d-flex flex-column gap-2 align-items-end">
                   <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="active-skill-${skill.id}" checked>
+                    <input class="form-check-input" type="checkbox" id="active-skill-${skill.id}" ${skill.ativo !== false ? 'checked' : ''}>
                     <label class="form-check-label" for="active-skill-${skill.id}">Ativo</label>
                   </div>
                   <div class="btn-group">
@@ -436,6 +480,30 @@
               </div>
             `;
             list.appendChild(card);
+            // Evento para persistir o switch "Ativo"
+            setTimeout(() => {
+              const switchEl = document.getElementById(`active-skill-${skill.id}`);
+              if (switchEl) {
+                switchEl.checked = skill.ativo !== false;
+                switchEl.addEventListener('change', async function() {
+                  skill.ativo = switchEl.checked;
+                  const idx = window.skillsData.skills.findIndex(s => s.id == skill.id);
+                  if (idx !== -1) {
+                    window.skillsData.skills[idx].ativo = skill.ativo;
+                    try {
+                      await window.postJsonApi('skills', window.skillsData);
+                      renderSkillsList();
+                      const toastMsg = document.getElementById('adminToastMsg');
+                      if (toastMsg) toastMsg.textContent = 'Estado da habilidade atualizado!';
+                      const toast = document.getElementById('adminToast');
+                      if (toast && window.bootstrap) new bootstrap.Toast(toast).show();
+                    } catch (e) {
+                      console.error('Erro ao atualizar habilidade:', e);
+                    }
+                  }
+                });
+              }
+            }, 0);
           });
           // Adicionar eventos aos botões de editar/excluir
           list.querySelectorAll('.btn-edit-skill').forEach(btn => {
@@ -446,21 +514,21 @@
             });
           });
           list.querySelectorAll('.btn-delete-skill').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', async function() {
               const skillId = btn.getAttribute('data-id');
               const skill = data.skills.find(s => s.id == skillId);
               if (!skill) return;
               if (confirm(`Tem certeza que deseja excluir a habilidade "${skill.title}"?`)) {
-                // Remover do array global e atualizar UI
-                if (window.skillsData && Array.isArray(window.skillsData.skills)) {
-                  window.skillsData.skills = window.skillsData.skills.filter(s => s.id != skillId);
-                  if (window.postJsonApi) window.postJsonApi('skills', window.skillsData);
+                window.skillsData.skills = window.skillsData.skills.filter(s => s.id != skillId);
+                try {
+                  await window.postJsonApi('skills', window.skillsData);
                   renderSkillsList();
-                  // Toast feedback
-                  var toastMsg = document.getElementById('adminToastMsg');
-                  toastMsg.textContent = 'Habilidade excluída com sucesso!';
-                  var toast = new bootstrap.Toast(document.getElementById('adminToast'));
-                  toast.show();
+                  const toastMsg = document.getElementById('adminToastMsg');
+                  if (toastMsg) toastMsg.textContent = 'Habilidade excluída com sucesso!';
+                  const toast = document.getElementById('adminToast');
+                  if (toast && window.bootstrap) new bootstrap.Toast(toast).show();
+                } catch (e) {
+                  console.error('Erro ao excluir habilidade:', e);
                 }
               }
             });
@@ -477,13 +545,15 @@
         try {
           const res = await fetch('data/achievements.json');
           const data = await res.json();
+          window.achievements = data;
           if (!Array.isArray(data) || data.length === 0) {
             list.innerHTML = '<div class="alert alert-info">Nenhuma conquista encontrada.</div>';
             return;
           }
           list.innerHTML = '';
           data.forEach(ach => {
-            const scores = ach.scores || {};
+            // Oculta conquistas inativas
+            if (ach.status === 'locked') return;
             const img = ach.image || ach.img || '';
             const evidence = ach.evidence ? `<a href="${ach.evidence}" target="_blank" class="badge bg-success">Evidência</a>` : '';
             const card = document.createElement('div');
@@ -491,20 +561,13 @@
             card.innerHTML = `
               <div class="card-body d-flex flex-wrap align-items-center justify-content-between gap-3">
                 <div class="d-flex align-items-center gap-3 flex-wrap">
-                  <div style="width:64px;height:64px;overflow:hidden;border-radius:8px;background:#f8f9fa;display:flex;align-items:center;justify-content:center;">
-                    ${img ? `<img src="${img}" alt="img" style="max-width:100%;max-height:100%;object-fit:cover;">` : '<i class="bi bi-image fs-1 text-secondary"></i>'}
+                  <div style="width:64px;height:64px;overflow:hidden;border-radius:50%;background:#f8f9fa;display:flex;align-items:center;justify-content:center;">
+                    ${img ? `<img src="${img}" alt="img" class="achievement-img" style="max-width:100%;max-height:100%;object-fit:cover;">` : '<i class="bi bi-image fs-1 text-secondary"></i>'}
                   </div>
                   <div>
                     <h5 class="mb-1">${ach.title || ''} <small class="text-muted">#${ach.id || ''}</small></h5>
-                    <div class="mb-1"><span class="badge bg-secondary">${ach.category || ''}</span> <span class="badge bg-light text-dark">${ach.status || ''}</span> <span class="badge bg-info">${ach.difficulty || '-'}</span></div>
+                    <div class="mb-1"><span class="badge bg-secondary">${ach.category || ''}</span> <span class="badge bg-light text-dark">${ach.status || ''}</span> <span class="badge bg-info">Dificuldade: ${ach.difficulty || '-'}</span></div>
                     <div class="mb-1">${ach.description || ''}</div>
-                    <div class="mb-1">
-                      <span class="badge bg-warning text-dark">Teórico: ${scores.theoretical ?? '-'}</span>
-                      <span class="badge bg-warning text-dark">Técnico: ${scores.technical ?? '-'}</span>
-                      <span class="badge bg-warning text-dark">Problemas: ${scores.problem_solving ?? '-'}</span>
-                      <span class="badge bg-warning text-dark">Transferência: ${scores.knowledge_transfer ?? '-'}</span>
-                      <span class="badge bg-warning text-dark">Tendências: ${scores.trends ?? '-'}</span>
-                    </div>
                     <div class="mb-1"><small class="text-muted">Data: ${ach.unlockedDate || '-'}</small> ${evidence}</div>
                   </div>
                 </div>
@@ -521,6 +584,30 @@
               </div>
             `;
             list.appendChild(card);
+            // Evento para persistir o switch "Ativo"
+            setTimeout(() => {
+              const switchEl = document.getElementById(`active-achievement-${ach.id}`);
+              if (switchEl) {
+                switchEl.checked = ach.status !== 'locked';
+                switchEl.addEventListener('change', async function() {
+                  ach.status = switchEl.checked ? 'unlocked' : 'locked';
+                  const idx = window.achievements.findIndex(a => a.id == ach.id);
+                  if (idx !== -1) {
+                    window.achievements[idx].status = ach.status;
+                    try {
+                      await window.postJsonApi('achievements', window.achievements);
+                      renderAchievementsList();
+                      const toastMsg = document.getElementById('adminToastMsg');
+                      if (toastMsg) toastMsg.textContent = 'Estado da conquista atualizado!';
+                      const toast = document.getElementById('adminToast');
+                      if (toast && window.bootstrap) new bootstrap.Toast(toast).show();
+                    } catch (e) {
+                      console.error('Erro ao atualizar conquista:', e);
+                    }
+                  }
+                });
+              }
+            }, 0);
           });
           // Adicionar eventos aos botões de editar/excluir
           list.querySelectorAll('.btn-edit-achievement').forEach(btn => {
@@ -531,21 +618,21 @@
             });
           });
           list.querySelectorAll('.btn-delete-achievement').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', async function() {
               const achId = btn.getAttribute('data-id');
               const ach = data.find(a => a.id == achId);
               if (!ach) return;
               if (confirm(`Tem certeza que deseja excluir a conquista "${ach.title}"?`)) {
-                // Remover do array global e atualizar UI
-                if (window.achievements && Array.isArray(window.achievements)) {
-                  window.achievements = window.achievements.filter(a => a.id != achId);
-                  if (window.postJsonApi) window.postJsonApi('achievements', window.achievements);
+                window.achievements = window.achievements.filter(a => a.id != achId);
+                try {
+                  await window.postJsonApi('achievements', window.achievements);
                   renderAchievementsList();
-                  // Toast feedback
-                  var toastMsg = document.getElementById('adminToastMsg');
-                  toastMsg.textContent = 'Conquista excluída com sucesso!';
-                  var toast = new bootstrap.Toast(document.getElementById('adminToast'));
-                  toast.show();
+                  const toastMsg = document.getElementById('adminToastMsg');
+                  if (toastMsg) toastMsg.textContent = 'Conquista excluída com sucesso!';
+                  const toast = document.getElementById('adminToast');
+                  if (toast && window.bootstrap) new bootstrap.Toast(toast).show();
+                } catch (e) {
+                  console.error('Erro ao excluir conquista:', e);
                 }
               }
             });
@@ -555,14 +642,6 @@
         }
       }
 
-      document.addEventListener('DOMContentLoaded', function() {
-        renderSkillsList();
-        renderAchievementsList();
-      });
-    </script>
-      
-    </script>
-    <script>
       // Preencher dropdown de skills relacionadas no modal de conquistas
       document.addEventListener('DOMContentLoaded', function() {
         function fillRelatedSkillsDropdown(selected = []) {
@@ -579,35 +658,14 @@
             });
           }
         }
-        // Ao abrir o modal de conquista para novo ou edição
         window.showAchievementModal = (function(origFn) {
           return function(achievement) {
             fillRelatedSkillsDropdown(achievement && achievement.relatedSkills ? achievement.relatedSkills : []);
-            origFn(achievement);
+            origFn && origFn(achievement);
           }
         })(window.showAchievementModal);
-        // Ao clicar em Nova Conquista
-        var btnAddAchievement = document.querySelector('#achievements-section .save-btn');
-        if (btnAddAchievement) {
-          btnAddAchievement.addEventListener('click', function() {
-            fillRelatedSkillsDropdown([]);
-          });
-        }
-        // Ao submeter, coletar múltiplos selecionados
-        var achievementModalForm = document.getElementById('achievement-modal-form');
-        if (achievementModalForm) {
-          achievementModalForm.addEventListener('submit', function(e) {
-            var select = document.getElementById('modal-achievement-relatedSkills');
-            if (select) {
-              var selected = Array.from(select.selectedOptions).map(opt => opt.value);
-              document.getElementById('modal-achievement-relatedSkills').dataset.values = selected.join(',');
-            }
-          }, true);
-        }
       });
-    </script>
 
-    <script>
       // Switch visual para status no modal de conquistas
       document.addEventListener('DOMContentLoaded', function() {
         var statusSwitch = document.getElementById('modal-achievement-status-switch');
@@ -625,9 +683,7 @@
           });
         }
       });
-    </script>
 
-    <script>
       // Estrelas interativas para dificuldade no modal de conquistas
       document.addEventListener('DOMContentLoaded', function() {
         var starDiv = document.getElementById('modal-achievement-difficulty-stars');
@@ -645,27 +701,35 @@
           });
         }
       });
-    </script>
 
-    <script>
-      // Adição dinâmica de filhos no modal de habilidades
+      // Pré-visualização de imagens no modal de conquistas
       document.addEventListener('DOMContentLoaded', function() {
-        var btnAddChild = document.getElementById('btnAddChildSkill');
-        var childrenList = document.getElementById('modal-skill-children-list');
-        if (btnAddChild && childrenList) {
-          btnAddChild.addEventListener('click', function() {
-            const idx = childrenList.children.length;
-            const div = document.createElement('div');
-            div.className = 'input-group mb-1';
-            div.innerHTML = `<input type="text" class="form-control" name="child-skill" placeholder="ID do filho">
-              <button type="button" class="btn btn-outline-danger btn-sm" title="Remover" onclick="this.parentElement.remove()"><i class="bi bi-x"></i></button>`;
-            childrenList.appendChild(div);
+        const imgInput = document.getElementById('modal-achievement-img');
+        const imgUrlInput = document.getElementById('modal-achievement-img-url');
+        const imgPreview = document.getElementById('modal-achievement-img-preview');
+        if (imgInput && imgPreview) {
+          imgInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                imgPreview.src = e.target.result;
+                imgPreview.style.display = 'block';
+                imgUrlInput.value = '';
+              };
+              reader.readAsDataURL(file);
+            }
+          });
+        }
+        if (imgUrlInput && imgPreview) {
+          imgUrlInput.addEventListener('input', function() {
+            imgPreview.src = imgUrlInput.value;
+            imgPreview.style.display = imgUrlInput.value ? 'block' : 'none';
+            imgInput.value = '';
           });
         }
       });
-    </script>
 
-    <script>
       // Dropdown dinâmico para categoria de conquista
       document.addEventListener('DOMContentLoaded', function() {
         var catCheck = document.getElementById('modal-achievement-category-new-check');
@@ -685,9 +749,7 @@
           });
         }
       });
-    </script>
 
-    <script>
       // Dropdown dinâmico para categoria de habilidade
       document.addEventListener('DOMContentLoaded', function() {
         var catCheck = document.getElementById('modal-skill-category-new-check');
@@ -707,72 +769,189 @@
           });
         }
       });
-    </script>
 
-    <script>
-      // Exemplo de uso: adicionar botão de editar nos cards de conquistas
-      // (A renderização real dos cards está em scripts/admin.js, mas aqui está o padrão de chamada)
-      // window.showAchievementModal(achievementObj) deve ser chamado ao clicar em editar
-      // Exemplo:
-      // <button onclick="showAchievementModal(achievement)">Editar</button>
-      // Certifique-se de que scripts/admin.js chama showAchievementModal corretamente ao editar
-    </script>
-
-    <script>
       // Preencher modal ao editar conquista
       window.showAchievementModal = function(achievement) {
-        document.getElementById('modal-achievement-id').value = achievement.id || '';
-        document.getElementById('modal-achievement-title').value = achievement.title || '';
-        document.getElementById('modal-achievement-category').value = achievement.category || '';
-        document.getElementById('modal-achievement-desc').value = achievement.description || '';
-        document.getElementById('modal-achievement-status').value = achievement.status || 'unlocked';
-        document.getElementById('modal-achievement-difficulty').value = achievement.difficulty || 3;
-        document.getElementById('modal-achievement-unlockedDate').value = achievement.unlockedDate || '';
-        document.getElementById('modal-achievement-evidence').value = achievement.evidence || '';
-        // Preencher múltipla seleção de skills relacionadas
+        document.getElementById('modal-achievement-id').value = achievement?.id || '';
+        document.getElementById('modal-achievement-title').value = achievement?.title || '';
+        document.getElementById('modal-achievement-category').value = achievement?.category || '';
+        document.getElementById('modal-achievement-desc').value = achievement?.description || '';
+        document.getElementById('modal-achievement-status').value = achievement?.status || 'unlocked';
+        document.getElementById('modal-achievement-status-switch').checked = achievement?.status !== 'locked';
+        document.getElementById('modal-achievement-difficulty').value = achievement?.difficulty || 3;
+        const starDiv = document.getElementById('modal-achievement-difficulty-stars');
+        if (starDiv) {
+          const stars = starDiv.querySelectorAll('i');
+          stars.forEach((s, i) => {
+            s.className = i < (achievement?.difficulty || 3) ? 'bi bi-star-fill' : 'bi bi-star';
+          });
+          starDiv.dataset.score = achievement?.difficulty || 3;
+        }
+        document.getElementById('modal-achievement-unlockedDate').value = achievement?.unlockedDate || '';
+        document.getElementById('modal-achievement-evidence').value = achievement?.evidence || '';
+        document.getElementById('modal-achievement-img-url').value = achievement?.image || achievement?.img || '';
+        const imgPreview = document.getElementById('modal-achievement-img-preview');
+        if (imgPreview) {
+          imgPreview.src = achievement?.image || achievement?.img || '';
+          imgPreview.style.display = (achievement?.image || achievement?.img) ? 'block' : 'none';
+        }
         var select = document.getElementById('modal-achievement-relatedSkills');
-        if (select && achievement.relatedSkills) {
+        if (select && achievement?.relatedSkills) {
           Array.from(select.options).forEach(opt => {
             opt.selected = achievement.relatedSkills.includes(opt.value);
           });
         }
-        document.getElementById('modal-achievement-img-url').value = achievement.img || '';
         var achievementModal = new bootstrap.Modal(document.getElementById('achievementModal'));
         achievementModal.show();
-      }
-    </script>
-    <script>
-      // Abrir modal Bootstrap 5 ao clicar no botão Nova Conquista
+      };
+
+      // Preencher modal ao editar habilidade
+      window.showSkillModal = async function(skill) {
+        if (!window.skillsData || !Array.isArray(window.skillsData.skills)) {
+          try {
+            const res = await fetch('data/skills.json');
+            window.skillsData = await res.json();
+          } catch {}
+        }
+        if (!window.achievements || !Array.isArray(window.achievements)) {
+          try {
+            const res = await fetch('data/achievements.json');
+            window.achievements = await res.json();
+          } catch {}
+        }
+        document.getElementById('modal-skill-id').value = skill?.id || '';
+        document.getElementById('modal-skill-name').value = skill?.title || '';
+        document.getElementById('modal-skill-icon').value = skill?.icon || '';
+        document.getElementById('modal-skill-desc').value = skill?.description || '';
+        document.getElementById('modal-skill-unlock-threshold').value = skill?.unlock_threshold || 0;
+        var catSelect = document.getElementById('modal-skill-category');
+        var catInput = document.getElementById('modal-skill-category-new');
+        var catCheck = document.getElementById('modal-skill-category-new-check');
+        if (catSelect && catInput && catCheck) {
+          if (skill?.category && Array.from(catSelect.options).some(opt => opt.value === skill.category)) {
+            catSelect.value = skill.category;
+            catSelect.classList.remove('d-none');
+            catInput.classList.add('d-none');
+            catInput.value = '';
+            catCheck.checked = false;
+          } else if (skill?.category) {
+            catSelect.classList.add('d-none');
+            catInput.classList.remove('d-none');
+            catInput.value = skill.category;
+            catCheck.checked = true;
+          } else {
+            catSelect.value = 'QA';
+            catSelect.classList.remove('d-none');
+            catInput.classList.add('d-none');
+            catInput.value = '';
+            catCheck.checked = false;
+          }
+        }
+        var parentSelect = document.getElementById('modal-skill-parent');
+        if (parentSelect && window.skillsData && Array.isArray(window.skillsData.skills)) {
+          parentSelect.innerHTML = '<option value="">Nenhuma</option>';
+          window.skillsData.skills.forEach(s => {
+            if (s.id !== skill?.id) {
+              var opt = document.createElement('option');
+              opt.value = s.id;
+              opt.textContent = s.title + (s.id ? ` (${s.id})` : '');
+              parentSelect.appendChild(opt);
+            }
+          });
+          parentSelect.value = skill?.parent || '';
+        }
+        var childrenSelect = document.getElementById('modal-skill-children');
+        if (childrenSelect && window.skillsData && Array.isArray(window.skillsData.skills)) {
+          childrenSelect.innerHTML = '';
+          window.skillsData.skills.forEach(s => {
+            if (s.id !== skill?.id) {
+              var opt = document.createElement('option');
+              opt.value = s.id;
+              opt.textContent = s.title + (s.id ? ` (${s.id})` : '');
+              if (Array.isArray(skill?.children) && skill.children.includes(s.id)) opt.selected = true;
+              childrenSelect.appendChild(opt);
+            }
+          });
+        }
+        var relAchSelect = document.getElementById('modal-skill-relatedAchievements');
+        if (relAchSelect && window.achievements && Array.isArray(window.achievements)) {
+          relAchSelect.innerHTML = '';
+          window.achievements.forEach(a => {
+            var opt = document.createElement('option');
+            opt.value = a.id;
+            opt.textContent = a.title + (a.id ? ` (${a.id})` : '');
+            if (Array.isArray(skill?.relatedAchievements) && skill.relatedAchievements.includes(a.id)) opt.selected = true;
+            relAchSelect.appendChild(opt);
+          });
+        }
+        const scores = skill?.scores || {};
+        const scoreFields = [
+          {star: 'modal-score-theoretical-stars', input: 'modal-score-theoretical', val: scores.theoretical ?? 3},
+          {star: 'modal-score-technical-stars', input: 'modal-score-technical', val: scores.technical ?? 3},
+          {star: 'modal-score-problem-solving-stars', input: 'modal-score-problem-solving', val: scores.problem_solving ?? 3},
+          {star: 'modal-score-knowledge-transfer-stars', input: 'modal-score-knowledge-transfer', val: scores.knowledge_transfer ?? 3},
+          {star: 'modal-score-trends-stars', input: 'modal-score-trends', val: scores.trends ?? 3}
+        ];
+        let soma = 0;
+        scoreFields.forEach(({star, input, val}) => {
+          document.getElementById(input).value = val;
+          soma += Number(val) || 0;
+          const starDiv = document.getElementById(star);
+          if (starDiv) {
+            const stars = starDiv.querySelectorAll('i');
+            stars.forEach((s, i) => {
+              s.className = i < val ? 'bi bi-star-fill' : 'bi bi-star';
+            });
+            starDiv.dataset.score = val;
+          }
+        });
+        const percent = Math.round((soma / 25) * 100);
+        document.getElementById('modal-skill-domain').value = `${soma}/25 (${percent}%)`;
+        document.getElementById('modal-domain-value').textContent = `${soma}/25 (${percent}%)`;
+        var skillModal = new bootstrap.Modal(document.getElementById('skillModal'));
+        skillModal.show();
+      };
+
+      // Abrir modal para nova conquista
       document.addEventListener('DOMContentLoaded', function() {
-        var btnAddAchievement = document.querySelector('#achievements-section .save-btn');
+        var btnAddAchievement = document.getElementById('btnAddAchievementModal');
         var achievementModal = new bootstrap.Modal(document.getElementById('achievementModal'));
         if (btnAddAchievement) {
           btnAddAchievement.addEventListener('click', function() {
-            // Limpar todos os campos do modal antes de abrir
             document.getElementById('modal-achievement-id').value = '';
             document.getElementById('modal-achievement-title').value = '';
             document.getElementById('modal-achievement-category').value = '';
             document.getElementById('modal-achievement-desc').value = '';
             document.getElementById('modal-achievement-status').value = 'unlocked';
+            document.getElementById('modal-achievement-status-switch').checked = true;
             document.getElementById('modal-achievement-difficulty').value = 3;
+            const starDiv = document.getElementById('modal-achievement-difficulty-stars');
+            if (starDiv) {
+              const stars = starDiv.querySelectorAll('i');
+              stars.forEach((s, i) => {
+                s.className = i < 3 ? 'bi bi-star-fill' : 'bi bi-star';
+              });
+              starDiv.dataset.score = 3;
+            }
             document.getElementById('modal-achievement-unlockedDate').value = '';
             document.getElementById('modal-achievement-evidence').value = '';
-            // Limpar múltipla seleção de skills relacionadas
+            document.getElementById('modal-achievement-img-url').value = '';
+            document.getElementById('modal-achievement-img-preview').style.display = 'none';
             var select = document.getElementById('modal-achievement-relatedSkills');
             if (select) Array.from(select.options).forEach(opt => opt.selected = false);
-            document.getElementById('modal-achievement-img-url').value = '';
             achievementModal.show();
           });
         }
-        // Submit do modal de conquista
         var achievementModalForm = document.getElementById('achievement-modal-form');
         if (achievementModalForm) {
           achievementModalForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             var achievement = {
-              id: document.getElementById('modal-achievement-id').value || undefined,
+              id: document.getElementById('modal-achievement-id').value || `ach-${Date.now()}`,
               title: document.getElementById('modal-achievement-title').value.trim(),
-              category: document.getElementById('modal-achievement-category').value.trim(),
+              category: document.getElementById('modal-achievement-category-new-check').checked
+                ? document.getElementById('modal-achievement-category-new').value.trim()
+                : document.getElementById('modal-achievement-category').value,
               description: document.getElementById('modal-achievement-desc').value.trim(),
               status: document.getElementById('modal-achievement-status').value,
               difficulty: parseInt(document.getElementById('modal-achievement-difficulty').value) || 3,
@@ -781,9 +960,8 @@
               relatedSkills: Array.from(document.getElementById('modal-achievement-relatedSkills').selectedOptions).map(opt => opt.value),
               image: document.getElementById('modal-achievement-img-url').value.trim()
             };
-            // Atualizar/inserir conquista na lista global
             let updated = false;
-            if (achievement.id) {
+            if (achievement.id && window.achievements) {
               for (let i = 0; i < window.achievements.length; i++) {
                 if (window.achievements[i].id === achievement.id) {
                   window.achievements[i] = achievement;
@@ -793,218 +971,94 @@
               }
             }
             if (!updated) {
-              achievement.id = achievement.id || `ach-${Date.now()}`;
+              if (!window.achievements) window.achievements = [];
               window.achievements.push(achievement);
             }
-            // Persistir no backend
-            if (window.postJsonApi) {
+            try {
               await window.postJsonApi('achievements', window.achievements);
+              renderAchievementsList();
+              achievementModal.hide();
+              achievementModalForm.reset();
+              const toastMsg = document.getElementById('adminToastMsg');
+              if (toastMsg) toastMsg.textContent = 'Conquista salva com sucesso!';
+              const toast = document.getElementById('adminToast');
+              if (toast && window.bootstrap) new bootstrap.Toast(toast).show();
+            } catch (e) {
+              console.error('Erro ao salvar conquista:', e);
             }
-            // Atualizar UI
-            if (window.renderAchievements) window.renderAchievements();
-            achievementModal.hide();
-            achievementModalForm.reset();
-            // Toast feedback
-            var toastMsg = document.getElementById('adminToastMsg');
-            toastMsg.textContent = 'Conquista salva com sucesso!';
-            var toast = new bootstrap.Toast(document.getElementById('adminToast'));
-            toast.show();
           });
         }
       });
-    </script>
-    <script>
-      // Preencher modal ao editar habilidade
-window.showSkillModal = async function(skill) {
-  // Garante que dados globais estejam carregados
-  if (!window.skillsData || !Array.isArray(window.skillsData.skills)) {
-    try {
-      const res = await fetch('data/skills.json');
-      window.skillsData = await res.json();
-    } catch {}
-  }
-  if (!window.achievements || !Array.isArray(window.achievements)) {
-    try {
-      const res = await fetch('data/achievements.json');
-      window.achievements = await res.json();
-    } catch {}
-  }
 
-  // Preencher campos básicos
-  document.getElementById('modal-skill-id').value = skill.id || '';
-  document.getElementById('modal-skill-name').value = skill.title || '';
-  document.getElementById('modal-skill-icon').value = skill.icon || '';
-  document.getElementById('modal-skill-desc').value = skill.description || '';
-  document.getElementById('modal-skill-unlock-threshold').value = skill.unlock_threshold || 0;
-
-  // Preencher categoria (dropdown ou campo novo)
-  var catSelect = document.getElementById('modal-skill-category');
-  var catInput = document.getElementById('modal-skill-category-new');
-  var catCheck = document.getElementById('modal-skill-category-new-check');
-  if (catSelect && catInput && catCheck) {
-    if (skill.category && Array.from(catSelect.options).some(opt => opt.value === skill.category)) {
-      catSelect.value = skill.category;
-      catSelect.classList.remove('d-none');
-      catInput.classList.add('d-none');
-      catInput.value = '';
-      catCheck.checked = false;
-    } else if (skill.category) {
-      catSelect.classList.add('d-none');
-      catInput.classList.remove('d-none');
-      catInput.value = skill.category;
-      catCheck.checked = true;
-    } else {
-      catSelect.value = 'QA';
-      catSelect.classList.remove('d-none');
-      catInput.classList.add('d-none');
-      catInput.value = '';
-      catCheck.checked = false;
-    }
-  }
-
-  // Preencher dropdown de Habilidade Pai
-  var parentSelect = document.getElementById('modal-skill-parent');
-  if (parentSelect && window.skillsData && Array.isArray(window.skillsData.skills)) {
-    parentSelect.innerHTML = '<option value="">Nenhuma</option>';
-    window.skillsData.skills.forEach(s => {
-      if (s.id !== skill.id) {
-        var opt = document.createElement('option');
-        opt.value = s.id;
-        opt.textContent = s.title + (s.id ? ` (${s.id})` : '');
-        parentSelect.appendChild(opt);
-      }
-    });
-    parentSelect.value = skill.parent || '';
-  }
-
-  // Preencher múltipla seleção de filhos
-  var childrenSelect = document.getElementById('modal-skill-children');
-  if (childrenSelect && window.skillsData && Array.isArray(window.skillsData.skills)) {
-    childrenSelect.innerHTML = '';
-    window.skillsData.skills.forEach(s => {
-      if (s.id !== skill.id) {
-        var opt = document.createElement('option');
-        opt.value = s.id;
-        opt.textContent = s.title + (s.id ? ` (${s.id})` : '');
-        if (Array.isArray(skill.children) && skill.children.includes(s.id)) opt.selected = true;
-        childrenSelect.appendChild(opt);
-      }
-    });
-  }
-
-  // Preencher múltipla seleção de conquistas relacionadas
-  var relAchSelect = document.getElementById('modal-skill-relatedAchievements');
-  if (relAchSelect && window.achievements && Array.isArray(window.achievements)) {
-    relAchSelect.innerHTML = '';
-    window.achievements.forEach(a => {
-      var opt = document.createElement('option');
-      opt.value = a.id;
-      opt.textContent = a.title + (a.id ? ` (${a.id})` : '');
-      if (Array.isArray(skill.relatedAchievements) && skill.relatedAchievements.includes(a.id)) opt.selected = true;
-      relAchSelect.appendChild(opt);
-    });
-  }
-
-
-  // Estrelas de pontuação e cálculo do domínio
-  const scores = skill.scores || {};
-  const scoreFields = [
-    {star: 'modal-score-theoretical-stars', input: 'modal-score-theoretical', val: scores.theoretical ?? 3},
-    {star: 'modal-score-technical-stars', input: 'modal-score-technical', val: scores.technical ?? 3},
-    {star: 'modal-score-problem-solving-stars', input: 'modal-score-problem-solving', val: scores.problem_solving ?? 3},
-    {star: 'modal-score-knowledge-transfer-stars', input: 'modal-score-knowledge-transfer', val: scores.knowledge_transfer ?? 3},
-    {star: 'modal-score-trends-stars', input: 'modal-score-trends', val: scores.trends ?? 3}
-  ];
-  let soma = 0;
-  scoreFields.forEach(({star, input, val}) => {
-    document.getElementById(input).value = val;
-    soma += Number(val) || 0;
-    const starDiv = document.getElementById(star);
-    if (starDiv) {
-      const stars = starDiv.querySelectorAll('i');
-      stars.forEach((s, i) => {
-        s.className = i < val ? 'bi bi-star-fill' : 'bi bi-star';
-      });
-      starDiv.dataset.score = val;
-    }
-  });
-  // Domínio = soma dos scores, máximo 25, exibe n/5 e %
-  const dominio = Math.round(soma / 5);
-  const percent = Math.round((soma / 25) * 100);
-  document.getElementById('modal-skill-domain').value = dominio;
-  document.getElementById('modal-domain-value').textContent = `${dominio}/5 ${percent}%`;
-
-  var skillModal = new bootstrap.Modal(document.getElementById('skillModal'));
-  skillModal.show();
-}
-    </script>
-    </script>
-    <script>
-      // Abrir modal Bootstrap 5 ao clicar no botão
+      // Abrir modal para nova habilidade
       document.addEventListener('DOMContentLoaded', function() {
         var btnAddSkill = document.getElementById('btnAddSkillModal');
         var skillModal = new bootstrap.Modal(document.getElementById('skillModal'));
         if (btnAddSkill) {
           btnAddSkill.addEventListener('click', function() {
-            // Limpar todos os campos do modal antes de abrir
             document.getElementById('modal-skill-id').value = '';
             document.getElementById('modal-skill-name').value = '';
             document.getElementById('modal-skill-category').value = 'QA';
-            document.getElementById('modal-skill-domain').value = 3;
-            document.getElementById('modal-domain-value').textContent = 3;
             document.getElementById('modal-skill-icon').value = '';
             document.getElementById('modal-skill-desc').value = '';
             document.getElementById('modal-skill-unlock-threshold').value = 0;
             document.getElementById('modal-skill-parent').value = '';
-            // Limpar múltipla seleção de filhos e conquistas relacionadas
+            document.getElementById('modal-skill-category-new').value = '';
+            document.getElementById('modal-skill-category-new-check').checked = false;
+            document.getElementById('modal-skill-category').classList.remove('d-none');
+            document.getElementById('modal-skill-category-new').classList.add('d-none');
             var childrenSelect = document.getElementById('modal-skill-children');
             if (childrenSelect) Array.from(childrenSelect.options).forEach(opt => opt.selected = false);
             var relAchSelect = document.getElementById('modal-skill-relatedAchievements');
             if (relAchSelect) Array.from(relAchSelect.options).forEach(opt => opt.selected = false);
-            document.getElementById('modal-score-theoretical').value = 3;
-            document.getElementById('modal-score-technical').value = 3;
-            document.getElementById('modal-score-problem-solving').value = 3;
-            document.getElementById('modal-score-knowledge-transfer').value = 3;
-            document.getElementById('modal-score-trends').value = 3;
+            const scoreFields = ['theoretical', 'technical', 'problem-solving', 'knowledge-transfer', 'trends'];
+            scoreFields.forEach(field => {
+              document.getElementById(`modal-score-${field}`).value = 3;
+              const starDiv = document.getElementById(`modal-score-${field}-stars`);
+              if (starDiv) {
+                const stars = starDiv.querySelectorAll('i');
+                stars.forEach((s, i) => {
+                  s.className = i < 3 ? 'bi bi-star-fill' : 'bi bi-star';
+                });
+                starDiv.dataset.score = 3;
+              }
+            });
+            document.getElementById('modal-skill-domain').value = '3/25 (12%)';
+            document.getElementById('modal-domain-value').textContent = '3/25 (12%)';
             skillModal.show();
           });
         }
-        // Atualizar valor do domínio
-        var domainRange = document.getElementById('modal-skill-domain');
-        var domainValue = document.getElementById('modal-domain-value');
-        if (domainRange && domainValue) {
-          domainRange.addEventListener('input', function() {
-            domainValue.textContent = domainRange.value;
-          });
-        }
-        // Submit do modal
         var skillModalForm = document.getElementById('skill-modal-form');
         if (skillModalForm) {
           skillModalForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             var skill = {
-              id: document.getElementById('modal-skill-id').value || undefined,
+              id: document.getElementById('modal-skill-id').value || `skill-${Date.now()}`,
               title: document.getElementById('modal-skill-name').value.trim(),
-              category: document.getElementById('modal-skill-category').value,
-              domain: parseInt(document.getElementById('modal-skill-domain').value),
               icon: document.getElementById('modal-skill-icon').value.trim(),
               description: document.getElementById('modal-skill-desc').value.trim(),
               unlock_threshold: parseInt(document.getElementById('modal-skill-unlock-threshold').value) || 0,
-              parent: document.getElementById('modal-skill-parent').value.trim() || undefined,
+              category: document.getElementById('modal-skill-category-new-check').checked
+                ? document.getElementById('modal-skill-category-new').value.trim()
+                : document.getElementById('modal-skill-category').value,
+              parent: document.getElementById('modal-skill-parent').value || '',
               children: Array.from(document.getElementById('modal-skill-children').selectedOptions).map(opt => opt.value),
               relatedAchievements: Array.from(document.getElementById('modal-skill-relatedAchievements').selectedOptions).map(opt => opt.value),
               scores: {
-                theoretical: parseInt(document.getElementById('modal-score-theoretical').value) || 3,
-                technical: parseInt(document.getElementById('modal-score-technical').value) || 3,
-                problem_solving: parseInt(document.getElementById('modal-score-problem-solving').value) || 3,
-                knowledge_transfer: parseInt(document.getElementById('modal-score-knowledge-transfer').value) || 3,
-                trends: parseInt(document.getElementById('modal-score-trends').value) || 3
-              }
+                theoretical: parseInt(document.getElementById('modal-score-theoretical').value) || 0,
+                technical: parseInt(document.getElementById('modal-score-technical').value) || 0,
+                problem_solving: parseInt(document.getElementById('modal-score-problem-solving').value) || 0,
+                knowledge_transfer: parseInt(document.getElementById('modal-score-knowledge-transfer').value) || 0,
+                trends: parseInt(document.getElementById('modal-score-trends').value) || 0
+              },
+              ativo: true
             };
-            // Atualizar/inserir skill na lista global
+            let soma = skill.scores.theoretical + skill.scores.technical + skill.scores.problem_solving + skill.scores.knowledge_transfer + skill.scores.trends;
+            let percent = Math.round((soma / 25) * 100);
+            skill.domain = `${soma}/25 (${percent}%)`;
+            if (!window.skillsData) window.skillsData = { skills: [] };
             let updated = false;
             if (skill.id) {
-              // Editar existente
               for (let i = 0; i < window.skillsData.skills.length; i++) {
                 if (window.skillsData.skills[i].id === skill.id) {
                   window.skillsData.skills[i] = skill;
@@ -1014,29 +1068,125 @@ window.showSkillModal = async function(skill) {
               }
             }
             if (!updated) {
-              // Nova skill
-              skill.id = skill.id || `skill-${Date.now()}`;
               window.skillsData.skills.push(skill);
             }
-            // Persistir no backend
-            if (window.postJsonApi) {
+            try {
               await window.postJsonApi('skills', window.skillsData);
+              renderSkillsList();
+              skillModal.hide();
+              skillModalForm.reset();
+              document.getElementById('modal-skill-domain').value = '3/25 (12%)';
+              document.getElementById('modal-domain-value').textContent = '3/25 (12%)';
+              const toastMsg = document.getElementById('adminToastMsg');
+              if (toastMsg) toastMsg.textContent = 'Habilidade salva com sucesso!';
+              const toast = document.getElementById('adminToast');
+              if (toast && window.bootstrap) new bootstrap.Toast(toast).show();
+            } catch (e) {
+              console.error('Erro ao salvar habilidade:', e);
             }
-            // Atualizar UI
-            if (window.renderSkills) window.renderSkills();
-            skillModal.hide();
-            skillModalForm.reset();
-            domainValue.textContent = '3';
-            // Toast feedback
-            var toastMsg = document.getElementById('adminToastMsg');
-            toastMsg.textContent = 'Habilidade salva com sucesso!';
-            var toast = new bootstrap.Toast(document.getElementById('adminToast'));
-            toast.show();
           });
         }
       });
-    </script>
-    <script>
+
+      // Atualiza domínio ao mudar scores no modal
+      document.addEventListener('DOMContentLoaded', function() {
+        function updateModalDomain() {
+          const t = parseInt(document.getElementById('modal-score-theoretical')?.value) || 0;
+          const tec = parseInt(document.getElementById('modal-score-technical')?.value) || 0;
+          const ps = parseInt(document.getElementById('modal-score-problem-solving')?.value) || 0;
+          const kt = parseInt(document.getElementById('modal-score-knowledge-transfer')?.value) || 0;
+          const tr = parseInt(document.getElementById('modal-score-trends')?.value) || 0;
+          const total = t + tec + ps + kt + tr;
+          const percent = Math.round((total / 25) * 100);
+          document.getElementById('modal-domain-value').innerText = `${total}/25 (${percent}%)`;
+          document.getElementById('modal-skill-domain').value = `${total}/25 (${percent}%)`;
+        }
+        ['modal-score-theoretical','modal-score-technical','modal-score-problem-solving','modal-score-knowledge-transfer','modal-score-trends'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.addEventListener('input', updateModalDomain);
+          }
+        });
+      });
+
+      // Estrelas interativas para pontuações no modal de habilidades
+      document.addEventListener('DOMContentLoaded', function() {
+        function setupStarRating(starDivId, inputId) {
+          var starDiv = document.getElementById(starDivId);
+          var input = document.getElementById(inputId);
+          if (starDiv && input) {
+            const stars = starDiv.querySelectorAll('i');
+            stars.forEach((star, idx) => {
+              star.addEventListener('click', function() {
+                stars.forEach((s, i) => {
+                  s.className = i <= idx ? 'bi bi-star-fill' : 'bi bi-star';
+                });
+                starDiv.dataset.score = idx + 1;
+                input.value = idx + 1;
+                if (inputId.startsWith('modal-score-')) updateModalDomain();
+              });
+            });
+          }
+        }
+        setupStarRating('modal-score-theoretical-stars', 'modal-score-theoretical');
+        setupStarRating('modal-score-technical-stars', 'modal-score-technical');
+        setupStarRating('modal-score-problem-solving-stars', 'modal-score-problem-solving');
+        setupStarRating('modal-score-knowledge-transfer-stars', 'modal-score-knowledge-transfer');
+        setupStarRating('modal-score-trends-stars', 'modal-score-trends');
+      });
+
+      // Microinteração: destaque visual ao selecionar itens no multi-select
+      document.addEventListener('DOMContentLoaded', function() {
+        function setupMultiSelectHighlight(selectId) {
+          var select = document.getElementById(selectId);
+          if (!select) return;
+          select.addEventListener('change', function() {
+            Array.from(select.options).forEach(opt => {
+              if (opt.selected) {
+                opt.classList.add('selected-option');
+              } else {
+                opt.classList.remove('selected-option');
+              }
+            });
+          });
+          Array.from(select.options).forEach(opt => {
+            if (opt.selected) opt.classList.add('selected-option');
+          });
+        }
+        setupMultiSelectHighlight('modal-achievement-relatedSkills');
+        setupMultiSelectHighlight('modal-skill-children');
+        setupMultiSelectHighlight('modal-skill-relatedAchievements');
+      });
+
+      // Foco automático no primeiro campo relevante ao abrir modais
+      document.addEventListener('DOMContentLoaded', function() {
+        var achievementModal = document.getElementById('achievementModal');
+        if (achievementModal) {
+          achievementModal.addEventListener('shown.bs.modal', function() {
+            var input = document.getElementById('modal-achievement-title');
+            if (input) input.focus();
+            input && input.classList.add('focus-highlight');
+            input && input.addEventListener('blur', function() { input.classList.remove('focus-highlight'); }, {once:true});
+          });
+        }
+        var skillModal = document.getElementById('skillModal');
+        if (skillModal) {
+          skillModal.addEventListener('shown.bs.modal', function() {
+            var input = document.getElementById('modal-skill-name');
+            if (input) input.focus();
+            input && input.classList.add('focus-highlight');
+            input && input.addEventListener('blur', function() { input.classList.remove('focus-highlight'); }, {once:true});
+          });
+        }
+      });
+
+      // Inicializar listagens
+      document.addEventListener('DOMContentLoaded', function() {
+        renderSkillsList();
+        renderAchievementsList();
+      });
+
+      // Alternar seções
       function showCrudSection(section) {
         const skillsSection = document.getElementById("skills-section");
         const achievementsSection = document.getElementById("achievements-section");
