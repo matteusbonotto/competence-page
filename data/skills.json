@@ -47,87 +47,109 @@
     {
       "id": "qa-root",
       "title": "QUALITY ASSURANCE",
-      "description": "Garantia de qualidade de software através de processos, metodologias e técnicas de teste para assegurar que produtos atendam aos requisitos e expectativas dos usuários.",
       "category": "qa",
+      "domain": 4,
+      "description": "Garantia de qualidade de software através de processos, metodologias e técnicas de teste para assegurar que produtos atendam aos requisitos e expectativas dos usuários.",
       "icon": "bi-shield-check",
-      "domain": 5,
       "unlock_threshold": 0,
       "scores": {
-        "theoretical": 5,
+        "theoretical": 4,
         "technical": 4,
-        "problem_solving": 5,
-        "knowledge_transfer": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
         "trends": 3
       },
-      "children": ["qa-testing", "qa-automation", "qa-performance"],
-      "relatedAchievements": ["istqb-cert", "agile-cert"]
+      "children": [
+        "qa-testing",
+        "qa-automation",
+        "qa-performance"
+      ],
+      "relatedAchievements": [
+        "istqb-cert",
+        "agile-cert"
+      ]
     },
     {
       "id": "qa-testing",
       "title": "MANUAL TESTING",
-      "description": "Técnicas e práticas de teste manual, incluindo planejamento, execução e documentação de casos de teste.",
       "category": "qa",
-      "icon": "bi-bug-fill",
       "domain": 4,
+      "description": "Técnicas e práticas de teste manual, incluindo planejamento, execução e documentação de casos de teste.",
+      "icon": "bi-bug-fill",
       "unlock_threshold": 3,
-      "parent": "qa-root",
       "scores": {
-        "theoretical": 4,
-        "technical": 4,
-        "problem_solving": 4,
+        "theoretical": 5,
+        "technical": 5,
+        "problem_solving": 5,
         "knowledge_transfer": 3,
-        "trends": 3
+        "trends": 4
       },
-      "children": ["qa-functional", "qa-exploratory", "qa-usability"],
-      "relatedAchievements": ["agile-cert"]
+      "parent": "qa-root",
+      "children": [
+        "qa-functional",
+        "qa-exploratory",
+        "qa-usability"
+      ],
+      "relatedAchievements": [
+        "agile-cert"
+      ]
     },
     {
       "id": "qa-automation",
       "title": "TEST AUTOMATION",
-      "description": "Automação de testes utilizando frameworks e ferramentas para execução automatizada de casos de teste.",
       "category": "qa",
-      "icon": "bi-robot",
       "domain": 3,
+      "description": "Automação de testes utilizando frameworks e ferramentas para execução automatizada de casos de teste.",
+      "icon": "bi-robot",
       "unlock_threshold": 4,
-      "parent": "qa-root",
       "scores": {
-        "theoretical": 3,
-        "technical": 4,
-        "problem_solving": 3,
+        "theoretical": 2,
+        "technical": 3,
+        "problem_solving": 2,
         "knowledge_transfer": 2,
         "trends": 4
       },
-      "children": ["qa-selenium", "qa-api-testing"],
-      "relatedAchievements": ["selenium-cert"]
+      "parent": "qa-root",
+      "children": [
+        "qa-selenium",
+        "qa-api-testing"
+      ],
+      "relatedAchievements": [
+        "selenium-cert"
+      ]
     },
     {
       "id": "qa-performance",
       "title": "PERFORMANCE TESTING",
-      "description": "Testes de performance, carga e estresse para avaliar comportamento do sistema sob diferentes condições.",
       "category": "qa",
-      "icon": "bi-speedometer2",
       "domain": 2,
+      "description": "Testes de performance, carga e estresse para avaliar comportamento do sistema sob diferentes condições.",
+      "icon": "bi-speedometer2",
       "unlock_threshold": 4,
-      "parent": "qa-root",
       "scores": {
-        "theoretical": 3,
+        "theoretical": 2,
         "technical": 2,
-        "problem_solving": 3,
+        "problem_solving": 1,
         "knowledge_transfer": 1,
-        "trends": 3
+        "trends": 2
       },
-      "children": ["qa-load-testing", "qa-stress-testing"],
-      "relatedAchievements": ["performance-cert"]
+      "parent": "qa-root",
+      "children": [
+        "qa-load-testing",
+        "qa-stress-testing"
+      ],
+      "relatedAchievements": [
+        "performance-cert"
+      ]
     },
     {
       "id": "qa-functional",
       "title": "FUNCTIONAL TESTING",
-      "description": "Testes funcionais para verificar se o software atende aos requisitos funcionais especificados.",
       "category": "qa",
-      "icon": "bi-check2-square",
       "domain": 4,
+      "description": "Testes funcionais para verificar se o software atende aos requisitos funcionais especificados.",
+      "icon": "bi-check2-square",
       "unlock_threshold": 3,
-      "parent": "qa-testing",
       "scores": {
         "theoretical": 4,
         "technical": 4,
@@ -135,27 +157,24 @@
         "knowledge_transfer": 3,
         "trends": 2
       },
-      "children": [],
-      "relatedAchievements": []
+      "parent": "qa-testing"
     },
     {
       "id": "qa-exploratory",
       "title": "EXPLORATORY TESTING",
-      "description": "Testes exploratórios para descoberta de bugs e comportamentos inesperados através de investigação livre.",
       "category": "qa",
-      "icon": "bi-search",
       "domain": 3,
+      "description": "Testes exploratórios para descoberta de bugs e comportamentos inesperados através de investigação livre.",
+      "icon": "bi-search",
       "unlock_threshold": 3,
-      "parent": "qa-testing",
       "scores": {
-        "theoretical": 3,
-        "technical": 2,
-        "problem_solving": 4,
-        "knowledge_transfer": 3,
-        "trends": 2
+        "theoretical": 5,
+        "technical": 5,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
+        "trends": 3
       },
-      "children": [],
-      "relatedAchievements": []
+      "parent": "qa-testing"
     },
     {
       "id": "qa-usability",
@@ -193,7 +212,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["selenium-cert"]
+      "relatedAchievements": [
+        "selenium-cert"
+      ]
     },
     {
       "id": "qa-api-testing",
@@ -250,7 +271,9 @@
         "trends": 2
       },
       "children": [],
-      "relatedAchievements": ["performance-cert"]
+      "relatedAchievements": [
+        "performance-cert"
+      ]
     },
     {
       "id": "dev-root",
@@ -267,8 +290,14 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": ["dev-frontend", "dev-backend", "dev-mobile"],
-      "relatedAchievements": ["fullstack-cert"]
+      "children": [
+        "dev-frontend",
+        "dev-backend",
+        "dev-mobile"
+      ],
+      "relatedAchievements": [
+        "fullstack-cert"
+      ]
     },
     {
       "id": "dev-frontend",
@@ -286,8 +315,13 @@
         "knowledge_transfer": 3,
         "trends": 5
       },
-      "children": ["dev-react", "dev-vue"],
-      "relatedAchievements": ["react-cert"]
+      "children": [
+        "dev-react",
+        "dev-vue"
+      ],
+      "relatedAchievements": [
+        "react-cert"
+      ]
     },
     {
       "id": "dev-backend",
@@ -305,7 +339,10 @@
         "knowledge_transfer": 2,
         "trends": 3
       },
-      "children": ["dev-nodejs", "dev-python"],
+      "children": [
+        "dev-nodejs",
+        "dev-python"
+      ],
       "relatedAchievements": []
     },
     {
@@ -324,7 +361,10 @@
         "knowledge_transfer": 2,
         "trends": 4
       },
-      "children": ["dev-react-native", "dev-flutter"],
+      "children": [
+        "dev-react-native",
+        "dev-flutter"
+      ],
       "relatedAchievements": []
     },
     {
@@ -344,7 +384,9 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["react-cert"]
+      "relatedAchievements": [
+        "react-cert"
+      ]
     },
     {
       "id": "dev-vue",
@@ -404,44 +446,6 @@
       "relatedAchievements": []
     },
     {
-      "id": "dev-react-native",
-      "title": "REACT NATIVE",
-      "description": "Desenvolvimento de aplicações móveis multiplataforma utilizando React Native.",
-      "category": "dev",
-      "icon": "bi-phone-fill",
-      "domain": 1,
-      "unlock_threshold": 1,
-      "parent": "dev-mobile",
-      "scores": {
-        "theoretical": 2,
-        "technical": 1,
-        "problem_solving": 2,
-        "knowledge_transfer": 1,
-        "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
-      "id": "dev-flutter",
-      "title": "FLUTTER",
-      "description": "Desenvolvimento de aplicações móveis utilizando Flutter e linguagem Dart.",
-      "category": "dev",
-      "icon": "bi-phone-landscape",
-      "domain": 1,
-      "unlock_threshold": 1,
-      "parent": "dev-mobile",
-      "scores": {
-        "theoretical": 2,
-        "technical": 1,
-        "problem_solving": 2,
-        "knowledge_transfer": 1,
-        "trends": 5
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
       "id": "ux-root",
       "title": "USER EXPERIENCE",
       "description": "Design de experiência do usuário focado em usabilidade, acessibilidade e satisfação do usuário.",
@@ -456,8 +460,14 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": ["ux-research", "ux-design", "ux-prototyping"],
-      "relatedAchievements": ["ux-cert"]
+      "children": [
+        "ux-research",
+        "ux-design",
+        "ux-prototyping"
+      ],
+      "relatedAchievements": [
+        "ux-cert"
+      ]
     },
     {
       "id": "ux-research",
@@ -476,7 +486,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["ux-cert"]
+      "relatedAchievements": [
+        "ux-cert"
+      ]
     },
     {
       "id": "ux-design",
@@ -531,8 +543,14 @@
         "knowledge_transfer": 3,
         "trends": 5
       },
-      "children": ["data-excel", "data-powerbi", "data-sql"],
-      "relatedAchievements": ["data-analyst-cert"]
+      "children": [
+        "data-excel",
+        "data-powerbi",
+        "data-sql"
+      ],
+      "relatedAchievements": [
+        "data-analyst-cert"
+      ]
     },
     {
       "id": "data-excel",
@@ -550,8 +568,14 @@
         "knowledge_transfer": 5,
         "trends": 3
       },
-      "children": ["data-excel-formulas", "data-excel-pivot", "data-excel-macros"],
-      "relatedAchievements": ["excel-expert"]
+      "children": [
+        "data-excel-formulas",
+        "data-excel-pivot",
+        "data-excel-macros"
+      ],
+      "relatedAchievements": [
+        "excel-expert"
+      ]
     },
     {
       "id": "data-powerbi",
@@ -569,8 +593,14 @@
         "knowledge_transfer": 4,
         "trends": 5
       },
-      "children": ["data-powerbi-dax", "data-powerbi-modeling", "data-powerbi-visual"],
-      "relatedAchievements": ["powerbi-cert"]
+      "children": [
+        "data-powerbi-dax",
+        "data-powerbi-modeling",
+        "data-powerbi-visual"
+      ],
+      "relatedAchievements": [
+        "powerbi-cert"
+      ]
     },
     {
       "id": "data-sql",
@@ -588,8 +618,14 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": ["data-sql-basic", "data-sql-advanced", "data-sql-optimization"],
-      "relatedAchievements": ["sql-expert"]
+      "children": [
+        "data-sql-basic",
+        "data-sql-advanced",
+        "data-sql-optimization"
+      ],
+      "relatedAchievements": [
+        "sql-expert"
+      ]
     },
     {
       "id": "data-excel-formulas",
@@ -608,7 +644,9 @@
         "trends": 2
       },
       "children": [],
-      "relatedAchievements": ["excel-formulas-master"]
+      "relatedAchievements": [
+        "excel-formulas-master"
+      ]
     },
     {
       "id": "data-excel-pivot",
@@ -627,7 +665,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["pivot-expert"]
+      "relatedAchievements": [
+        "pivot-expert"
+      ]
     },
     {
       "id": "data-excel-macros",
@@ -646,7 +686,9 @@
         "trends": 2
       },
       "children": [],
-      "relatedAchievements": ["vba-programmer"]
+      "relatedAchievements": [
+        "vba-programmer"
+      ]
     },
     {
       "id": "data-powerbi-dax",
@@ -665,7 +707,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["dax-expert"]
+      "relatedAchievements": [
+        "dax-expert"
+      ]
     },
     {
       "id": "data-powerbi-modeling",
@@ -684,7 +728,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["data-modeler"]
+      "relatedAchievements": [
+        "data-modeler"
+      ]
     },
     {
       "id": "data-powerbi-visual",
@@ -703,7 +749,9 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["viz-expert"]
+      "relatedAchievements": [
+        "viz-expert"
+      ]
     },
     {
       "id": "data-sql-basic",
@@ -722,7 +770,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["sql-basic-cert"]
+      "relatedAchievements": [
+        "sql-basic-cert"
+      ]
     },
     {
       "id": "data-sql-advanced",
@@ -741,7 +791,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["sql-advanced-cert"]
+      "relatedAchievements": [
+        "sql-advanced-cert"
+      ]
     },
     {
       "id": "data-sql-optimization",
@@ -760,7 +812,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["sql-performance-expert"]
+      "relatedAchievements": [
+        "sql-performance-expert"
+      ]
     },
     {
       "id": "devops-root",
@@ -777,8 +831,15 @@
         "knowledge_transfer": 3,
         "trends": 5
       },
-      "children": ["devops-cicd", "devops-automation", "devops-monitoring"],
-      "relatedAchievements": ["n8n-vai-da", "yamlouco"]
+      "children": [
+        "devops-cicd",
+        "devops-automation",
+        "devops-monitoring"
+      ],
+      "relatedAchievements": [
+        "n8n-vai-da",
+        "yamlouco"
+      ]
     },
     {
       "id": "devops-cicd",
@@ -797,7 +858,9 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["yamlouco"]
+      "relatedAchievements": [
+        "yamlouco"
+      ]
     },
     {
       "id": "devops-automation",
@@ -816,7 +879,9 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["n8n-vai-da"]
+      "relatedAchievements": [
+        "n8n-vai-da"
+      ]
     },
     {
       "id": "devops-monitoring",
@@ -835,7 +900,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["infrahero"]
+      "relatedAchievements": [
+        "infrahero"
+      ]
     },
     {
       "id": "infra-root",
@@ -852,27 +919,15 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": ["infra-cloud", "infra-containers", "infra-networking"],
-      "relatedAchievements": ["cloud-cert", "kubernerd"]
-    },
-    {
-      "id": "infra-cloud",
-      "title": "CLOUD COMPUTING",
-      "description": "Administração e deploy em plataformas cloud como AWS, Azure, Google Cloud Platform.",
-      "category": "infra",
-      "icon": "bi-cloud-fill",
-      "domain": 3,
-      "unlock_threshold": 2,
-      "parent": "infra-root",
-      "scores": {
-        "theoretical": 4,
-        "technical": 4,
-        "problem_solving": 4,
-        "knowledge_transfer": 3,
-        "trends": 5
-      },
-      "children": [],
-      "relatedAchievements": ["cloud-cert", "terrafirma"]
+      "children": [
+        "infra-cloud",
+        "infra-containers",
+        "infra-networking"
+      ],
+      "relatedAchievements": [
+        "cloud-cert",
+        "kubernerd"
+      ]
     },
     {
       "id": "infra-containers",
@@ -891,7 +946,11 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["pacotao", "kubernerd", "dockerloki"]
+      "relatedAchievements": [
+        "pacotao",
+        "kubernerd",
+        "dockerloki"
+      ]
     },
     {
       "id": "infra-networking",
@@ -910,7 +969,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["ssh-ou-nao"]
+      "relatedAchievements": [
+        "ssh-ou-nao"
+      ]
     },
     {
       "id": "idiomas-root",
@@ -927,27 +988,38 @@
         "knowledge_transfer": 5,
         "trends": 4
       },
-      "children": ["idiomas-ingles", "idiomas-espanhol"],
-      "relatedAchievements": ["lost-in-translation", "sorry-my-bad"]
+      "children": [
+        "idiomas-ingles",
+        "idiomas-espanhol"
+      ],
+      "relatedAchievements": [
+        "lost-in-translation",
+        "sorry-my-bad"
+      ]
     },
     {
       "id": "idiomas-ingles",
-      "title": "INGLÊS TÉCNICO",
-      "description": "Proficiência em inglês para leitura de documentação, comunicação em equipes internacionais e consumo de conteúdo técnico.",
+      "title": "INGLÊS",
       "category": "idiomas",
+      "domain": 2,
+      "description": "Proficiência em inglês para leitura de documentação, comunicação em equipes internacionais e consumo de conteúdo técnico.",
       "icon": "bi-flag",
-      "domain": 4,
       "unlock_threshold": 1,
-      "parent": "idiomas-root",
       "scores": {
-        "theoretical": 4,
+        "theoretical": 3,
         "technical": 2,
-        "problem_solving": 3,
-        "knowledge_transfer": 5,
-        "trends": 4
+        "problem_solving": 1,
+        "knowledge_transfer": 1,
+        "trends": 3
       },
-      "children": [],
-      "relatedAchievements": ["lost-in-translation", "404-dictionary", "ctrl-c-internacional", "sorry-my-bad", "br-huehue"]
+      "parent": "idiomas-root",
+      "relatedAchievements": [
+        "lost-in-translation",
+        "404-dictionary",
+        "ctrl-c-internacional",
+        "sorry-my-bad",
+        "br-huehue"
+      ]
     },
     {
       "id": "idiomas-espanhol",
