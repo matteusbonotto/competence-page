@@ -999,6 +999,14 @@
         "sorry-my-bad",
         "br-huehue"
       ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "qa",
+      "name": "Quality Assurance",
+      "color": "#3498db",
+      "rootSkillId": "qa-root"
     },
     {
       "id": "dev",
