@@ -3,209 +3,213 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mapeamento de Competências</title>
+    <title>Sistema de Mapeamento de Competências</title>
 
-    <!-- Bootstrap Icons -->
+    <!-- Bootstrap Icons para ícones -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
       rel="stylesheet"
     />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles/mobile.css" />
-    <link rel="stylesheet" href="styles/desktop.css" />
-    <link rel="stylesheet" href="styles/tree.css" />
+    <!-- Folhas de Estilo CSS -->
+    <link rel="stylesheet" href="styles/estilos-refatorados.css" />
+    <link rel="stylesheet" href="styles/arvore-habilidades.css" />
+    <link rel="stylesheet" href="styles/responsivo-mobile.css" />
+    <link rel="stylesheet" href="styles/responsivo-desktop.css" />
   </head>
   <body>
-    <!-- Banner Hero -->
-    <section class="hero-banner">
-      <div class="hero-content">
-        <h1>MAPEAMENTO DE COMPETÊNCIAS</h1>
-        <h2>Acompanhe meu progresso e conquistas</h2>
-      </div>
-      <div class="hero-overlay"></div>
-    </section>
+    <!-- Início Banner Principal -->
+    <section class="secao-banner-hero">
+      <div class="conteudo-hero">
+        <h1>SISTEMA DE MAPEAMENTO DE COMPETÊNCIAS</h1>
+        <h2>Acompanhe meu progresso profissional e conquistas</h2>
+      </div> <!-- Fim Conteudo Hero -->
+      <div class="sobreposicao-hero"></div>
+    </section> <!-- Fim Banner Principal -->
         
-    <!-- Seção de Resumo -->
-    <section class="summary-section">
+    <!-- Início Seção de Resumo Estatísticas -->
+    <section class="secao-resumo-estatisticas">
       <div class="container">
-        <div class="summary-container">
-          <div class="summary-card">
-            <h3><i class="bi bi-tools"></i> HABILIDADES</h3>
-            <div class="value" id="avg-domain">0%</div>
-            <span>Domínio Médio</span>
-          </div>
+        <div class="container-resumo-estatisticas">
+          <!-- Início Cartão Habilidades -->
+          <div class="cartao-resumo">
+            <h3><i class="bi bi-tools"></i> HABILIDADES TÉCNICAS</h3>
+            <div class="valor-metrica" id="dominio-medio-habilidades">0%</div>
+            <span>Domínio Médio Geral</span>
+          </div> <!-- Fim Cartão Habilidades -->
 
-          <div class="summary-card">
-            <h3><i class="bi bi-award-fill"></i>DESTAQUE <span style="font-weight: bolder; font-size: 1rem;" id="top-skill-name">CARREGANDO...</span></h3>
-            <div class="top-skill">
-            </div>
-            <div class="primary-domain-info">
-              <span class="value" id="top-skill-domain">0%</span> <br />
-              <span>Domínio Alto</span>
-            </div>
-          </div>
+          <!-- Início Cartão Destaque -->
+          <div class="cartao-resumo">
+            <h3>
+              <i class="bi bi-award-fill"></i>HABILIDADE DESTAQUE 
+              <span style="font-weight: bolder; font-size: 1rem;" id="nome-habilidade-destaque">CARREGANDO...</span>
+            </h3>
+            <div class="habilidade-destaque">
+              <!-- Conteúdo gerado dinamicamente -->
+            </div> <!-- Fim Habilidade Destaque -->
+            <div class="informacoes-dominio-primario">
+              <span class="valor-metrica" id="dominio-habilidade-destaque">0%</span> <br />
+              <span>Nível de Domínio</span>
+            </div> <!-- Fim Informações Domínio Primário -->
+          </div> <!-- Fim Cartão Destaque -->
 
-          <div class="summary-card">
-            <h3><i class="bi bi-trophy"></i> CONQUISTAS</h3>
-            <div class="achievement-count">
-              <div class="value">
-                <span id="unlocked-count">00</span>                
+          <!-- Início Cartão Conquistas -->
+          <div class="cartao-resumo">
+            <h3><i class="bi bi-trophy"></i> CONQUISTAS OBTIDAS</h3>
+            <div class="contador-conquistas">
+              <div class="valor-metrica">
+                <span id="contador-conquistas-desbloqueadas">00</span>                
               </div>
-              Desbloqueadas
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+              Total Desbloqueadas
+            </div> <!-- Fim Contador Conquistas -->
+          </div> <!-- Fim Cartão Conquistas -->
+        </div> <!-- Fim Container Resumo Estatísticas -->
+      </div> <!-- Fim Container -->
+    </section> <!-- Fim Seção de Resumo Estatísticas -->
 
-    <!-- Seção de Filtros e Árvore -->
-    <section class="main-section">
-      <h2 class="section-title">ÁRVORE DE HABILIDADES</h2>
+    <!-- Início Seção Principal Árvore de Habilidades -->
+    <section class="secao-principal-arvore">
+      <h2 class="titulo-secao">ÁRVORE DE COMPETÊNCIAS TÉCNICAS</h2>
       <div class="container">
-        <!-- Filtros de Categoria -->
-        <div class="category-filters">
-          <button class="filter-btn active" data-category="all">TODAS</button>
-          <button class="filter-btn" data-category="qa">
+        <!-- Início Filtros de Categoria -->
+        <div class="filtros-categoria-habilidades">
+          <button class="botao-filtro-categoria active" data-category="all">TODAS</button>
+          <button class="botao-filtro-categoria" data-category="qa">
             <i class="bi bi-shield-lock"></i>
-            <span class="filter-text">QA</span>
+            <span class="texto-filtro">QUALITY ASSURANCE</span>
           </button>
-          <button class="filter-btn" data-category="dev">
+          <button class="botao-filtro-categoria" data-category="dev">
             <i class="bi bi-code-slash"></i>
-            <span class="filter-text">DEV</span>
+            <span class="texto-filtro">DESENVOLVIMENTO</span>
           </button>
-          <button class="filter-btn" data-category="ux">
-            <i class="bi bi-palette"></i> <span class="filter-text">UX</span>
+          <button class="botao-filtro-categoria" data-category="ux">
+            <i class="bi bi-palette"></i>
+            <span class="texto-filtro">USER EXPERIENCE</span>
           </button>
-          <button class="filter-btn" data-category="data">
-            <i class="bi bi-graph-up"></i> <span class="filter-text">DATA</span>
+          <button class="botao-filtro-categoria" data-category="data">
+            <i class="bi bi-graph-up"></i>
+            <span class="texto-filtro">ANÁLISE DADOS</span>
           </button>
-          <button class="filter-btn" data-category="devops">
-            <i class="bi bi-gear"></i> <span class="filter-text">DEVOPS</span>
+          <button class="botao-filtro-categoria" data-category="devops">
+            <i class="bi bi-gear"></i>
+            <span class="texto-filtro">DEVOPS</span>
           </button>
-          <button class="filter-btn" data-category="infra">
-            <i class="bi bi-server"></i> <span class="filter-text">INFRA</span>
+          <button class="botao-filtro-categoria" data-category="infra">
+            <i class="bi bi-server"></i>
+            <span class="texto-filtro">INFRAESTRUTURA</span>
           </button>
-          <button class="filter-btn" data-category="idiomas">
+          <button class="botao-filtro-categoria" data-category="idiomas">
             <i class="bi bi-translate"></i>
-            <span class="filter-text">IDIOMAS</span>
+            <span class="texto-filtro">IDIOMAS</span>
           </button>
-        </div>
+        </div> <!-- Fim Filtros de Categoria -->
 
-        <!-- Árvore de Habilidades -->
-        <div class="skill-tree-container">
-          <div id="skill-tree" class="skill-tree">
-            <!-- Árvore será gerada dinamicamente -->
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Início Container Árvore de Habilidades -->
+        <div class="container-arvore-habilidades">
+          <div id="arvore-habilidades" class="arvore-habilidades">
+            <!-- Árvore será gerada dinamicamente pelo JavaScript -->
+          </div> <!-- Fim Árvore Habilidades -->
+        </div> <!-- Fim Container Árvore de Habilidades -->
+      </div> <!-- Fim Container -->
+    </section> <!-- Fim Seção Principal Árvore de Habilidades -->
 
-    <!-- Seção de Conquistas -->
-    <section class="achievements-section">
+    <!-- Início Seção de Conquistas -->
+    <section class="secao-conquistas-obtidas">
       <div class="container">
-        <h2 class="section-title">CONQUISTAS</h2>
+        <h2 class="titulo-secao">CONQUISTAS E CERTIFICAÇÕES</h2>
 
-        <!-- Controles de Filtro e Visualização -->
-        <div class="achievements-controls">
-          <!-- Filtros de Status -->
-          <div class="status-filters">
-            <button class="status-filter-btn active" data-status="all">
-              TODAS
+        <!-- Início Controles de Filtro e Visualização -->
+        <div class="controles-conquistas">
+          <!-- Início Filtros de Status -->
+          <div class="filtros-status-conquista">
+            <button class="botao-filtro-status active" data-status="all">
+              <i class="bi bi-grid"></i>
+              <span>TODAS</span>
             </button>
-            <button class="status-filter-btn" data-status="unlocked">
-              <i class="bi bi-unlock"></i>DESBLOQUEADAS
+            <button class="botao-filtro-status" data-status="unlocked">
+              <i class="bi bi-unlock"></i>
+              <span>DESBLOQUEADAS</span>
             </button>
-            <button class="status-filter-btn" data-status="locked">
-              <i class="bi bi-lock"></i>BLOQUEADAS
+            <button class="botao-filtro-status" data-status="locked">
+              <i class="bi bi-lock"></i>
+              <span>BLOQUEADAS</span>
             </button>
-          </div>
+          </div> <!-- Fim Filtros de Status -->
 
-          <div class="controls-right">
-            <!-- Toggle de Ordenação -->
-            <div class="sort-toggle">
-              <button
-                id="sort-btn"
-                class="sort-btn"
-                data-sort="unlocked-first"
-                title="Ordenação: Desbloqueadas primeiro"
-              >
-                <i class="bi bi-sort-down"></i>
-                <span class="sort-text">Desbloqueadas primeiro</span>
-              </button>
-            </div>
-
-            <!-- Toggle de Visualização -->
-            <div class="view-toggle">
-              <button
-                id="list-view-btn"
-                class="view-btn active"
-                data-view="list"
-              >
+          <!-- Início Controles Direita -->
+          <div class="controles-direita">
+            <!-- Início Botões de Visualização -->
+            <div class="botoes-modo-visualizacao">
+              <button class="botao-visualizacao active" data-view="list">
                 <i class="bi bi-list"></i>
-                Lista
               </button>
-              <button id="grid-view-btn" class="view-btn" data-view="grid">
-                <i class="bi bi-grid-3x3"></i>
-                Grade
+              <button class="botao-visualizacao" data-view="grid">
+                <i class="bi bi-grid"></i>
               </button>
-            </div>
-          </div>
-        </div>
+            </div> <!-- Fim Botões de Visualização -->
+            
+            <!-- Início Botão Ordenação -->
+            <button id="botao-ordenacao" class="botao-ordenacao">
+              <i class="bi bi-sort-up"></i>
+              <span>ORDENAR</span>
+            </button> <!-- Fim Botão Ordenação -->
+          </div> <!-- Fim Controles Direita -->
+        </div> <!-- Fim Controles de Filtro e Visualização -->
 
-        <div id="achievements-list" class="achievements-list">
-          <!-- Conquistas serão geradas dinamicamente -->
-        </div>
+        <!-- Início Lista de Conquistas -->
+        <div id="lista-conquistas" class="lista-conquistas">
+          <!-- Conquistas serão geradas dinamicamente pelo JavaScript -->
+        </div> <!-- Fim Lista de Conquistas -->
 
-        <!-- Controles de Paginação -->
-        <div class="pagination-controls">
-          <div class="pagination-info">
-            <span id="showing-count">Mostrando 0 de 0 conquistas</span>
-          </div>
-          <button
-            id="load-more-btn"
-            class="load-more-btn"
-            style="display: none"
-          >
-            <i class="bi bi-plus-circle"></i>
-            <span>Ver Mais Conquistas</span>
-          </button>
-        </div>
-      </div>
-    </section>
+        <!-- Início Controles de Paginação -->
+        <div class="controles-paginacao">
+          <div class="informacoes-paginacao">
+            <span id="info-paginacao">Carregando...</span>
+          </div> <!-- Fim Informações Paginação -->
+          
+          <button id="botao-carregar-mais" class="botao-carregar-mais" style="display: none">
+            <i class="bi bi-arrow-down"></i>
+            <span>VER MAIS CONQUISTAS</span>
+          </button> <!-- Fim Botão Carregar Mais -->
+        </div> <!-- Fim Controles de Paginação -->
+      </div> <!-- Fim Container -->
+    </section> <!-- Fim Seção de Conquistas -->
 
-    <!-- Drawer de Detalhes -->
-    <div id="skill-drawer" class="skill-drawer">
-      <div class="drawer-header">
-        <button id="close-drawer" class="close-btn">
+    <!-- Início Drawer de Detalhes Desktop -->
+    <div id="drawer-detalhes-habilidade" class="drawer-detalhes">
+      <div class="cabecalho-drawer">
+        <h3>Detalhes da Competência</h3>
+        <button id="fechar-drawer" class="botao-fechar">
           <i class="bi bi-x-lg"></i>
         </button>
-      </div>
-      <div class="drawer-content">
-        <!-- Conteúdo será gerado dinamicamente -->
-      </div>
-    </div>
+      </div> <!-- Fim Cabeçalho Drawer -->
+      <div class="conteudo-drawer">
+        <!-- Conteúdo será gerado dinamicamente pelo JavaScript -->
+      </div> <!-- Fim Conteúdo Drawer -->
+    </div> <!-- Fim Drawer de Detalhes Desktop -->
 
-    <!-- Modal para Mobile -->
-    <div id="skill-modal" class="skill-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button id="close-modal" class="close-btn">
+    <!-- Início Modal para Mobile -->
+    <div id="modal-detalhes-mobile" class="modal-detalhes">
+      <div class="conteudo-modal">
+        <div class="cabecalho-modal">
+          <h3>Detalhes</h3>
+          <button id="fechar-modal" class="botao-fechar">
             <i class="bi bi-x-lg"></i>
           </button>
-        </div>
-        <div class="modal-body">
-          <!-- Conteúdo será gerado dinamicamente -->
-        </div>
-      </div>
-    </div>
+        </div> <!-- Fim Cabeçalho Modal -->
+        <div class="corpo-modal">
+          <!-- Conteúdo será gerado dinamicamente pelo JavaScript -->
+        </div> <!-- Fim Corpo Modal -->
+      </div> <!-- Fim Conteúdo Modal -->
+    </div> <!-- Fim Modal para Mobile -->
 
-    <!-- Overlay -->
-    <div id="overlay" class="overlay"></div>
+    <!-- Início Sobreposição para Modal -->
+    <div id="sobreposicao-modal" class="sobreposicao"></div> <!-- Fim Sobreposição para Modal -->
 
-    <!-- Scripts -->
+    <!-- Início Scripts JavaScript -->
     <script src="scripts/dataService.js"></script>
-    <script src="scripts/tree.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="scripts/arvore-habilidades-refatorado.js"></script>
+    <script src="scripts/main-refatorado.js"></script>
+    <!-- Fim Scripts JavaScript -->
   </body>
 </html>
