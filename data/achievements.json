@@ -280,5 +280,19 @@
     "evidence": null,
     "relatedSkills": [],
     "image": "https://sris.edu.kg/wp-content/uploads/2021/10/Language-proficiency-framework-cefr-C2-badge.png"
+  },
+  {
+    "id": "ach-1753325770804",
+    "title": "Pops-QA",
+    "description": "Alcance 100 reações no linkedin em uma publicação",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "Social",
+    "evidence": "https://www.linkedin.com/feed/update/urn:li:activity:7356740739516526592/",
+    "relatedSkills": [],
+    "image": "assets/achievements/popstar-1754065717291-583469895.png",
+    "desc": "Alcance 100 reações no linkedin em uma publicação",
+    "unlockedDate": "2025-08-01",
+    "updatedAt": "2025-08-01T16:28:37.297Z"
   }
 ]

@@ -213,7 +213,7 @@ class SkillMappingApp {
                 statusHTML = `
                     <div class="achievement-status unlocked">
                         <i class="bi bi-unlock"></i>
-                        DESBLOQUEADA EM ${formattedDate}
+                        DESBLOQUEADA EM <span style=" color: #0FD;">${formattedDate}</span
                     </div>
                 `;
             } else {
@@ -251,12 +251,20 @@ class SkillMappingApp {
                     ${subcategoriesHTML || achievement.description || ''}
                 </div>
                 
-                ${isUnlocked && achievement.evidence ?
+                ${isUnlocked && (achievement.evidence || achievement.evidenceFile) ?
                 `<div class="achievement-evidence">
-                        <a href="${achievement.evidence}" target="_blank" class="evidence-btn">
-                            <i class="bi bi-file-earmark-arrow-down"></i>
-                            Ver Evidência
-                        </a>
+                        ${achievement.evidence ? `
+                            <a href="${achievement.evidence}" target="_blank" class="evidence-btn me-2">
+                                <i class="bi bi-link-45deg"></i>
+                                Ver Link
+                            </a>
+                        ` : ''}
+                        ${achievement.evidenceFile ? `
+                            <a href="${achievement.evidenceFile}" target="_blank" class="evidence-btn">
+                                <i class="bi bi-file-earmark-arrow-down"></i>
+                                Ver Arquivo
+                            </a>
+                        ` : ''}
                     </div>` : ''
             }
             </div>
@@ -570,7 +578,7 @@ class SkillMappingApp {
                     month: '2-digit',
                     year: 'numeric'
                 });
-                unlockedDateHTML = `<div class="unlocked-date">CONQUISTA DESBLOQUEADA EM ${formattedDate}</div>`;
+                unlockedDateHTML = `<div class="unlocked-date">CONQUISTA DESBLOQUEADA EM <span style=" color: #0FD;">${formattedDate}</span></div>`;
             }
 
             card.innerHTML = `
@@ -581,10 +589,19 @@ class SkillMappingApp {
                         ${subcategoriesHTML || achievement.description || ''}
                     </div>
                     ${unlockedDateHTML}
-                    ${isUnlocked && achievement.evidence ?
-                    `<button class="evidence-btn" onclick="window.open('${achievement.evidence}', '_blank')">
-                            Ver evidência <i class="bi bi-file-earmark-arrow-down"></i>
-                        </button>` : ''
+                    ${isUnlocked && (achievement.evidence || achievement.evidenceFile) ?
+                    `<div class="evidence-buttons">
+                        ${achievement.evidence ? `
+                            <button class="evidence-btn" onclick="window.open('${achievement.evidence}', '_blank')">
+                                Ver link <i class="bi bi-link-45deg"></i>
+                            </button>
+                        ` : ''}
+                        ${achievement.evidenceFile ? `
+                            <button class="evidence-btn" onclick="window.open('${achievement.evidenceFile}', '_blank')">
+                                Ver arquivo <i class="bi bi-file-earmark-arrow-down"></i>
+                            </button>
+                        ` : ''}
+                    </div>` : ''
                 }
                 </div>
                 <div class="status-badge ${isUnlocked ? 'unlocked' : 'locked'}">

@@ -1,48 +1,4 @@
 {
-  "categories": [
-    {
-      "id": "qa",
-      "name": "Quality Assurance",
-      "color": "#3498db",
-      "rootSkillId": "qa-root"
-    },
-    {
-      "id": "dev",
-      "name": "Development",
-      "color": "#e74c3c",
-      "rootSkillId": "dev-root"
-    },
-    {
-      "id": "ux",
-      "name": "User Experience",
-      "color": "#9b59b6",
-      "rootSkillId": "ux-root"
-    },
-    {
-      "id": "data",
-      "name": "Data Science",
-      "color": "#f39c12",
-      "rootSkillId": "data-root"
-    },
-    {
-      "id": "devops",
-      "name": "DevOps",
-      "color": "#27ae60",
-      "rootSkillId": "devops-root"
-    },
-    {
-      "id": "infra",
-      "name": "Infrastructure",
-      "color": "#34495e",
-      "rootSkillId": "infra-root"
-    },
-    {
-      "id": "idiomas",
-      "name": "Languages",
-      "color": "#e67e22",
-      "rootSkillId": "idiomas-root"
-    }
-  ],
   "skills": [
     {
       "id": "qa-root",
@@ -59,8 +15,15 @@
         "knowledge_transfer": 4,
         "trends": 3
       },
-      "children": ["qa-testing", "qa-automation", "qa-performance"],
-      "relatedAchievements": ["istqb-cert", "agile-cert"]
+      "children": [
+        "qa-testing",
+        "qa-automation",
+        "qa-performance"
+      ],
+      "relatedAchievements": [
+        "istqb-cert",
+        "agile-cert"
+      ]
     },
     {
       "id": "qa-testing",
@@ -78,8 +41,14 @@
         "knowledge_transfer": 3,
         "trends": 3
       },
-      "children": ["qa-functional", "qa-exploratory", "qa-usability"],
-      "relatedAchievements": ["agile-cert"]
+      "children": [
+        "qa-functional",
+        "qa-exploratory",
+        "qa-usability"
+      ],
+      "relatedAchievements": [
+        "agile-cert"
+      ]
     },
     {
       "id": "qa-automation",
@@ -97,8 +66,13 @@
         "knowledge_transfer": 2,
         "trends": 4
       },
-      "children": ["qa-selenium", "qa-api-testing"],
-      "relatedAchievements": ["selenium-cert"]
+      "children": [
+        "qa-selenium",
+        "qa-api-testing"
+      ],
+      "relatedAchievements": [
+        "selenium-cert"
+      ]
     },
     {
       "id": "qa-performance",
@@ -116,8 +90,13 @@
         "knowledge_transfer": 1,
         "trends": 3
       },
-      "children": ["qa-load-testing", "qa-stress-testing"],
-      "relatedAchievements": ["performance-cert"]
+      "children": [
+        "qa-load-testing",
+        "qa-stress-testing"
+      ],
+      "relatedAchievements": [
+        "performance-cert"
+      ]
     },
     {
       "id": "qa-functional",
@@ -193,7 +172,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["selenium-cert"]
+      "relatedAchievements": [
+        "selenium-cert"
+      ]
     },
     {
       "id": "qa-api-testing",
@@ -250,7 +231,9 @@
         "trends": 2
       },
       "children": [],
-      "relatedAchievements": ["performance-cert"]
+      "relatedAchievements": [
+        "performance-cert"
+      ]
     },
     {
       "id": "dev-root",
@@ -267,8 +250,14 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": ["dev-frontend", "dev-backend", "dev-mobile"],
-      "relatedAchievements": ["fullstack-cert"]
+      "children": [
+        "dev-frontend",
+        "dev-backend",
+        "dev-mobile"
+      ],
+      "relatedAchievements": [
+        "fullstack-cert"
+      ]
     },
     {
       "id": "dev-frontend",
@@ -286,8 +275,13 @@
         "knowledge_transfer": 3,
         "trends": 5
       },
-      "children": ["dev-react", "dev-vue"],
-      "relatedAchievements": ["react-cert"]
+      "children": [
+        "dev-react",
+        "dev-vue"
+      ],
+      "relatedAchievements": [
+        "react-cert"
+      ]
     },
     {
       "id": "dev-backend",
@@ -305,7 +299,10 @@
         "knowledge_transfer": 2,
         "trends": 3
       },
-      "children": ["dev-nodejs", "dev-python"],
+      "children": [
+        "dev-nodejs",
+        "dev-python"
+      ],
       "relatedAchievements": []
     },
     {
@@ -324,7 +321,10 @@
         "knowledge_transfer": 2,
         "trends": 4
       },
-      "children": ["dev-react-native", "dev-flutter"],
+      "children": [
+        "dev-react-native",
+        "dev-flutter"
+      ],
       "relatedAchievements": []
     },
     {
@@ -344,7 +344,9 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["react-cert"]
+      "relatedAchievements": [
+        "react-cert"
+      ]
     },
     {
       "id": "dev-vue",
@@ -456,8 +458,14 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": ["ux-research", "ux-design", "ux-prototyping"],
-      "relatedAchievements": ["ux-cert"]
+      "children": [
+        "ux-research",
+        "ux-design",
+        "ux-prototyping"
+      ],
+      "relatedAchievements": [
+        "ux-cert"
+      ]
     },
     {
       "id": "ux-research",
@@ -476,7 +484,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["ux-cert"]
+      "relatedAchievements": [
+        "ux-cert"
+      ]
     },
     {
       "id": "ux-design",
@@ -531,8 +541,14 @@
         "knowledge_transfer": 3,
         "trends": 5
       },
-      "children": ["data-excel", "data-powerbi", "data-sql"],
-      "relatedAchievements": ["data-analyst-cert"]
+      "children": [
+        "data-excel",
+        "data-powerbi",
+        "data-sql"
+      ],
+      "relatedAchievements": [
+        "data-analyst-cert"
+      ]
     },
     {
       "id": "data-excel",
@@ -550,8 +566,14 @@
         "knowledge_transfer": 5,
         "trends": 3
       },
-      "children": ["data-excel-formulas", "data-excel-pivot", "data-excel-macros"],
-      "relatedAchievements": ["excel-expert"]
+      "children": [
+        "data-excel-formulas",
+        "data-excel-pivot",
+        "data-excel-macros"
+      ],
+      "relatedAchievements": [
+        "excel-expert"
+      ]
     },
     {
       "id": "data-powerbi",
@@ -569,8 +591,14 @@
         "knowledge_transfer": 4,
         "trends": 5
       },
-      "children": ["data-powerbi-dax", "data-powerbi-modeling", "data-powerbi-visual"],
-      "relatedAchievements": ["powerbi-cert"]
+      "children": [
+        "data-powerbi-dax",
+        "data-powerbi-modeling",
+        "data-powerbi-visual"
+      ],
+      "relatedAchievements": [
+        "powerbi-cert"
+      ]
     },
     {
       "id": "data-sql",
@@ -588,8 +616,14 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": ["data-sql-basic", "data-sql-advanced", "data-sql-optimization"],
-      "relatedAchievements": ["sql-expert"]
+      "children": [
+        "data-sql-basic",
+        "data-sql-advanced",
+        "data-sql-optimization"
+      ],
+      "relatedAchievements": [
+        "sql-expert"
+      ]
     },
     {
       "id": "data-excel-formulas",
@@ -608,7 +642,9 @@
         "trends": 2
       },
       "children": [],
-      "relatedAchievements": ["excel-formulas-master"]
+      "relatedAchievements": [
+        "excel-formulas-master"
+      ]
     },
     {
       "id": "data-excel-pivot",
@@ -627,7 +663,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["pivot-expert"]
+      "relatedAchievements": [
+        "pivot-expert"
+      ]
     },
     {
       "id": "data-excel-macros",
@@ -646,7 +684,9 @@
         "trends": 2
       },
       "children": [],
-      "relatedAchievements": ["vba-programmer"]
+      "relatedAchievements": [
+        "vba-programmer"
+      ]
     },
     {
       "id": "data-powerbi-dax",
@@ -665,7 +705,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["dax-expert"]
+      "relatedAchievements": [
+        "dax-expert"
+      ]
     },
     {
       "id": "data-powerbi-modeling",
@@ -684,7 +726,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["data-modeler"]
+      "relatedAchievements": [
+        "data-modeler"
+      ]
     },
     {
       "id": "data-powerbi-visual",
@@ -703,7 +747,9 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["viz-expert"]
+      "relatedAchievements": [
+        "viz-expert"
+      ]
     },
     {
       "id": "data-sql-basic",
@@ -722,7 +768,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["sql-basic-cert"]
+      "relatedAchievements": [
+        "sql-basic-cert"
+      ]
     },
     {
       "id": "data-sql-advanced",
@@ -741,7 +789,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["sql-advanced-cert"]
+      "relatedAchievements": [
+        "sql-advanced-cert"
+      ]
     },
     {
       "id": "data-sql-optimization",
@@ -760,7 +810,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["sql-performance-expert"]
+      "relatedAchievements": [
+        "sql-performance-expert"
+      ]
     },
     {
       "id": "devops-root",
@@ -777,8 +829,15 @@
         "knowledge_transfer": 3,
         "trends": 5
       },
-      "children": ["devops-cicd", "devops-automation", "devops-monitoring"],
-      "relatedAchievements": ["n8n-vai-da", "yamlouco"]
+      "children": [
+        "devops-cicd",
+        "devops-automation",
+        "devops-monitoring"
+      ],
+      "relatedAchievements": [
+        "n8n-vai-da",
+        "yamlouco"
+      ]
     },
     {
       "id": "devops-cicd",
@@ -797,7 +856,9 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["yamlouco"]
+      "relatedAchievements": [
+        "yamlouco"
+      ]
     },
     {
       "id": "devops-automation",
@@ -816,7 +877,9 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["n8n-vai-da"]
+      "relatedAchievements": [
+        "n8n-vai-da"
+      ]
     },
     {
       "id": "devops-monitoring",
@@ -835,7 +898,9 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["infrahero"]
+      "relatedAchievements": [
+        "infrahero"
+      ]
     },
     {
       "id": "infra-root",
@@ -852,8 +917,15 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": ["infra-cloud", "infra-containers", "infra-networking"],
-      "relatedAchievements": ["cloud-cert", "kubernerd"]
+      "children": [
+        "infra-cloud",
+        "infra-containers",
+        "infra-networking"
+      ],
+      "relatedAchievements": [
+        "cloud-cert",
+        "kubernerd"
+      ]
     },
     {
       "id": "infra-cloud",
@@ -872,7 +944,10 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["cloud-cert", "terrafirma"]
+      "relatedAchievements": [
+        "cloud-cert",
+        "terrafirma"
+      ]
     },
     {
       "id": "infra-containers",
@@ -891,7 +966,11 @@
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": ["pacotao", "kubernerd", "dockerloki"]
+      "relatedAchievements": [
+        "pacotao",
+        "kubernerd",
+        "dockerloki"
+      ]
     },
     {
       "id": "infra-networking",
@@ -910,7 +989,9 @@
         "trends": 3
       },
       "children": [],
-      "relatedAchievements": ["ssh-ou-nao"]
+      "relatedAchievements": [
+        "ssh-ou-nao"
+      ]
     },
     {
       "id": "idiomas-root",
@@ -927,8 +1008,14 @@
         "knowledge_transfer": 5,
         "trends": 4
       },
-      "children": ["idiomas-ingles", "idiomas-espanhol"],
-      "relatedAchievements": ["lost-in-translation", "sorry-my-bad"]
+      "children": [
+        "idiomas-ingles",
+        "idiomas-espanhol"
+      ],
+      "relatedAchievements": [
+        "lost-in-translation",
+        "sorry-my-bad"
+      ]
     },
     {
       "id": "idiomas-ingles",
@@ -947,26 +1034,57 @@
         "trends": 4
       },
       "children": [],
-      "relatedAchievements": ["lost-in-translation", "404-dictionary", "ctrl-c-internacional", "sorry-my-bad", "br-huehue"]
+      "relatedAchievements": [
+        "lost-in-translation",
+        "404-dictionary",
+        "ctrl-c-internacional",
+        "sorry-my-bad",
+        "br-huehue"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "qa",
+      "name": "Quality Assurance",
+      "color": "#3498db",
+      "rootSkillId": "qa-root"
     },
     {
-      "id": "idiomas-espanhol",
-      "title": "ESPANHOL",
-      "description": "Conhecimentos básicos de espanhol para comunicação em projetos regionais da América Latina.",
-      "category": "idiomas",
-      "icon": "bi-flag-fill",
-      "domain": 2,
-      "unlock_threshold": 2,
-      "parent": "idiomas-root",
-      "scores": {
-        "theoretical": 3,
-        "technical": 1,
-        "problem_solving": 2,
-        "knowledge_transfer": 4,
-        "trends": 3
-      },
-      "children": [],
-      "relatedAchievements": []
+      "id": "dev",
+      "name": "Development",
+      "color": "#e74c3c",
+      "rootSkillId": "dev-root"
+    },
+    {
+      "id": "ux",
+      "name": "User Experience",
+      "color": "#9b59b6",
+      "rootSkillId": "ux-root"
+    },
+    {
+      "id": "data",
+      "name": "Data Science",
+      "color": "#f39c12",
+      "rootSkillId": "data-root"
+    },
+    {
+      "id": "devops",
+      "name": "DevOps",
+      "color": "#27ae60",
+      "rootSkillId": "devops-root"
+    },
+    {
+      "id": "infra",
+      "name": "Infrastructure",
+      "color": "#34495e",
+      "rootSkillId": "infra-root"
+    },
+    {
+      "id": "idiomas",
+      "name": "Languages",
+      "color": "#e67e22",
+      "rootSkillId": "idiomas-root"
     }
   ]
 }
