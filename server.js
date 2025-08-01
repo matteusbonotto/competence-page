@@ -20,10 +20,17 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Configuração do multer para uploads
 const uploadDir = path.join(__dirname, 'assets', 'achievements');
+const evidenceDir = path.join(__dirname, 'assets', 'evidences');
+
+// Criar diretórios se não existirem
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+if (!fs.existsSync(evidenceDir)) fs.mkdirSync(evidenceDir, { recursive: true });
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, uploadDir);
+    // Determinar pasta baseado na rota
+    const isEvidence = req.originalUrl.includes('evidence');
+    cb(null, isEvidence ? evidenceDir : uploadDir);
   },
   filename: function (req, file, cb) {
     // Garante nome único
@@ -33,7 +40,10 @@ const storage = multer.diskStorage({
     cb(null, `${base}-${unique}${ext}`);
   }
 });
-const upload = multer({ storage });
+const upload = multer({ 
+  storage,
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
+});
 
 // Endpoint para upload de imagem de conquista
 app.post('/api/upload-achievement-image', upload.single('image'), (req, res) => {
@@ -42,6 +52,16 @@ app.post('/api/upload-achievement-image', upload.single('image'), (req, res) => 
   }
   // Caminho relativo para uso no frontend/JSON
   const relativePath = `assets/achievements/${req.file.filename}`;
+  res.json({ path: relativePath });
+});
+
+// Endpoint para upload de evidência
+app.post('/api/upload-evidence', upload.single('evidence'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'Nenhum arquivo de evidência enviado.' });
+  }
+  // Caminho relativo para uso no frontend/JSON
+  const relativePath = `assets/evidences/${req.file.filename}`;
   res.json({ path: relativePath });
 });
 
@@ -59,7 +79,10 @@ app.get('/api/skills', (req, res) => {
   res.json(readJson(skillsPath));
 });
 app.post('/api/skills', (req, res) => {
-  writeJson(skillsPath, req.body);
+  // Se receber dados no formato { skills: [...], categories: [...] }, use isso
+  // Senão, use req.body diretamente
+  const data = req.body.skills ? req.body : { skills: req.body, categories: [] };
+  writeJson(skillsPath, data);
   res.json({ success: true });
 });
 

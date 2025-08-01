@@ -11,17 +11,38 @@ class DataService {
         try {
             console.log('Carregando dados...');
 
-            const [skillsResponse, achievementsResponse] = await Promise.all([
-                fetch('data/skills.json'),
-                fetch('data/achievements.json')
-            ]);
+            // Tentar carregar do servidor primeiro
+            let skillsData, achievementsData;
+            
+            try {
+                const [skillsResponse, achievementsResponse] = await Promise.all([
+                    fetch('http://localhost:3001/api/skills'),
+                    fetch('http://localhost:3001/api/achievements')
+                ]);
 
-            if (!skillsResponse.ok || !achievementsResponse.ok) {
-                throw new Error('Erro ao carregar dados');
+                if (skillsResponse.ok && achievementsResponse.ok) {
+                    skillsData = await skillsResponse.json();
+                    achievementsData = await achievementsResponse.json();
+                    console.log('Dados carregados do servidor');
+                } else {
+                    throw new Error('Servidor não disponível');
+                }
+            } catch (serverError) {
+                console.log('Servidor não disponível, carregando dados estáticos...');
+                // Fallback para arquivos estáticos
+                const [skillsResponse, achievementsResponse] = await Promise.all([
+                    fetch('data/skills.json'),
+                    fetch('data/achievements.json')
+                ]);
+
+                if (!skillsResponse.ok || !achievementsResponse.ok) {
+                    throw new Error('Erro ao carregar dados estáticos');
+                }
+
+                skillsData = await skillsResponse.json();
+                achievementsData = await achievementsResponse.json();
+                console.log('Dados carregados dos arquivos estáticos');
             }
-
-            const skillsData = await skillsResponse.json();
-            const achievementsData = await achievementsResponse.json();
 
             this.skills = skillsData.skills || [];
             this.categories = skillsData.categories || [];
@@ -41,12 +62,162 @@ class DataService {
         }
     }
 
+    // === GETTER METHODS ===
     getSkillById(id) {
         return this.skills.find(skill => skill.id === id);
     }
 
     getAchievementById(id) {
         return this.achievements.find(achievement => achievement.id === id);
+    }
+
+    getAllSkills() {
+        return this.skills;
+    }
+
+    getAllAchievements() {
+        return this.achievements;
+    }
+
+    getSkillsByCategory(category) {
+        return this.skills.filter(skill => skill.category === category);
+    }
+
+    getAchievementsByCategory(category) {
+        return this.achievements.filter(achievement => achievement.category === category);
+    }
+
+    // === SAVE DATA METHODS ===
+    async saveSkills() {
+        try {
+            console.log('Salvando habilidades...');
+            const response = await fetch('http://localhost:3001/api/skills', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    skills: this.skills,
+                    categories: this.categories
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Erro ao salvar habilidades');
+            }
+
+            console.log('Habilidades salvas com sucesso');
+            return true;
+        } catch (error) {
+            console.error('Erro ao salvar habilidades:', error);
+            // For demo purposes, save to localStorage
+            localStorage.setItem('skills-data', JSON.stringify({
+                skills: this.skills,
+                categories: this.categories
+            }));
+            console.log('Dados salvos no localStorage como backup');
+            return true;
+        }
+    }
+
+    async saveAchievements() {
+        try {
+            console.log('Salvando conquistas...');
+            const response = await fetch('http://localhost:3001/api/achievements', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(this.achievements)
+            });
+
+            if (!response.ok) {
+                throw new Error('Erro ao salvar conquistas');
+            }
+
+            console.log('Conquistas salvas com sucesso');
+            return true;
+        } catch (error) {
+            console.error('Erro ao salvar conquistas:', error);
+            // For demo purposes, save to localStorage
+            localStorage.setItem('achievements-data', JSON.stringify(this.achievements));
+            console.log('Dados salvos no localStorage como backup');
+            return true;
+        }
+    }
+
+    // === SKILL CRUD METHODS ===
+    addSkill(skillData) {
+        const newSkill = {
+            id: 'skill-' + Date.now(),
+            ...skillData,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+        this.skills.push(newSkill);
+        this.saveSkills();
+        return newSkill;
+    }
+
+    updateSkill(id, skillData) {
+        const index = this.skills.findIndex(skill => skill.id === id);
+        if (index !== -1) {
+            this.skills[index] = {
+                ...this.skills[index],
+                ...skillData,
+                updatedAt: new Date().toISOString()
+            };
+            this.saveSkills();
+            return this.skills[index];
+        }
+        return null;
+    }
+
+    deleteSkill(id) {
+        const index = this.skills.findIndex(skill => skill.id === id);
+        if (index !== -1) {
+            const deletedSkill = this.skills.splice(index, 1)[0];
+            this.saveSkills();
+            return deletedSkill;
+        }
+        return null;
+    }
+
+    // === ACHIEVEMENT CRUD METHODS ===
+    addAchievement(achievementData) {
+        const newAchievement = {
+            id: 'ach-' + Date.now(),
+            ...achievementData,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+        this.achievements.push(newAchievement);
+        this.saveAchievements();
+        return newAchievement;
+    }
+
+    updateAchievement(id, achievementData) {
+        const index = this.achievements.findIndex(achievement => achievement.id === id);
+        if (index !== -1) {
+            this.achievements[index] = {
+                ...this.achievements[index],
+                ...achievementData,
+                updatedAt: new Date().toISOString()
+            };
+            this.saveAchievements();
+            return this.achievements[index];
+        }
+        return null;
+    }
+
+    deleteAchievement(id) {
+        const index = this.achievements.findIndex(achievement => achievement.id === id);
+        if (index !== -1) {
+            const deletedAchievement = this.achievements.splice(index, 1)[0];
+            this.saveAchievements();
+            return deletedAchievement;
+        }
+        return null;
     }
 
     getSkillsByCategory(categoryId) {
