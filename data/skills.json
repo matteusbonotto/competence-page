@@ -4,24 +4,23 @@
       "id": "qa-root",
       "title": "QUALITY ASSURANCE",
       "category": "qa",
-      "domain": 4,
+      "domain": 5,
       "description": "Garantia de qualidade de software através de processos, metodologias e técnicas de teste para assegurar que produtos atendam aos requisitos e expectativas dos usuários.",
       "icon": "bi-shield-check",
       "unlock_threshold": 0,
       "scores": {
-        "theoretical": 4,
-        "technical": 4,
-        "problem_solving": 4,
-        "knowledge_transfer": 3,
-        "trends": 3
+        "theoretical": 5,
+        "technical": 5,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
+        "trends": 4
       },
       "children": [
         "qa-testing",
         "qa-automation",
-        "qa-performance"
+        "qa-methodologies"
       ],
       "relatedAchievements": [
-        "istqb-cert",
         "agile-cert"
       ]
     },
@@ -29,7 +28,7 @@
       "id": "qa-testing",
       "title": "MANUAL TESTING",
       "category": "qa",
-      "domain": 4,
+      "domain": 5,
       "description": "Técnicas e práticas de teste manual, incluindo planejamento, execução e documentação de casos de teste.",
       "icon": "bi-bug-fill",
       "unlock_threshold": 3,
@@ -37,89 +36,86 @@
         "theoretical": 5,
         "technical": 5,
         "problem_solving": 5,
-        "knowledge_transfer": 3,
+        "knowledge_transfer": 4,
         "trends": 4
       },
       "parent": "qa-root",
       "children": [
         "qa-functional",
         "qa-exploratory",
-        "qa-usability"
+        "qa-regression"
       ],
-      "relatedAchievements": [
-        "agile-cert"
-      ]
+      "relatedAchievements": []
     },
     {
       "id": "qa-automation",
       "title": "TEST AUTOMATION",
       "category": "qa",
-      "domain": 3,
+      "domain": 4,
       "description": "Automação de testes utilizando frameworks e ferramentas para execução automatizada de casos de teste.",
       "icon": "bi-robot",
       "unlock_threshold": 4,
       "scores": {
-        "theoretical": 2,
-        "technical": 3,
-        "problem_solving": 2,
-        "knowledge_transfer": 2,
-        "trends": 4
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 5
       },
       "parent": "qa-root",
       "children": [
-        "qa-selenium",
-        "qa-api-testing"
+        "qa-robot-framework",
+        "qa-gherkin",
+        "qa-cypress"
       ],
-      "relatedAchievements": [
-        "selenium-cert"
-      ]
+      "relatedAchievements": []
     },
     {
-      "id": "qa-performance",
-      "title": "PERFORMANCE TESTING",
+      "id": "qa-methodologies",
+      "title": "TEST METHODOLOGIES",
       "category": "qa",
-      "domain": 2,
-      "description": "Testes de performance, carga e estresse para avaliar comportamento do sistema sob diferentes condições.",
-      "icon": "bi-speedometer2",
+      "domain": 5,
+      "description": "Metodologias e abordagens avançadas de teste de software.",
+      "icon": "bi-diagram-3",
       "unlock_threshold": 4,
       "scores": {
-        "theoretical": 2,
-        "technical": 2,
-        "problem_solving": 1,
-        "knowledge_transfer": 1,
-        "trends": 2
+        "theoretical": 5,
+        "technical": 4,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
+        "trends": 5
       },
       "parent": "qa-root",
       "children": [
-        "qa-load-testing",
-        "qa-stress-testing"
+        "qa-shift-left",
+        "qa-prisma",
+        "qa-iso-29119"
       ],
-      "relatedAchievements": [
-        "performance-cert"
-      ]
+      "relatedAchievements": []
     },
     {
       "id": "qa-functional",
       "title": "FUNCTIONAL TESTING",
       "category": "qa",
-      "domain": 4,
+      "domain": 5,
       "description": "Testes funcionais para verificar se o software atende aos requisitos funcionais especificados.",
       "icon": "bi-check2-square",
       "unlock_threshold": 3,
       "scores": {
-        "theoretical": 4,
-        "technical": 4,
-        "problem_solving": 3,
-        "knowledge_transfer": 3,
-        "trends": 2
+        "theoretical": 5,
+        "technical": 5,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
+        "trends": 4
       },
-      "parent": "qa-testing"
+      "parent": "qa-testing",
+      "children": []
     },
     {
       "id": "qa-exploratory",
       "title": "EXPLORATORY TESTING",
       "category": "qa",
-      "domain": 3,
+      "domain": 5,
       "description": "Testes exploratórios para descoberta de bugs e comportamentos inesperados através de investigação livre.",
       "icon": "bi-search",
       "unlock_threshold": 3,
@@ -128,117 +124,37 @@
         "technical": 5,
         "problem_solving": 5,
         "knowledge_transfer": 4,
-        "trends": 3
+        "trends": 4
       },
-      "parent": "qa-testing"
-    },
-    {
-      "id": "qa-usability",
-      "title": "USABILITY TESTING",
-      "description": "Testes de usabilidade para avaliar a experiência do usuário e facilidade de uso do software.",
-      "category": "qa",
-      "icon": "bi-person-check",
-      "domain": 2,
-      "unlock_threshold": 3,
       "parent": "qa-testing",
-      "scores": {
-        "theoretical": 3,
-        "technical": 2,
-        "problem_solving": 3,
-        "knowledge_transfer": 2,
-        "trends": 3
-      },
-      "children": [],
-      "relatedAchievements": []
+      "children": []
     },
     {
-      "id": "qa-selenium",
-      "title": "SELENIUM WEBDRIVER",
-      "description": "Automação de testes web utilizando Selenium WebDriver para interação com navegadores.",
+      "id": "qa-regression",
+      "title": "REGRESSION TESTING",
       "category": "qa",
-      "icon": "bi-browser-chrome",
-      "domain": 3,
-      "unlock_threshold": 2,
-      "parent": "qa-automation",
+      "domain": 5,
+      "description": "Testes de regressão para garantir que alterações não introduziram novos bugs em funcionalidades existentes.",
+      "icon": "bi-arrow-repeat",
+      "unlock_threshold": 3,
       "scores": {
-        "theoretical": 3,
-        "technical": 4,
-        "problem_solving": 3,
-        "knowledge_transfer": 2,
+        "theoretical": 5,
+        "technical": 5,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
         "trends": 4
       },
-      "children": [],
-      "relatedAchievements": [
-        "selenium-cert"
-      ]
+      "parent": "qa-testing",
+      "children": []
     },
     {
-      "id": "qa-api-testing",
-      "title": "API TESTING",
-      "description": "Testes de APIs REST e SOAP, validação de contratos e integração entre sistemas.",
+      "id": "qa-robot-framework",
+      "title": "ROBOT FRAMEWORK",
       "category": "qa",
-      "icon": "bi-cloud-arrow-up-fill",
-      "domain": 2,
-      "unlock_threshold": 2,
-      "parent": "qa-automation",
-      "scores": {
-        "theoretical": 3,
-        "technical": 2,
-        "problem_solving": 3,
-        "knowledge_transfer": 1,
-        "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
-      "id": "qa-load-testing",
-      "title": "LOAD TESTING",
-      "description": "Testes de carga para avaliar comportamento do sistema sob condições normais de uso.",
-      "category": "qa",
-      "icon": "bi-bar-chart-fill",
-      "domain": 1,
-      "unlock_threshold": 1,
-      "parent": "qa-performance",
-      "scores": {
-        "theoretical": 2,
-        "technical": 1,
-        "problem_solving": 2,
-        "knowledge_transfer": 1,
-        "trends": 2
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
-      "id": "qa-stress-testing",
-      "title": "STRESS TESTING",
-      "description": "Testes de estresse para determinar os limites do sistema e pontos de falha.",
-      "category": "qa",
-      "icon": "bi-exclamation-triangle-fill",
-      "domain": 1,
-      "unlock_threshold": 1,
-      "parent": "qa-performance",
-      "scores": {
-        "theoretical": 2,
-        "technical": 1,
-        "problem_solving": 2,
-        "knowledge_transfer": 1,
-        "trends": 2
-      },
-      "children": [],
-      "relatedAchievements": [
-        "performance-cert"
-      ]
-    },
-    {
-      "id": "dev-root",
-      "title": "DEVELOPMENT",
-      "description": "Desenvolvimento de software utilizando linguagens de programação, frameworks e ferramentas modernas.",
-      "category": "dev",
-      "icon": "bi-code-slash",
       "domain": 4,
-      "unlock_threshold": 0,
+      "description": "Automação de testes utilizando o Robot Framework para testes web e API.",
+      "icon": "bi-browser-chrome",
+      "unlock_threshold": 2,
       "scores": {
         "theoretical": 4,
         "technical": 4,
@@ -246,137 +162,296 @@
         "knowledge_transfer": 3,
         "trends": 4
       },
+      "parent": "qa-automation",
+      "children": []
+    },
+    {
+      "id": "qa-gherkin",
+      "title": "GHERKIN (BDD)",
+      "category": "qa",
+      "domain": 4,
+      "description": "Especificação de testes em formato BDD utilizando Gherkin para melhor colaboração entre times.",
+      "icon": "bi-file-text",
+      "unlock_threshold": 2,
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 4,
+        "trends": 4
+      },
+      "parent": "qa-automation",
+      "children": []
+    },
+    {
+      "id": "qa-cypress",
+      "title": "CYPRESS",
+      "category": "qa",
+      "domain": 3,
+      "description": "Automação de testes web utilizando Cypress para testes end-to-end.",
+      "icon": "bi-browser-edge",
+      "unlock_threshold": 2,
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 2,
+        "trends": 4
+      },
+      "parent": "qa-automation",
+      "children": []
+    },
+    {
+      "id": "qa-shift-left",
+      "title": "SHIFT-LEFT TESTING",
+      "category": "qa",
+      "domain": 5,
+      "description": "Abordagem de antecipação de testes para identificar problemas mais cedo no ciclo de desenvolvimento.",
+      "icon": "bi-arrow-left",
+      "unlock_threshold": 3,
+      "scores": {
+        "theoretical": 5,
+        "technical": 4,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
+        "trends": 5
+      },
+      "parent": "qa-methodologies",
+      "children": []
+    },
+    {
+      "id": "qa-prisma",
+      "title": "PRISMA",
+      "category": "qa",
+      "domain": 4,
+      "description": "Metodologia de priorização de testes baseada em riscos.",
+      "icon": "bi-clipboard2-pulse",
+      "unlock_threshold": 3,
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "parent": "qa-methodologies",
+      "children": []
+    },
+    {
+      "id": "qa-iso-29119",
+      "title": "ISO/IEC/IEEE 29119",
+      "category": "qa",
+      "domain": 4,
+      "description": "Conhecimento e aplicação do padrão internacional para processos de teste de software.",
+      "icon": "bi-file-earmark-check",
+      "unlock_threshold": 3,
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 4,
+        "trends": 3
+      },
+      "parent": "qa-methodologies",
+      "children": []
+    },
+       {
+      "id": "dev-root",
+      "title": "DEVELOPMENT",
+      "description": "Conhecimentos em desenvolvimento de software.",
+      "category": "dev",
+      "icon": "bi-code-slash",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
       "children": [
         "dev-frontend",
-        "dev-backend",
-        "dev-mobile"
+        "dev-backend"
       ],
-      "relatedAchievements": [
-        "fullstack-cert"
-      ]
+      "relatedAchievements": []
     },
     {
       "id": "dev-frontend",
       "title": "FRONTEND",
-      "description": "Desenvolvimento de interfaces de usuário utilizando HTML, CSS, JavaScript e frameworks modernos.",
+      "description": "Desenvolvimento de interfaces de usuário.",
       "category": "dev",
-      "icon": "bi-window-desktop",
-      "domain": 4,
-      "unlock_threshold": 3,
+      "icon": "bi-window",
+      "domain": 3,
+      "unlock_threshold": 0,
       "parent": "dev-root",
       "scores": {
-        "theoretical": 4,
-        "technical": 4,
+        "theoretical": 3,
+        "technical": 3,
         "problem_solving": 3,
         "knowledge_transfer": 3,
-        "trends": 5
+        "trends": 3
       },
       "children": [
-        "dev-react",
-        "dev-vue"
+        "dev-html",
+        "dev-css",
+        "dev-bootstrap",
+        "dev-tailwind",
+        "dev-typescript"
       ],
-      "relatedAchievements": [
-        "react-cert"
-      ]
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-html",
+      "title": "HTML",
+      "description": "Linguagem de marcação para estruturação de páginas web.",
+      "category": "dev",
+      "icon": "bi-filetype-html",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "parent": "dev-frontend",
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-css",
+      "title": "CSS",
+      "description": "Linguagem de estilização para páginas web.",
+      "category": "dev",
+      "icon": "bi-filetype-css",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "parent": "dev-frontend",
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-bootstrap",
+      "title": "BOOTSTRAP",
+      "description": "Framework CSS para desenvolvimento responsivo.",
+      "category": "dev",
+      "icon": "bi-bootstrap",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "parent": "dev-frontend",
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-tailwind",
+      "title": "TAILWIND CSS",
+      "description": "Framework CSS utilitário para construção de interfaces.",
+      "category": "dev",
+      "icon": "bi-wind",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "parent": "dev-frontend",
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-typescript",
+      "title": "TYPESCRIPT",
+      "description": "Superset tipado de JavaScript para desenvolvimento escalável.",
+      "category": "dev",
+      "icon": "bi-filetype-ts",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "parent": "dev-frontend",
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": []
     },
     {
       "id": "dev-backend",
       "title": "BACKEND",
-      "description": "Desenvolvimento de APIs, serviços e sistemas server-side com foco em performance e escalabilidade.",
+      "description": "Desenvolvimento de lógica de negócios e APIs.",
       "category": "dev",
       "icon": "bi-server",
       "domain": 3,
-      "unlock_threshold": 3,
+      "unlock_threshold": 0,
       "parent": "dev-root",
       "scores": {
-        "theoretical": 4,
+        "theoretical": 3,
         "technical": 3,
-        "problem_solving": 4,
-        "knowledge_transfer": 2,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
         "trends": 3
       },
       "children": [
-        "dev-nodejs",
+        "dev-javascript",
+        "dev-node",
         "dev-python"
       ],
       "relatedAchievements": []
     },
     {
-      "id": "dev-mobile",
-      "title": "MOBILE DEVELOPMENT",
-      "description": "Desenvolvimento de aplicações móveis para Android e iOS utilizando tecnologias nativas e híbridas.",
+      "id": "dev-javascript",
+      "title": "JAVASCRIPT",
+      "description": "Linguagem de programação para desenvolvimento web.",
       "category": "dev",
-      "icon": "bi-phone",
-      "domain": 2,
-      "unlock_threshold": 3,
-      "parent": "dev-root",
-      "scores": {
-        "theoretical": 3,
-        "technical": 2,
-        "problem_solving": 3,
-        "knowledge_transfer": 2,
-        "trends": 4
-      },
-      "children": [
-        "dev-react-native",
-        "dev-flutter"
-      ],
-      "relatedAchievements": []
-    },
-    {
-      "id": "dev-react",
-      "title": "REACT",
-      "description": "Desenvolvimento de aplicações web utilizando React e seu ecossistema.",
-      "category": "dev",
-      "icon": "bi-bootstrap",
-      "domain": 4,
-      "unlock_threshold": 3,
-      "parent": "dev-frontend",
-      "scores": {
-        "theoretical": 4,
-        "technical": 4,
-        "problem_solving": 3,
-        "knowledge_transfer": 3,
-        "trends": 5
-      },
-      "children": [],
-      "relatedAchievements": [
-        "react-cert"
-      ]
-    },
-    {
-      "id": "dev-vue",
-      "title": "VUE.JS",
-      "description": "Desenvolvimento de aplicações web utilizando Vue.js e Nuxt.js.",
-      "category": "dev",
-      "icon": "bi-triangle",
-      "domain": 2,
-      "unlock_threshold": 3,
-      "parent": "dev-frontend",
-      "scores": {
-        "theoretical": 3,
-        "technical": 2,
-        "problem_solving": 2,
-        "knowledge_transfer": 2,
-        "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
-      "id": "dev-nodejs",
-      "title": "NODE.JS",
-      "description": "Desenvolvimento backend utilizando Node.js, Express e outras tecnologias do ecossistema.",
-      "category": "dev",
-      "icon": "bi-gear-fill",
+      "icon": "bi-filetype-js",
       "domain": 3,
-      "unlock_threshold": 2,
+      "unlock_threshold": 0,
       "parent": "dev-backend",
       "scores": {
-        "theoretical": 4,
+        "theoretical": 3,
         "technical": 3,
         "problem_solving": 3,
-        "knowledge_transfer": 2,
+        "knowledge_transfer": 3,
+        "trends": 4
+      },
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "dev-node",
+      "title": "NODE.JS",
+      "description": "Ambiente de execução JavaScript server-side.",
+      "category": "dev",
+      "icon": "bi-node-plus",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "parent": "dev-backend",
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
         "trends": 4
       },
       "children": [],
@@ -385,128 +460,42 @@
     {
       "id": "dev-python",
       "title": "PYTHON",
-      "description": "Desenvolvimento backend utilizando Python, Django, Flask e outras ferramentas.",
+      "description": "Linguagem de programação para backend e automações.",
       "category": "dev",
-      "icon": "bi-cpu",
-      "domain": 2,
-      "unlock_threshold": 2,
+      "icon": "bi-filetype-py",
+      "domain": 3,
+      "unlock_threshold": 0,
       "parent": "dev-backend",
       "scores": {
         "theoretical": 3,
-        "technical": 2,
-        "problem_solving": 3,
-        "knowledge_transfer": 2,
-        "trends": 3
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
-      "id": "ux-root",
-      "title": "USER EXPERIENCE",
-      "description": "Design de experiência do usuário focado em usabilidade, acessibilidade e satisfação do usuário.",
-      "category": "ux",
-      "icon": "bi-palette",
-      "domain": 3,
-      "unlock_threshold": 0,
-      "scores": {
-        "theoretical": 3,
         "technical": 3,
-        "problem_solving": 4,
-        "knowledge_transfer": 3,
-        "trends": 4
-      },
-      "children": [
-        "ux-research",
-        "ux-design",
-        "ux-prototyping"
-      ],
-      "relatedAchievements": [
-        "ux-cert"
-      ]
-    },
-    {
-      "id": "ux-research",
-      "title": "UX RESEARCH",
-      "description": "Pesquisa de usuário, análise de comportamento e métodos de descoberta de necessidades.",
-      "category": "ux",
-      "icon": "bi-search-heart",
-      "domain": 3,
-      "unlock_threshold": 2,
-      "parent": "ux-root",
-      "scores": {
-        "theoretical": 4,
-        "technical": 2,
-        "problem_solving": 4,
-        "knowledge_transfer": 3,
-        "trends": 3
-      },
-      "children": [],
-      "relatedAchievements": [
-        "ux-cert"
-      ]
-    },
-    {
-      "id": "ux-design",
-      "title": "UI/UX DESIGN",
-      "description": "Design de interfaces, sistemas de design e prototipação de alta fidelidade.",
-      "category": "ux",
-      "icon": "bi-brush",
-      "domain": 3,
-      "unlock_threshold": 2,
-      "parent": "ux-root",
-      "scores": {
-        "theoretical": 3,
-        "technical": 4,
         "problem_solving": 3,
         "knowledge_transfer": 3,
         "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
-      "id": "ux-prototyping",
-      "title": "PROTOTYPING",
-      "description": "Criação de protótipos interativos e testes de usabilidade.",
-      "category": "ux",
-      "icon": "bi-layers",
-      "domain": 2,
-      "unlock_threshold": 2,
-      "parent": "ux-root",
-      "scores": {
-        "theoretical": 2,
-        "technical": 3,
-        "problem_solving": 3,
-        "knowledge_transfer": 2,
-        "trends": 3
       },
       "children": [],
       "relatedAchievements": []
     },
     {
       "id": "data-root",
-      "title": "DATA SCIENCE",
-      "description": "Ciência de dados engloba análise, visualização e processamento de dados para extrair insights valiosos e apoiar tomadas de decisão baseadas em evidências.",
+      "title": "DATA ANALYSIS",
+      "description": "Análise e visualização de dados para suporte à gestão da qualidade e tomada de decisões.",
       "category": "data",
       "icon": "bi-graph-up",
       "domain": 4,
       "unlock_threshold": 0,
       "scores": {
         "theoretical": 4,
-        "technical": 4,
+        "technical": 5,
         "problem_solving": 5,
-        "knowledge_transfer": 3,
-        "trends": 5
+        "knowledge_transfer": 4,
+        "trends": 4
       },
       "children": [
         "data-excel",
-        "data-powerbi",
-        "data-sql"
+        "data-dashboards"
       ],
-      "relatedAchievements": [
-        "data-analyst-cert"
-      ]
+      "relatedAchievements": []
     },
     {
       "id": "data-excel",
@@ -520,50 +509,19 @@
       "scores": {
         "theoretical": 4,
         "technical": 5,
-        "problem_solving": 4,
+        "problem_solving": 5,
         "knowledge_transfer": 5,
         "trends": 3
       },
-      "children": [
-        "data-excel-formulas",
-        "data-excel-pivot",
-        "data-excel-macros"
-      ],
-      "relatedAchievements": [
-        "excel-expert"
-      ]
+      "children": [],
+      "relatedAchievements": []
     },
     {
-      "id": "data-powerbi",
-      "title": "POWER BI",
-      "description": "Criação de dashboards interativos e relatórios dinâmicos usando Microsoft Power BI para visualização e análise de dados empresariais.",
+      "id": "data-dashboards",
+      "title": "DASHBOARDS",
+      "description": "Criação de dashboards para monitoramento de métricas de qualidade e acompanhamento de projetos.",
       "category": "data",
       "icon": "bi-bar-chart",
-      "domain": 3,
-      "unlock_threshold": 2,
-      "parent": "data-root",
-      "scores": {
-        "theoretical": 3,
-        "technical": 4,
-        "problem_solving": 3,
-        "knowledge_transfer": 4,
-        "trends": 5
-      },
-      "children": [
-        "data-powerbi-dax",
-        "data-powerbi-modeling",
-        "data-powerbi-visual"
-      ],
-      "relatedAchievements": [
-        "powerbi-cert"
-      ]
-    },
-    {
-      "id": "data-sql",
-      "title": "SQL & DATABASES",
-      "description": "Structured Query Language para consulta, manipulação e análise de dados em bancos relacionais e não-relacionais.",
-      "category": "data",
-      "icon": "bi-database",
       "domain": 4,
       "unlock_threshold": 2,
       "parent": "data-root",
@@ -571,211 +529,16 @@
         "theoretical": 4,
         "technical": 5,
         "problem_solving": 5,
-        "knowledge_transfer": 3,
-        "trends": 4
-      },
-      "children": [
-        "data-sql-basic",
-        "data-sql-advanced",
-        "data-sql-optimization"
-      ],
-      "relatedAchievements": [
-        "sql-expert"
-      ]
-    },
-    {
-      "id": "data-excel-formulas",
-      "title": "FÓRMULAS AVANÇADAS",
-      "description": "Domínio de fórmulas complexas incluindo PROCV, ÍNDICE, CORRESP, fórmulas matriciais e funções estatísticas.",
-      "category": "data",
-      "icon": "bi-calculator",
-      "domain": 4,
-      "unlock_threshold": 3,
-      "parent": "data-excel",
-      "scores": {
-        "theoretical": 4,
-        "technical": 5,
-        "problem_solving": 4,
         "knowledge_transfer": 4,
-        "trends": 2
-      },
-      "children": [],
-      "relatedAchievements": [
-        "excel-formulas-master"
-      ]
-    },
-    {
-      "id": "data-excel-pivot",
-      "title": "TABELAS DINÂMICAS",
-      "description": "Criação e manipulação de tabelas dinâmicas para sumarização e análise rápida de grandes volumes de dados.",
-      "category": "data",
-      "icon": "bi-grid-3x3",
-      "domain": 5,
-      "unlock_threshold": 3,
-      "parent": "data-excel",
-      "scores": {
-        "theoretical": 3,
-        "technical": 5,
-        "problem_solving": 4,
-        "knowledge_transfer": 5,
-        "trends": 3
-      },
-      "children": [],
-      "relatedAchievements": [
-        "pivot-expert"
-      ]
-    },
-    {
-      "id": "data-excel-macros",
-      "title": "MACROS & VBA",
-      "description": "Automação de tarefas repetitivas através de macros e programação em Visual Basic for Applications (VBA).",
-      "category": "data",
-      "icon": "bi-gear",
-      "domain": 2,
-      "unlock_threshold": 4,
-      "parent": "data-excel",
-      "scores": {
-        "theoretical": 3,
-        "technical": 4,
-        "problem_solving": 5,
-        "knowledge_transfer": 2,
-        "trends": 2
-      },
-      "children": [],
-      "relatedAchievements": [
-        "vba-programmer"
-      ]
-    },
-    {
-      "id": "data-powerbi-dax",
-      "title": "DAX FORMULAS",
-      "description": "Data Analysis Expressions para cálculos avançados, medidas customizadas e análises temporais em Power BI.",
-      "category": "data",
-      "icon": "bi-code-square",
-      "domain": 2,
-      "unlock_threshold": 3,
-      "parent": "data-powerbi",
-      "scores": {
-        "theoretical": 4,
-        "technical": 3,
-        "problem_solving": 4,
-        "knowledge_transfer": 2,
-        "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": [
-        "dax-expert"
-      ]
-    },
-    {
-      "id": "data-powerbi-modeling",
-      "title": "DATA MODELING",
-      "description": "Modelagem de dados, relacionamentos entre tabelas e otimização de performance em Power BI.",
-      "category": "data",
-      "icon": "bi-diagram-3",
-      "domain": 3,
-      "unlock_threshold": 3,
-      "parent": "data-powerbi",
-      "scores": {
-        "theoretical": 4,
-        "technical": 4,
-        "problem_solving": 4,
-        "knowledge_transfer": 3,
-        "trends": 3
-      },
-      "children": [],
-      "relatedAchievements": [
-        "data-modeler"
-      ]
-    },
-    {
-      "id": "data-powerbi-visual",
-      "title": "VISUALIZATIONS",
-      "description": "Criação de visualizações impactantes, dashboards interativos e storytelling com dados.",
-      "category": "data",
-      "icon": "bi-pie-chart",
-      "domain": 4,
-      "unlock_threshold": 2,
-      "parent": "data-powerbi",
-      "scores": {
-        "theoretical": 3,
-        "technical": 4,
-        "problem_solving": 3,
-        "knowledge_transfer": 5,
         "trends": 5
       },
       "children": [],
-      "relatedAchievements": [
-        "viz-expert"
-      ]
-    },
-    {
-      "id": "data-sql-basic",
-      "title": "SQL BÁSICO",
-      "description": "Comandos fundamentais: SELECT, INSERT, UPDATE, DELETE, WHERE, ORDER BY, GROUP BY.",
-      "category": "data",
-      "icon": "bi-file-code",
-      "domain": 5,
-      "unlock_threshold": 2,
-      "parent": "data-sql",
-      "scores": {
-        "theoretical": 4,
-        "technical": 5,
-        "problem_solving": 4,
-        "knowledge_transfer": 4,
-        "trends": 3
-      },
-      "children": [],
-      "relatedAchievements": [
-        "sql-basic-cert"
-      ]
-    },
-    {
-      "id": "data-sql-advanced",
-      "title": "SQL AVANÇADO",
-      "description": "JOINs complexos, subqueries, CTEs, window functions, stored procedures e triggers.",
-      "category": "data",
-      "icon": "bi-layers-fill",
-      "domain": 3,
-      "unlock_threshold": 4,
-      "parent": "data-sql",
-      "scores": {
-        "theoretical": 4,
-        "technical": 4,
-        "problem_solving": 5,
-        "knowledge_transfer": 3,
-        "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": [
-        "sql-advanced-cert"
-      ]
-    },
-    {
-      "id": "data-sql-optimization",
-      "title": "PERFORMANCE TUNING",
-      "description": "Otimização de queries, índices, planos de execução e troubleshooting de performance em bancos de dados.",
-      "category": "data",
-      "icon": "bi-speedometer2",
-      "domain": 2,
-      "unlock_threshold": 5,
-      "parent": "data-sql",
-      "scores": {
-        "theoretical": 5,
-        "technical": 3,
-        "problem_solving": 5,
-        "knowledge_transfer": 2,
-        "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": [
-        "sql-performance-expert"
-      ]
+      "relatedAchievements": []
     },
     {
       "id": "devops-root",
       "title": "DEVOPS",
-      "description": "Cultura e práticas que combinam desenvolvimento de software e operações de TI para melhorar a colaboração e produtividade através de automação de infraestrutura, fluxos de trabalho e medição contínua do desempenho da aplicação.",
+      "description": "Cultura e práticas que combinam desenvolvimento de software e operações de TI para melhorar a colaboração e produtividade.",
       "category": "devops",
       "icon": "bi-gear-fill",
       "domain": 3,
@@ -788,173 +551,135 @@
         "trends": 5
       },
       "children": [
-        "devops-cicd",
-        "devops-automation",
-        "devops-monitoring"
+        "devops-agile",
+        "devops-tools"
       ],
-      "relatedAchievements": [
-        "n8n-vai-da",
-        "yamlouco"
-      ]
+      "relatedAchievements": []
     },
     {
-      "id": "devops-cicd",
-      "title": "CI/CD PIPELINES",
-      "description": "Integração contínua e entrega contínua usando ferramentas como Jenkins, GitHub Actions, Azure DevOps para automatizar builds, testes e deployments.",
+      "id": "devops-agile",
+      "title": "AGILE METHODOLOGIES",
+      "description": "Práticas ágeis como Scrum e Kanban para gestão de projetos de software.",
       "category": "devops",
       "icon": "bi-arrow-repeat",
+      "domain": 5,
+      "unlock_threshold": 2,
+      "parent": "devops-root",
+      "scores": {
+        "theoretical": 5,
+        "technical": 5,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
+        "trends": 5
+      },
+      "children": [
+        "devops-scrum",
+        "devops-kanban"
+      ],
+      "relatedAchievements": []
+    },
+    {
+      "id": "devops-tools",
+      "title": "DEVOPS TOOLS",
+      "description": "Ferramentas de gestão de projetos e qualidade como Jira e Azure DevOps.",
+      "category": "devops",
+      "icon": "bi-tools",
       "domain": 4,
       "unlock_threshold": 2,
       "parent": "devops-root",
       "scores": {
-        "theoretical": 3,
+        "theoretical": 4,
         "technical": 4,
         "problem_solving": 4,
         "knowledge_transfer": 4,
         "trends": 5
       },
-      "children": [],
-      "relatedAchievements": [
-        "yamlouco"
-      ]
+      "children": [
+        "devops-azure",
+        "devops-jira"
+      ],
+      "relatedAchievements": []
     },
     {
-      "id": "devops-automation",
-      "title": "AUTOMAÇÃO",
-      "description": "Automação de processos e fluxos de trabalho usando ferramentas como n8n, Zapier, scripts e workflows automatizados.",
+      "id": "devops-scrum",
+      "title": "SCRUM",
       "category": "devops",
-      "icon": "bi-robot",
-      "domain": 4,
-      "unlock_threshold": 2,
-      "parent": "devops-root",
+      "description": "Metodologia Ágil Scrum para gestão de projetos.",
+      "icon": "bi-kanban",
+      "domain": 5,
+      "unlock_threshold": 0,
       "scores": {
-        "theoretical": 3,
+        "theoretical": 5,
         "technical": 5,
-        "problem_solving": 4,
+        "problem_solving": 5,
         "knowledge_transfer": 4,
         "trends": 5
       },
+      "parent": "devops-agile",
       "children": [],
-      "relatedAchievements": [
-        "n8n-vai-da"
-      ]
+      "relatedAchievements": []
     },
     {
-      "id": "devops-monitoring",
-      "title": "MONITORAMENTO",
-      "description": "Monitoramento de aplicações, infraestrutura e performance usando ferramentas de observabilidade e alertas.",
+      "id": "devops-kanban",
+      "title": "KANBAN",
       "category": "devops",
-      "icon": "bi-activity",
-      "domain": 2,
-      "unlock_threshold": 3,
-      "parent": "devops-root",
-      "scores": {
-        "theoretical": 4,
-        "technical": 3,
-        "problem_solving": 5,
-        "knowledge_transfer": 3,
-        "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": [
-        "infrahero"
-      ]
-    },
-    {
-      "id": "infra-root",
-      "title": "INFRAESTRUTURA",
-      "description": "Gestão e administração de infraestrutura de TI, incluindo servidores, redes, cloud computing e sistemas operacionais para suporte a aplicações e serviços.",
-      "category": "infra",
-      "icon": "bi-server",
-      "domain": 3,
+      "description": "Metodologia Kanban para gestão visual de fluxo de trabalho.",
+      "icon": "bi-columns",
+      "domain": 4,
       "unlock_threshold": 0,
       "scores": {
         "theoretical": 4,
         "technical": 4,
-        "problem_solving": 5,
+        "problem_solving": 4,
         "knowledge_transfer": 3,
         "trends": 4
       },
-      "children": [
-        "infra-cloud",
-        "infra-containers",
-        "infra-networking"
-      ],
-      "relatedAchievements": [
-        "cloud-cert",
-        "kubernerd"
-      ]
+      "parent": "devops-agile",
+      "children": [],
+      "relatedAchievements": []
     },
     {
-      "id": "infra-cloud",
-      "title": "CLOUD COMPUTING",
-      "description": "Administração e deploy em plataformas cloud como AWS, Azure, Google Cloud Platform.",
-      "category": "infra",
-      "icon": "bi-cloud-fill",
-      "domain": 3,
-      "unlock_threshold": 2,
-      "parent": "infra-root",
+      "id": "devops-azure",
+      "title": "AZURE DEVOPS",
+      "category": "devops",
+      "description": "Ferramenta Azure DevOps para gestão de projetos e pipelines CI/CD.",
+      "icon": "bi-microsoft",
+      "domain": 4,
+      "unlock_threshold": 0,
       "scores": {
         "theoretical": 4,
         "technical": 4,
         "problem_solving": 4,
-        "knowledge_transfer": 3,
+        "knowledge_transfer": 4,
         "trends": 5
       },
+      "parent": "devops-tools",
       "children": [],
-      "relatedAchievements": [
-        "cloud-cert",
-        "terrafirma"
-      ]
+      "relatedAchievements": []
     },
     {
-      "id": "infra-containers",
-      "title": "CONTAINERS",
-      "description": "Docker, Kubernetes e orquestração de containers para deployment e escalabilidade.",
-      "category": "infra",
-      "icon": "bi-box-seam",
-      "domain": 3,
-      "unlock_threshold": 2,
-      "parent": "infra-root",
-      "scores": {
-        "theoretical": 3,
-        "technical": 4,
-        "problem_solving": 4,
-        "knowledge_transfer": 3,
-        "trends": 5
-      },
-      "children": [],
-      "relatedAchievements": [
-        "pacotao",
-        "kubernerd",
-        "dockerloki"
-      ]
-    },
-    {
-      "id": "infra-networking",
-      "title": "REDES & SEGURANÇA",
-      "description": "Configuração de redes, segurança, SSH, VPN e protocolos de comunicação.",
-      "category": "infra",
-      "icon": "bi-shield-lock-fill",
-      "domain": 2,
-      "unlock_threshold": 3,
-      "parent": "infra-root",
+      "id": "devops-jira",
+      "title": "JIRA",
+      "category": "devops",
+      "description": "Ferramenta Jira para gestão ágil de projetos.",
+      "icon": "bi-jira",
+      "domain": 4,
+      "unlock_threshold": 0,
       "scores": {
         "theoretical": 4,
-        "technical": 3,
+        "technical": 4,
         "problem_solving": 4,
-        "knowledge_transfer": 2,
-        "trends": 3
+        "knowledge_transfer": 4,
+        "trends": 4
       },
+      "parent": "devops-tools",
       "children": [],
-      "relatedAchievements": [
-        "ssh-ou-nao"
-      ]
+      "relatedAchievements": []
     },
     {
       "id": "idiomas-root",
       "title": "IDIOMAS",
-      "description": "Competências em idiomas estrangeiros essenciais para comunicação global, documentação técnica e colaboração internacional no ambiente de tecnologia.",
+      "description": "Competências em idiomas estrangeiros essenciais para comunicação global e documentação técnica.",
       "category": "idiomas",
       "icon": "bi-translate",
       "domain": 3,
@@ -967,38 +692,128 @@
         "trends": 4
       },
       "children": [
-        "idiomas-ingles",
-        "idiomas-espanhol"
+        "idiomas-ingles"
       ],
-      "relatedAchievements": [
-        "lost-in-translation",
-        "sorry-my-bad"
-      ]
+      "relatedAchievements": []
     },
     {
       "id": "idiomas-ingles",
       "title": "INGLÊS",
       "category": "idiomas",
-      "domain": 2,
+      "domain": 3,
       "description": "Proficiência em inglês para leitura de documentação, comunicação em equipes internacionais e consumo de conteúdo técnico.",
       "icon": "bi-flag",
       "unlock_threshold": 1,
       "scores": {
-        "theoretical": 3,
-        "technical": 2,
-        "problem_solving": 1,
-        "knowledge_transfer": 1,
-        "trends": 3
+        "theoretical": 4,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 4
       },
       "parent": "idiomas-root",
+      "children": [
+        "idiomas-ingles-reading",
+        "idiomas-ingles-listening",
+        "idiomas-ingles-conversation",
+        "idiomas-ingles-writing"
+      ],
+      "relatedAchievements": []
+    },
+    {
+      "id": "idiomas-ingles-reading",
+      "title": "READING",
+      "category": "idiomas",
+      "description": "Leitura e compreensão de textos em inglês.",
+      "icon": "bi-book",
+      "domain": 4,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 4,
+        "trends": 4
+      },
+      "parent": "idiomas-ingles",
       "children": [],
-      "relatedAchievements": [
-        "lost-in-translation",
-        "404-dictionary",
-        "ctrl-c-internacional",
-        "sorry-my-bad",
-        "br-huehue"
-      ]
+      "relatedAchievements": []
+    },
+    {
+      "id": "idiomas-ingles-listening",
+      "title": "LISTENING",
+      "category": "idiomas",
+      "description": "Compreensão auditiva do inglês.",
+      "icon": "bi-ear",
+      "domain": 4,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 4,
+        "technical": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 4,
+        "trends": 4
+      },
+      "parent": "idiomas-ingles",
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "idiomas-ingles-conversation",
+      "title": "CONVERSATION",
+      "category": "idiomas",
+      "description": "Habilidade de conversação em inglês.",
+      "icon": "bi-chat-dots",
+      "domain": 2,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 2,
+        "technical": 2,
+        "problem_solving": 2,
+        "knowledge_transfer": 2,
+        "trends": 3
+      },
+      "parent": "idiomas-ingles",
+      "children": [],
+      "relatedAchievements": []
+    },
+    {
+      "id": "idiomas-ingles-writing",
+      "title": "WRITING",
+      "category": "idiomas",
+      "description": "Habilidade de escrita em inglês.",
+      "icon": "bi-pencil",
+      "domain": 3,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 3,
+        "technical": 3,
+        "problem_solving": 3,
+        "knowledge_transfer": 3,
+        "trends": 3
+      },
+      "parent": "idiomas-ingles",
+      "children": [],
+      "relatedAchievements": []
+    },
+
+    {
+      "id": "ux-root",
+      "title": "UX/UI",
+      "description": "Conhecimentos em experiência do usuário e design de interface.",
+      "category": "ux",
+      "icon": "bi-palette",
+      "domain": 2,
+      "unlock_threshold": 0,
+      "scores": {
+        "theoretical": 2,
+        "technical": 2,
+        "problem_solving": 2,
+        "knowledge_transfer": 2,
+        "trends": 3
+      },
+      "children": [],
+      "relatedAchievements": []
     }
   ],
   "categories": [
@@ -1009,20 +824,8 @@
       "rootSkillId": "qa-root"
     },
     {
-      "id": "dev",
-      "name": "Development",
-      "color": "#e74c3c",
-      "rootSkillId": "dev-root"
-    },
-    {
-      "id": "ux",
-      "name": "User Experience",
-      "color": "#9b59b6",
-      "rootSkillId": "ux-root"
-    },
-    {
       "id": "data",
-      "name": "Data Science",
+      "name": "Data Analysis",
       "color": "#f39c12",
       "rootSkillId": "data-root"
     },
@@ -1033,16 +836,22 @@
       "rootSkillId": "devops-root"
     },
     {
-      "id": "infra",
-      "name": "Infrastructure",
-      "color": "#34495e",
-      "rootSkillId": "infra-root"
-    },
-    {
       "id": "idiomas",
       "name": "Languages",
       "color": "#e67e22",
       "rootSkillId": "idiomas-root"
+    },
+    {
+      "id": "dev",
+      "name": "Development",
+      "color": "#e74c3c",
+      "rootSkillId": "dev-root"
+    },
+    {
+      "id": "ux",
+      "name": "UX/UI",
+      "color": "#9b59b6",
+      "rootSkillId": "ux-root"
     }
   ]
 }

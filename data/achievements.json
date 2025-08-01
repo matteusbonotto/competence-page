@@ -374,14 +374,17 @@
   },
   {
     "id": "ach-1753557708583",
-    "title": "Ultrapassando limites",
+    "title": "Ensino Superior",
     "description": "Concluá uma pós graduação.",
     "status": "unlocked",
     "difficulty": 3,
     "category": "QA",
     "evidence": null,
     "relatedSkills": [],
-    "image": "assets/achievements/unnamed10-1753559281835-855041893.png"
+    "image": "assets/achievements/unnamed10-1753559281835-855041893.png",
+    "desc": "Concluá uma pós graduação.",
+    "unlockedDate": "",
+    "evidenceFile": null
   },
   {
     "id": "ach-1753557810952",

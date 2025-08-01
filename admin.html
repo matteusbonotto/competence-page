@@ -800,7 +800,7 @@
           renderSkills();
           renderAchievements();
           updateDashboardStats();
-          populateParentSkillsDropdown();
+          populateParentSkillsDropdown(); // Carregamento inicial - sem exclusões
         } else {
           console.error('Falha ao carregar dados');
         }
@@ -1072,7 +1072,7 @@
         
         // Populate dropdowns
         populateSkillCategoriesDropdown();
-        populateParentSkillsDropdown();
+        populateParentSkillsDropdown(editingSkillId); // Excluir a skill sendo editada
         
         // Update modal title
         document.getElementById('skillModalLabel').textContent = 
@@ -1203,92 +1203,71 @@
         saveBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Salvando...';
 
         try {
-
-        // Get category (new or existing)
-        let category = document.getElementById('skillCategory').value;
-        const newCategoryInput = document.getElementById('newCategoryInput');
-        if (newCategoryInput.style.display !== 'none' && newCategoryInput.value.trim()) {
-          category = newCategoryInput.value.trim().toUpperCase();
-        }
-
-        const skillData = {
-          id: editingSkillId || generateId('skill'),
-          name: document.getElementById('skillTitle').value,
-          title: document.getElementById('skillTitle').value,
-          category: category,
-          description: document.getElementById('skillDescription').value,
-          icon: 'bi-lightbulb',
-          active: true,
-          domain: parseFloat(document.getElementById('calculatedDomain').textContent),
-          scores: {
-            theoretical: parseInt(document.getElementById('scoreTheoretical').value),
-            technical: parseInt(document.getElementById('scoreTechnical').value),
-            problemSolving: parseInt(document.getElementById('scoreProblemSolving').value),
-            knowledgeTransfer: parseInt(document.getElementById('scoreKnowledgeTransfer').value),
-            trends: parseInt(document.getElementById('scoreTrends').value)
+          // Get category (new or existing)
+          let category = document.getElementById('skillCategory').value;
+          const newCategoryInput = document.getElementById('newCategoryInput');
+          if (newCategoryInput.style.display !== 'none' && newCategoryInput.value.trim()) {
+            category = newCategoryInput.value.trim().toLowerCase();
           }
-        };
 
-        // Handle parent/child relationship
-        if (document.getElementById('skillTypeChild').checked) {
-          const createNewParentChecked = document.getElementById('createNewParent').checked;
-          if (createNewParentChecked) {
-            const newParentName = document.getElementById('newParentInput').value.trim();
-            if (newParentName) {
-              // Create new parent first
-              const newParent = {
-                id: generateId('skill'),
-                name: newParentName,
-                title: newParentName,
-                category: category,
-                type: 'parent',
-                active: true,
-                domain: 0,
-                scores: { theoretical: 0, technical: 0, problemSolving: 0, knowledgeTransfer: 0, trends: 0 }
-              };
-              skillsData.push(newParent);
-              dataService.addSkill(newParent);
-              skillData.parent = newParent.id;
+          const skillData = {
+            id: editingSkillId || generateId('skill'),
+            title: document.getElementById('skillTitle').value,
+            category: category,
+            description: document.getElementById('skillDescription').value,
+            icon: 'bi-lightbulb',
+            domain: parseFloat(document.getElementById('calculatedDomain').textContent),
+            unlock_threshold: 0, // Valor padrão, pode ser editado manualmente no JSON se necessário
+            scores: {
+              theoretical: parseInt(document.getElementById('scoreTheoretical').value),
+              technical: parseInt(document.getElementById('scoreTechnical').value),
+              problem_solving: parseInt(document.getElementById('scoreProblemSolving').value),
+              knowledge_transfer: parseInt(document.getElementById('scoreKnowledgeTransfer').value),
+              trends: parseInt(document.getElementById('scoreTrends').value)
+            },
+            children: [], // Inicializar como array vazio
+            relatedAchievements: [] // Inicializar como array vazio
+          };
+
+          // Handle parent/child relationship
+          if (document.getElementById('skillTypeChild').checked) {
+            const parentId = document.getElementById('parentSkillSelect').value;
+            if (parentId) {
+              skillData.parent = parentId;
+            }
+          }
+
+          if (editingSkillId) {
+            // Update existing skill
+            const updatedSkill = dataService.updateSkill(editingSkillId, skillData);
+            if (updatedSkill) {
+              const index = skillsData.findIndex(s => s.id === editingSkillId);
+              if (index !== -1) {
+                skillsData[index] = updatedSkill;
+              }
+              console.log('Skill updated:', updatedSkill);
             }
           } else {
-            skillData.parent = document.getElementById('parentSkillSelect').value;
+            // Add new skill
+            const newSkill = dataService.addSkill(skillData);
+            skillsData.push(newSkill);
+            console.log('Skill added:', newSkill);
           }
-          skillData.type = 'child';
-        } else {
-          skillData.type = 'parent';
-        }
 
-        if (editingSkillId) {
-          // Update existing skill
-          const updatedSkill = dataService.updateSkill(editingSkillId, skillData);
-          if (updatedSkill) {
-            const index = skillsData.findIndex(s => s.id === editingSkillId);
-            if (index !== -1) {
-              skillsData[index] = updatedSkill;
-            }
-            console.log('Skill updated:', updatedSkill);
-          }
-        } else {
-          // Add new skill
-          const newSkill = dataService.addSkill(skillData);
-          skillsData.push(newSkill);
-          console.log('Skill added:', newSkill);
-        }
-
-        // Close modal and update UI
-        window.skillModal.hide();
-        renderSkills();
-        updateDashboardStats();
-        
-        // Navigate to skills page
-        navigateToPage('skills');
-        
-        // Reset form
-        editingSkillId = null;
-        
-        // Show success message
-        console.log('Habilidade salva com sucesso!');
-        
+          // Close modal and update UI
+          window.skillModal.hide();
+          renderSkills();
+          updateDashboardStats();
+          
+          // Navigate to skills page
+          navigateToPage('skills');
+          
+          // Reset form
+          editingSkillId = null;
+          
+          // Show success message
+          console.log('Habilidade salva com sucesso!');
+          
         } catch (error) {
           console.error('Erro ao salvar habilidade:', error);
           alert('Erro ao salvar habilidade');
@@ -1722,16 +1701,28 @@
         return `${type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
       }
 
-      function populateParentSkillsDropdown() {
+      function populateParentSkillsDropdown(excludeSkillId = null) {
         const select = document.getElementById('parentSkillSelect');
         select.innerHTML = '<option value="">Selecione...</option>';
         
-        skillsData.filter(skill => !skill.parent).forEach(skill => {
+        // Função para adicionar skills recursivamente com indentação
+        function addSkillWithIndentation(skill, level = 0) {
+          if (skill.id === excludeSkillId) return; // Pular skill sendo editada
+          
           const option = document.createElement('option');
           option.value = skill.id;
-          option.textContent = skill.name || skill.title;
+          const indent = '  '.repeat(level); // Indentação com espaços
+          option.textContent = `${indent}${skill.name || skill.title}`;
           select.appendChild(option);
-        });
+          
+          // Adicionar filhos com mais indentação
+          const children = skillsData.filter(s => s.parent === skill.id);
+          children.forEach(child => addSkillWithIndentation(child, level + 1));
+        }
+        
+        // Começar pelas skills raiz
+        const rootSkills = skillsData.filter(skill => !skill.parent);
+        rootSkills.forEach(skill => addSkillWithIndentation(skill, 0));
       }
 
       // === POPULATE DROPDOWNS ===

@@ -47,6 +47,10 @@ class DataService {
             this.skills = skillsData.skills || [];
             this.categories = skillsData.categories || [];
             this.achievements = achievementsData || [];
+            
+            // Sincronizar arrays children após carregar dados
+            this.syncChildrenArrays();
+            
             this.loaded = true;
 
             console.log('Dados carregados:', {
@@ -149,12 +153,14 @@ class DataService {
     // === SKILL CRUD METHODS ===
     addSkill(skillData) {
         const newSkill = {
-            id: 'skill-' + Date.now(),
-            ...skillData,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
+            ...skillData
         };
+        // Se não tiver ID, gerar um
+        if (!newSkill.id) {
+            newSkill.id = 'skill-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        }
         this.skills.push(newSkill);
+        this.syncChildrenArrays(); // Sincronizar arrays children
         this.saveSkills();
         return newSkill;
     }
@@ -164,9 +170,9 @@ class DataService {
         if (index !== -1) {
             this.skills[index] = {
                 ...this.skills[index],
-                ...skillData,
-                updatedAt: new Date().toISOString()
+                ...skillData
             };
+            this.syncChildrenArrays(); // Sincronizar arrays children
             this.saveSkills();
             return this.skills[index];
         }
@@ -177,20 +183,52 @@ class DataService {
         const index = this.skills.findIndex(skill => skill.id === id);
         if (index !== -1) {
             const deletedSkill = this.skills.splice(index, 1)[0];
+            this.syncChildrenArrays(); // Sincronizar arrays children
             this.saveSkills();
             return deletedSkill;
         }
         return null;
     }
 
+    // === SYNC UTILITY ===
+    syncChildrenArrays() {
+        // Limpar todos os arrays children
+        this.skills.forEach(skill => {
+            skill.children = [];
+        });
+
+        // Reconstruir arrays children baseado nas relações parent
+        this.skills.forEach(skill => {
+            if (skill.parent) {
+                const parent = this.skills.find(s => s.id === skill.parent);
+                if (parent) {
+                    if (!parent.children) {
+                        parent.children = [];
+                    }
+                    if (!parent.children.includes(skill.id)) {
+                        parent.children.push(skill.id);
+                    }
+                }
+            }
+        });
+
+        // Garantir que skills sem pai tenham children array vazio se não tiverem
+        this.skills.forEach(skill => {
+            if (!skill.parent && !skill.children) {
+                skill.children = [];
+            }
+        });
+    }
+
     // === ACHIEVEMENT CRUD METHODS ===
     addAchievement(achievementData) {
         const newAchievement = {
-            id: 'ach-' + Date.now(),
-            ...achievementData,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
+            ...achievementData
         };
+        // Se não tiver ID, gerar um
+        if (!newAchievement.id) {
+            newAchievement.id = 'ach-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        }
         this.achievements.push(newAchievement);
         this.saveAchievements();
         return newAchievement;
@@ -201,8 +239,7 @@ class DataService {
         if (index !== -1) {
             this.achievements[index] = {
                 ...this.achievements[index],
-                ...achievementData,
-                updatedAt: new Date().toISOString()
+                ...achievementData
             };
             this.saveAchievements();
             return this.achievements[index];
@@ -289,9 +326,14 @@ class DataService {
     getTopSkill() {
         if (this.skills.length === 0) return { name: 'Nenhuma habilidade', progress: 0 };
 
+        // Filtrar apenas skills pai (sem parent) para o destaque
+        const parentSkills = this.skills.filter(skill => !skill.parent);
+        
+        if (parentSkills.length === 0) return { name: 'Nenhuma habilidade pai', progress: 0 };
+
         const criteria = ['theoretical', 'technical', 'problem_solving', 'knowledge_transfer', 'trends'];
-        // Encontrar a skill com maior média dos critérios
-        const topSkill = this.skills.reduce((max, skill) => {
+        // Encontrar a skill pai com maior média dos critérios
+        const topSkill = parentSkills.reduce((max, skill) => {
             if (!skill.scores) return max;
             const sum = criteria.reduce((acc, c) => acc + (skill.scores[c] || 0), 0);
             const avg = sum / criteria.length;
