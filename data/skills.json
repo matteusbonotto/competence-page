@@ -3,16 +3,16 @@
     {
       "id": "qa-root",
       "title": "QUALITY ASSURANCE",
-      "description": "Garantia de qualidade de software através de processos, metodologias e técnicas de teste para assegurar que produtos atendam aos requisitos e expectativas dos usuários.",
       "category": "qa",
+      "domain": 4,
+      "description": "Garantia de qualidade de software através de processos, metodologias e técnicas de teste para assegurar que produtos atendam aos requisitos e expectativas dos usuários.",
       "icon": "bi-shield-check",
-      "domain": 5,
       "unlock_threshold": 0,
       "scores": {
-        "theoretical": 5,
+        "theoretical": 4,
         "technical": 4,
-        "problem_solving": 5,
-        "knowledge_transfer": 4,
+        "problem_solving": 4,
+        "knowledge_transfer": 3,
         "trends": 3
       },
       "children": [
@@ -28,19 +28,19 @@
     {
       "id": "qa-testing",
       "title": "MANUAL TESTING",
-      "description": "Técnicas e práticas de teste manual, incluindo planejamento, execução e documentação de casos de teste.",
       "category": "qa",
-      "icon": "bi-bug-fill",
       "domain": 4,
+      "description": "Técnicas e práticas de teste manual, incluindo planejamento, execução e documentação de casos de teste.",
+      "icon": "bi-bug-fill",
       "unlock_threshold": 3,
-      "parent": "qa-root",
       "scores": {
-        "theoretical": 4,
-        "technical": 4,
-        "problem_solving": 4,
+        "theoretical": 5,
+        "technical": 5,
+        "problem_solving": 5,
         "knowledge_transfer": 3,
-        "trends": 3
+        "trends": 4
       },
+      "parent": "qa-root",
       "children": [
         "qa-functional",
         "qa-exploratory",
@@ -53,19 +53,19 @@
     {
       "id": "qa-automation",
       "title": "TEST AUTOMATION",
-      "description": "Automação de testes utilizando frameworks e ferramentas para execução automatizada de casos de teste.",
       "category": "qa",
-      "icon": "bi-robot",
       "domain": 3,
+      "description": "Automação de testes utilizando frameworks e ferramentas para execução automatizada de casos de teste.",
+      "icon": "bi-robot",
       "unlock_threshold": 4,
-      "parent": "qa-root",
       "scores": {
-        "theoretical": 3,
-        "technical": 4,
-        "problem_solving": 3,
+        "theoretical": 2,
+        "technical": 3,
+        "problem_solving": 2,
         "knowledge_transfer": 2,
         "trends": 4
       },
+      "parent": "qa-root",
       "children": [
         "qa-selenium",
         "qa-api-testing"
@@ -77,19 +77,19 @@
     {
       "id": "qa-performance",
       "title": "PERFORMANCE TESTING",
-      "description": "Testes de performance, carga e estresse para avaliar comportamento do sistema sob diferentes condições.",
       "category": "qa",
-      "icon": "bi-speedometer2",
       "domain": 2,
+      "description": "Testes de performance, carga e estresse para avaliar comportamento do sistema sob diferentes condições.",
+      "icon": "bi-speedometer2",
       "unlock_threshold": 4,
-      "parent": "qa-root",
       "scores": {
-        "theoretical": 3,
+        "theoretical": 2,
         "technical": 2,
-        "problem_solving": 3,
+        "problem_solving": 1,
         "knowledge_transfer": 1,
-        "trends": 3
+        "trends": 2
       },
+      "parent": "qa-root",
       "children": [
         "qa-load-testing",
         "qa-stress-testing"
@@ -101,12 +101,11 @@
     {
       "id": "qa-functional",
       "title": "FUNCTIONAL TESTING",
-      "description": "Testes funcionais para verificar se o software atende aos requisitos funcionais especificados.",
       "category": "qa",
-      "icon": "bi-check2-square",
       "domain": 4,
+      "description": "Testes funcionais para verificar se o software atende aos requisitos funcionais especificados.",
+      "icon": "bi-check2-square",
       "unlock_threshold": 3,
-      "parent": "qa-testing",
       "scores": {
         "theoretical": 4,
         "technical": 4,
@@ -114,27 +113,24 @@
         "knowledge_transfer": 3,
         "trends": 2
       },
-      "children": [],
-      "relatedAchievements": []
+      "parent": "qa-testing"
     },
     {
       "id": "qa-exploratory",
       "title": "EXPLORATORY TESTING",
-      "description": "Testes exploratórios para descoberta de bugs e comportamentos inesperados através de investigação livre.",
       "category": "qa",
-      "icon": "bi-search",
       "domain": 3,
+      "description": "Testes exploratórios para descoberta de bugs e comportamentos inesperados através de investigação livre.",
+      "icon": "bi-search",
       "unlock_threshold": 3,
-      "parent": "qa-testing",
       "scores": {
-        "theoretical": 3,
-        "technical": 2,
-        "problem_solving": 4,
-        "knowledge_transfer": 3,
-        "trends": 2
+        "theoretical": 5,
+        "technical": 5,
+        "problem_solving": 5,
+        "knowledge_transfer": 4,
+        "trends": 3
       },
-      "children": [],
-      "relatedAchievements": []
+      "parent": "qa-testing"
     },
     {
       "id": "qa-usability",
@@ -401,44 +397,6 @@
         "problem_solving": 3,
         "knowledge_transfer": 2,
         "trends": 3
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
-      "id": "dev-react-native",
-      "title": "REACT NATIVE",
-      "description": "Desenvolvimento de aplicações móveis multiplataforma utilizando React Native.",
-      "category": "dev",
-      "icon": "bi-phone-fill",
-      "domain": 1,
-      "unlock_threshold": 1,
-      "parent": "dev-mobile",
-      "scores": {
-        "theoretical": 2,
-        "technical": 1,
-        "problem_solving": 2,
-        "knowledge_transfer": 1,
-        "trends": 4
-      },
-      "children": [],
-      "relatedAchievements": []
-    },
-    {
-      "id": "dev-flutter",
-      "title": "FLUTTER",
-      "description": "Desenvolvimento de aplicações móveis utilizando Flutter e linguagem Dart.",
-      "category": "dev",
-      "icon": "bi-phone-landscape",
-      "domain": 1,
-      "unlock_threshold": 1,
-      "parent": "dev-mobile",
-      "scores": {
-        "theoretical": 2,
-        "technical": 1,
-        "problem_solving": 2,
-        "knowledge_transfer": 1,
-        "trends": 5
       },
       "children": [],
       "relatedAchievements": []
@@ -1019,20 +977,20 @@
     },
     {
       "id": "idiomas-ingles",
-      "title": "INGLÊS TÉCNICO",
-      "description": "Proficiência em inglês para leitura de documentação, comunicação em equipes internacionais e consumo de conteúdo técnico.",
+      "title": "INGLÊS",
       "category": "idiomas",
+      "domain": 2,
+      "description": "Proficiência em inglês para leitura de documentação, comunicação em equipes internacionais e consumo de conteúdo técnico.",
       "icon": "bi-flag",
-      "domain": 4,
       "unlock_threshold": 1,
-      "parent": "idiomas-root",
       "scores": {
-        "theoretical": 4,
+        "theoretical": 3,
         "technical": 2,
-        "problem_solving": 3,
-        "knowledge_transfer": 5,
-        "trends": 4
+        "problem_solving": 1,
+        "knowledge_transfer": 1,
+        "trends": 3
       },
+      "parent": "idiomas-root",
       "children": [],
       "relatedAchievements": [
         "lost-in-translation",
@@ -1041,14 +999,6 @@
         "sorry-my-bad",
         "br-huehue"
       ]
-    }
-  ],
-  "categories": [
-    {
-      "id": "qa",
-      "name": "Quality Assurance",
-      "color": "#3498db",
-      "rootSkillId": "qa-root"
     },
     {
       "id": "dev",

@@ -294,5 +294,126 @@
     "desc": "Alcance 100 reações no linkedin em uma publicação",
     "unlockedDate": "2025-08-01",
     "updatedAt": "2025-08-01T16:28:37.297Z"
+  },
+  {
+    "id": "ach-1753556239387",
+    "title": "American Boy",
+    "description": "Faça um trabalho internacional e ganhe em Dolar $",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "DEV",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed3-1753556239398-98019639.png"
+  },
+  {
+    "id": "ach-1753556412115",
+    "title": "Mama mia",
+    "description": "Faça um trabalho internacional e ganhe em Euro €",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed4-1753556412122-7910538.png"
+  },
+  {
+    "id": "ach-1753556720433",
+    "title": "Nomad Didital",
+    "description": "Trabalhe Remoto em 5 lugares diferentes no mundo.",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed5-1753556720437-405895172.png"
+  },
+  {
+    "id": "ach-1753557067554",
+    "title": "Overdose de XP",
+    "description": "Alcanse o dominio maximo em Habilidades distintas.",
+    "status": "locked",
+    "difficulty": 2,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed6-1753557067558-886264745.png"
+  },
+  {
+    "id": "ach-1753557408489",
+    "title": "Time dos sonhos!",
+    "description": "Vença um Hackathon com sua equipe.",
+    "status": "locked",
+    "difficulty": 1,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed7-1753557408493-943558151.png"
+  },
+  {
+    "id": "ach-1753557610052",
+    "title": "Ser ou não ser, Eis a minha profissão.",
+    "description": "Concluír o curso tecnico de TI, e definir o inicio da sua carreira na area.",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed8-1753558668533-924519658.png"
+  },
+  {
+    "id": "ach-1753557677166",
+    "title": "Garoto de programa",
+    "description": "Conclua o curso bacharelado de Sistemas de informação.",
+    "status": "unlocked",
+    "difficulty": 2,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed9-1753558917894-459662963.png"
+  },
+  {
+    "id": "ach-1753557708583",
+    "title": "Ultrapassando limites",
+    "description": "Concluá uma pós graduação.",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed10-1753559281835-855041893.png"
+  },
+  {
+    "id": "ach-1753557810952",
+    "title": "Gugu dada",
+    "description": "Conquiste a posição Junior em sua profissão.",
+    "status": "unlocked",
+    "difficulty": 3,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed12-1753560048674-527013440.png"
+  },
+  {
+    "id": "ach-1753557837533",
+    "title": "Plenitude",
+    "description": "Alcance o nivel pleno em sua profissão.",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed13-1753579500863-563950872.png"
+  },
+  {
+    "id": "ach-1753557918307",
+    "title": "Sabedoria iminente",
+    "description": "Alcance o nivel Senior em sua profissão",
+    "status": "locked",
+    "difficulty": 3,
+    "category": "QA",
+    "evidence": null,
+    "relatedSkills": [],
+    "image": "assets/achievements/unnamed14-1753579509907-754549008.png"
   }
 ]
